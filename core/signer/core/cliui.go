@@ -24,7 +24,7 @@ import (
 	"strings"
 	"sync"
 
-	"github.com/fff-chain/3f-chain/core/common"
+	"github.com/fff-chain/3f-chain/core/common/hexutil"
 	"github.com/fff-chain/3f-chain/core/console/prompt"
 	"github.com/fff-chain/3f-chain/core/lib/ethapi"
 	"github.com/fff-chain/3f-chain/core/log"
@@ -133,7 +133,7 @@ func (ui *CommandlineUI) ApproveTx(request *SignTxRequest) (SignTxResponse, erro
 	if request.Transaction.Data != nil {
 		d := *request.Transaction.Data
 		if len(d) > 0 {
-			fmt.Printf("data:     %v\n", common.Encode(d))
+			fmt.Printf("data:     %v\n", hexutil.Encode(d))
 		}
 	}
 	if request.Callinfo != nil {

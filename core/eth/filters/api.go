@@ -28,7 +28,7 @@ import (
 	ethereum "github.com/fff-chain/3f-chain"
 	"github.com/fff-chain/3f-chain/core/common"
 	"github.com/fff-chain/3f-chain/core/common/gopool"
-
+	"github.com/fff-chain/3f-chain/core/common/hexutil"
 	"github.com/fff-chain/3f-chain/core/core/types"
 	"github.com/fff-chain/3f-chain/core/ethdb"
 	"github.com/fff-chain/3f-chain/core/event"
@@ -569,7 +569,7 @@ func (args *FilterCriteria) UnmarshalJSON(data []byte) error {
 }
 
 func decodeAddress(s string) (common.Address, error) {
-	b, err := common.Decode(s)
+	b, err := hexutil.Decode(s)
 	if err == nil && len(b) != common.AddressLength {
 		err = fmt.Errorf("hex has invalid length %d after decoding; expected %d for address", len(b), common.AddressLength)
 	}
@@ -577,7 +577,7 @@ func decodeAddress(s string) (common.Address, error) {
 }
 
 func decodeTopic(s string) (common.Hash, error) {
-	b, err := common.Decode(s)
+	b, err := hexutil.Decode(s)
 	if err == nil && len(b) != common.HashLength {
 		err = fmt.Errorf("hex has invalid length %d after decoding; expected %d for topic", len(b), common.HashLength)
 	}

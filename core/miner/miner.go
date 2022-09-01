@@ -23,7 +23,7 @@ import (
 	"time"
 
 	"github.com/fff-chain/3f-chain/core/common"
-
+	"github.com/fff-chain/3f-chain/core/common/hexutil"
 	"github.com/fff-chain/3f-chain/core/consensus"
 	"github.com/fff-chain/3f-chain/core/core"
 	"github.com/fff-chain/3f-chain/core/core/state"
@@ -45,7 +45,7 @@ type Config struct {
 	Etherbase     common.Address `toml:",omitempty"` // Public address for block mining rewards (default = first account)
 	Notify        []string       `toml:",omitempty"` // HTTP URL list to be notified of new work packages (only useful in ethash).
 	NotifyFull    bool           `toml:",omitempty"` // Notify with pending block headers instead of work packages
-	ExtraData     common.Bytes   `toml:",omitempty"` // Block extra data set by the miner
+	ExtraData     hexutil.Bytes  `toml:",omitempty"` // Block extra data set by the miner
 	DelayLeftOver time.Duration  // Time for broadcast block
 	GasFloor      uint64         // Target gas floor for mined blocks.
 	GasCeil       uint64         // Target gas ceiling for mined blocks.

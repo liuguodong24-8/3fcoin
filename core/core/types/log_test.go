@@ -24,6 +24,7 @@ import (
 
 	"github.com/davecgh/go-spew/spew"
 	"github.com/fff-chain/3f-chain/core/common"
+	"github.com/fff-chain/3f-chain/core/common/hexutil"
 )
 
 var unmarshalLogTests = map[string]struct {
@@ -37,7 +38,7 @@ var unmarshalLogTests = map[string]struct {
 			Address:     common.HexToAddress("0xecf8f87f810ecf450940c9f60066b4a7a501d6a7"),
 			BlockHash:   common.HexToHash("0x656c34545f90a730a19008c0e7a7cd4fb3895064b48d6d69761bd5abad681056"),
 			BlockNumber: 2019236,
-			Data:        common.MustDecode("0x000000000000000000000000000000000000000000000001a055690d9db80000"),
+			Data:        hexutil.MustDecode("0x000000000000000000000000000000000000000000000001a055690d9db80000"),
 			Index:       2,
 			TxIndex:     3,
 			TxHash:      common.HexToHash("0x3b198bfd5d2907285af009e9ae84a0ecd63677110d89d7e030251acb87f6487e"),

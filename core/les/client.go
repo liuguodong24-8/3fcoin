@@ -23,7 +23,7 @@ import (
 
 	"github.com/fff-chain/3f-chain/core/accounts"
 	"github.com/fff-chain/3f-chain/core/common"
-
+	"github.com/fff-chain/3f-chain/core/common/hexutil"
 	"github.com/fff-chain/3f-chain/core/common/mclock"
 	"github.com/fff-chain/3f-chain/core/consensus"
 	"github.com/fff-chain/3f-chain/core/core"
@@ -273,7 +273,7 @@ func (s *LightDummyAPI) Coinbase() (common.Address, error) {
 }
 
 // Hashrate returns the POW hashrate
-func (s *LightDummyAPI) Hashrate() common.Uint {
+func (s *LightDummyAPI) Hashrate() hexutil.Uint {
 	return 0
 }
 

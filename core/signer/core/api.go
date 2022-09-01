@@ -30,7 +30,7 @@ import (
 	"github.com/fff-chain/3f-chain/core/accounts/scwallet"
 	"github.com/fff-chain/3f-chain/core/accounts/usbwallet"
 	"github.com/fff-chain/3f-chain/core/common"
-
+	"github.com/fff-chain/3f-chain/core/common/hexutil"
 	"github.com/fff-chain/3f-chain/core/lib/ethapi"
 	"github.com/fff-chain/3f-chain/core/log"
 	"github.com/fff-chain/3f-chain/core/signer/storage"
@@ -54,11 +54,11 @@ type ExternalAPI interface {
 	// SignTransaction request to sign the specified transaction
 	SignTransaction(ctx context.Context, args SendTxArgs, methodSelector *string) (*ethapi.SignTransactionResult, error)
 	// SignData - request to sign the given data (plus prefix)
-	SignData(ctx context.Context, contentType string, addr common.MixedcaseAddress, data interface{}) (common.Bytes, error)
+	SignData(ctx context.Context, contentType string, addr common.MixedcaseAddress, data interface{}) (hexutil.Bytes, error)
 	// SignTypedData - request to sign the given structured data (plus prefix)
-	SignTypedData(ctx context.Context, addr common.MixedcaseAddress, data TypedData) (common.Bytes, error)
+	SignTypedData(ctx context.Context, addr common.MixedcaseAddress, data TypedData) (hexutil.Bytes, error)
 	// EcRecover - recover public key from given message and signature
-	EcRecover(ctx context.Context, data common.Bytes, sig common.Bytes) (common.Address, error)
+	EcRecover(ctx context.Context, data hexutil.Bytes, sig hexutil.Bytes) (common.Address, error)
 	// Version info about the APIs
 	Version(ctx context.Context) (string, error)
 	// SignGnosisSafeTransaction signs/confirms a gnosis-safe multisig transaction
@@ -236,7 +236,7 @@ type (
 		Rawdata     []byte                  `json:"raw_data"`
 		Messages    []*NameValueType        `json:"messages"`
 		Callinfo    []ValidationInfo        `json:"call_info"`
-		Hash        common.Bytes            `json:"hash"`
+		Hash        hexutil.Bytes           `json:"hash"`
 		Meta        Metadata                `json:"meta"`
 	}
 	SignDataResponse struct {
@@ -481,10 +481,10 @@ func logDiff(original *SignTxRequest, new *SignTxResponse) bool {
 		d0s := ""
 		d1s := ""
 		if d0 != nil {
-			d0s = common.Encode(*d0)
+			d0s = hexutil.Encode(*d0)
 		}
 		if d1 != nil {
-			d1s = common.Encode(*d1)
+			d1s = hexutil.Encode(*d1)
 		}
 		if d1s != d0s {
 			modified = true

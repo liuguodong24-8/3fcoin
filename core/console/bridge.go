@@ -27,8 +27,7 @@ import (
 	"github.com/dop251/goja"
 	"github.com/fff-chain/3f-chain/core/accounts/scwallet"
 	"github.com/fff-chain/3f-chain/core/accounts/usbwallet"
-	"github.com/fff-chain/3f-chain/core/common"
-
+	"github.com/fff-chain/3f-chain/core/common/hexutil"
 	"github.com/fff-chain/3f-chain/core/console/prompt"
 	"github.com/fff-chain/3f-chain/core/lib/jsre"
 	"github.com/fff-chain/3f-chain/core/rpc"
@@ -354,12 +353,12 @@ func (b *bridge) SleepBlocks(call jsre.Call) (goja.Value, error) {
 
 	// Poll the current block number until either it or a timeout is reached.
 	deadline := time.Now().Add(time.Duration(sleep) * time.Second)
-	var lastNumber common.Uint64
+	var lastNumber hexutil.Uint64
 	if err := b.client.Call(&lastNumber, "eth_blockNumber"); err != nil {
 		return nil, err
 	}
 	for time.Now().Before(deadline) {
-		var number common.Uint64
+		var number hexutil.Uint64
 		if err := b.client.Call(&number, "eth_blockNumber"); err != nil {
 			return nil, err
 		}

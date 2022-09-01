@@ -8,7 +8,7 @@ import (
 	"math/big"
 
 	"github.com/fff-chain/3f-chain/core/common"
-	
+	"github.com/fff-chain/3f-chain/core/common/hexutil"
 )
 
 var _ = (*headerMarshaling)(nil)
@@ -23,12 +23,12 @@ func (h Header) MarshalJSON() ([]byte, error) {
 		TxHash      common.Hash    `json:"transactionsRoot" gencodec:"required"`
 		ReceiptHash common.Hash    `json:"receiptsRoot"     gencodec:"required"`
 		Bloom       Bloom          `json:"logsBloom"        gencodec:"required"`
-		Difficulty  *common.Big   `json:"difficulty"       gencodec:"required"`
-		Number      *common.Big   `json:"number"           gencodec:"required"`
-		GasLimit    common.Uint64 `json:"gasLimit"         gencodec:"required"`
-		GasUsed     common.Uint64 `json:"gasUsed"          gencodec:"required"`
-		Time        common.Uint64 `json:"timestamp"        gencodec:"required"`
-		Extra       common.Bytes  `json:"extraData"        gencodec:"required"`
+		Difficulty  *hexutil.Big   `json:"difficulty"       gencodec:"required"`
+		Number      *hexutil.Big   `json:"number"           gencodec:"required"`
+		GasLimit    hexutil.Uint64 `json:"gasLimit"         gencodec:"required"`
+		GasUsed     hexutil.Uint64 `json:"gasUsed"          gencodec:"required"`
+		Time        hexutil.Uint64 `json:"timestamp"        gencodec:"required"`
+		Extra       hexutil.Bytes  `json:"extraData"        gencodec:"required"`
 		MixDigest   common.Hash    `json:"mixHash"`
 		Nonce       BlockNonce     `json:"nonce"`
 		Hash        common.Hash    `json:"hash"`
@@ -41,11 +41,11 @@ func (h Header) MarshalJSON() ([]byte, error) {
 	enc.TxHash = h.TxHash
 	enc.ReceiptHash = h.ReceiptHash
 	enc.Bloom = h.Bloom
-	enc.Difficulty = (*common.Big)(h.Difficulty)
-	enc.Number = (*common.Big)(h.Number)
-	enc.GasLimit = common.Uint64(h.GasLimit)
-	enc.GasUsed = common.Uint64(h.GasUsed)
-	enc.Time = common.Uint64(h.Time)
+	enc.Difficulty = (*hexutil.Big)(h.Difficulty)
+	enc.Number = (*hexutil.Big)(h.Number)
+	enc.GasLimit = hexutil.Uint64(h.GasLimit)
+	enc.GasUsed = hexutil.Uint64(h.GasUsed)
+	enc.Time = hexutil.Uint64(h.Time)
 	enc.Extra = h.Extra
 	enc.MixDigest = h.MixDigest
 	enc.Nonce = h.Nonce
@@ -63,12 +63,12 @@ func (h *Header) UnmarshalJSON(input []byte) error {
 		TxHash      *common.Hash    `json:"transactionsRoot" gencodec:"required"`
 		ReceiptHash *common.Hash    `json:"receiptsRoot"     gencodec:"required"`
 		Bloom       *Bloom          `json:"logsBloom"        gencodec:"required"`
-		Difficulty  *common.Big    `json:"difficulty"       gencodec:"required"`
-		Number      *common.Big    `json:"number"           gencodec:"required"`
-		GasLimit    *common.Uint64 `json:"gasLimit"         gencodec:"required"`
-		GasUsed     *common.Uint64 `json:"gasUsed"          gencodec:"required"`
-		Time        *common.Uint64 `json:"timestamp"        gencodec:"required"`
-		Extra       *common.Bytes  `json:"extraData"        gencodec:"required"`
+		Difficulty  *hexutil.Big    `json:"difficulty"       gencodec:"required"`
+		Number      *hexutil.Big    `json:"number"           gencodec:"required"`
+		GasLimit    *hexutil.Uint64 `json:"gasLimit"         gencodec:"required"`
+		GasUsed     *hexutil.Uint64 `json:"gasUsed"          gencodec:"required"`
+		Time        *hexutil.Uint64 `json:"timestamp"        gencodec:"required"`
+		Extra       *hexutil.Bytes  `json:"extraData"        gencodec:"required"`
 		MixDigest   *common.Hash    `json:"mixHash"`
 		Nonce       *BlockNonce     `json:"nonce"`
 	}

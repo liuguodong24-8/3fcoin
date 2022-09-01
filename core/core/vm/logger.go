@@ -27,7 +27,7 @@ import (
 	"github.com/holiman/uint256"
 
 	"github.com/fff-chain/3f-chain/core/common"
-
+	"github.com/fff-chain/3f-chain/core/common/hexutil"
 	"github.com/fff-chain/3f-chain/core/common/math"
 	"github.com/fff-chain/3f-chain/core/core/types"
 	"github.com/fff-chain/3f-chain/core/params"
@@ -80,8 +80,8 @@ type StructLog struct {
 type structLogMarshaling struct {
 	Gas         math.HexOrDecimal64
 	GasCost     math.HexOrDecimal64
-	Memory      common.Bytes
-	ReturnData  common.Bytes
+	Memory      hexutil.Bytes
+	ReturnData  hexutil.Bytes
 	OpName      string `json:"opName"` // adds call to OpName() in MarshalJSON
 	ErrorString string `json:"error"`  // adds call to ErrorString() in MarshalJSON
 }

@@ -28,7 +28,7 @@ import (
 
 	"github.com/fff-chain/3f-chain/core/accounts"
 	"github.com/fff-chain/3f-chain/core/common"
-
+	"github.com/fff-chain/3f-chain/core/common/hexutil"
 	"github.com/fff-chain/3f-chain/core/consensus"
 	"github.com/fff-chain/3f-chain/core/consensus/clique"
 	"github.com/fff-chain/3f-chain/core/consensus/parlia"
@@ -305,7 +305,7 @@ func makeExtraData(extra []byte) []byte {
 		})
 	}
 	if uint64(len(extra)) > params.MaximumExtraDataSize-params.ForkIDSize {
-		log.Warn("Miner extra data exceed limit", "extra", common.Bytes(extra), "limit", params.MaximumExtraDataSize-params.ForkIDSize)
+		log.Warn("Miner extra data exceed limit", "extra", hexutil.Bytes(extra), "limit", params.MaximumExtraDataSize-params.ForkIDSize)
 		extra = nil
 	}
 	return extra

@@ -18,6 +18,7 @@ package catalyst
 
 import (
 	"github.com/fff-chain/3f-chain/core/common"
+	"github.com/fff-chain/3f-chain/core/common/hexutil"
 )
 
 //go:generate go run github.com/fjl/gencodec -type assembleBlockParams -field-override assembleBlockParamsMarshaling -out gen_blockparams.go
@@ -30,7 +31,7 @@ type assembleBlockParams struct {
 
 // JSON type overrides for assembleBlockParams.
 type assembleBlockParamsMarshaling struct {
-	Timestamp common.Uint64
+	Timestamp hexutil.Uint64
 }
 
 //go:generate go run github.com/fjl/gencodec -type executableData -field-override executableDataMarshaling -out gen_ed.go
@@ -52,12 +53,12 @@ type executableData struct {
 
 // JSON type overrides for executableData.
 type executableDataMarshaling struct {
-	Number       common.Uint64
-	GasLimit     common.Uint64
-	GasUsed      common.Uint64
-	Timestamp    common.Uint64
-	LogsBloom    common.Bytes
-	Transactions []common.Bytes
+	Number       hexutil.Uint64
+	GasLimit     hexutil.Uint64
+	GasUsed      hexutil.Uint64
+	Timestamp    hexutil.Uint64
+	LogsBloom    hexutil.Bytes
+	Transactions []hexutil.Bytes
 }
 
 type newBlockResponse struct {

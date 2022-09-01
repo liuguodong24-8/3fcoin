@@ -31,7 +31,7 @@ import (
 
 	"github.com/fff-chain/3f-chain/core/common"
 	"github.com/fff-chain/3f-chain/core/common/gopool"
-
+	"github.com/fff-chain/3f-chain/core/common/hexutil"
 	"github.com/fff-chain/3f-chain/core/consensus"
 	"github.com/fff-chain/3f-chain/core/core"
 	"github.com/fff-chain/3f-chain/core/core/rawdb"
@@ -208,7 +208,7 @@ type blockTraceTask struct {
 // blockTraceResult represets the results of tracing a single block when an entire
 // chain is being traced.
 type blockTraceResult struct {
-	Block  common.Uint64    `json:"block"`  // Block number corresponding to this trace
+	Block  hexutil.Uint64   `json:"block"`  // Block number corresponding to this trace
 	Hash   common.Hash      `json:"hash"`   // Block hash corresponding to this trace
 	Traces []*txTraceResult `json:"traces"` // Trace results produced by the task
 }
@@ -409,7 +409,7 @@ func (api *API) traceChain(ctx context.Context, start, end *types.Block, config 
 		for res := range results {
 			// Queue up next received result
 			result := &blockTraceResult{
-				Block:  common.Uint64(res.block.NumberU64()),
+				Block:  hexutil.Uint64(res.block.NumberU64()),
 				Hash:   res.block.Hash(),
 				Traces: res.results,
 			}

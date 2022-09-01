@@ -21,6 +21,7 @@ import (
 	"math/big"
 
 	"github.com/fff-chain/3f-chain/core/common"
+	"github.com/fff-chain/3f-chain/core/common/hexutil"
 	"github.com/fff-chain/3f-chain/core/core/types"
 )
 
@@ -44,7 +45,7 @@ func largeBuffer(megabytes int) []byte {
 func largeString(megabytes int) string {
 	buf := make([]byte, megabytes*1024*1024)
 	rand.Read(buf)
-	return common.Encode(buf)
+	return hexutil.Encode(buf)
 }
 
 func largeBlock() *types.Block {

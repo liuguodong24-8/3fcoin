@@ -26,7 +26,7 @@ import (
 
 	ethereum "github.com/fff-chain/3f-chain"
 	"github.com/fff-chain/3f-chain/core/common"
-
+	"github.com/fff-chain/3f-chain/core/common/hexutil"
 	"github.com/fff-chain/3f-chain/core/core/rawdb"
 	"github.com/fff-chain/3f-chain/core/core/state"
 	"github.com/fff-chain/3f-chain/core/core/types"
@@ -53,7 +53,7 @@ func (b *Long) UnmarshalGraphQL(input interface{}) error {
 		// uncomment to support hex values
 		//if strings.HasPrefix(input, "0x") {
 		//	// apply leniency and support hex representations of longs.
-		//	value, err := common.DecodeUint64(input)
+		//	value, err := hexutil.DecodeUint64(input)
 		//	*b = Long(value)
 		//	return err
 		//} else {
@@ -88,26 +88,26 @@ func (a *Account) Address(ctx context.Context) (common.Address, error) {
 	return a.address, nil
 }
 
-func (a *Account) Balance(ctx context.Context) (common.Big, error) {
+func (a *Account) Balance(ctx context.Context) (hexutil.Big, error) {
 	state, err := a.getState(ctx)
 	if err != nil {
-		return common.Big{}, err
+		return hexutil.Big{}, err
 	}
-	return common.Big(*state.GetBalance(a.address)), nil
+	return hexutil.Big(*state.GetBalance(a.address)), nil
 }
 
-func (a *Account) TransactionCount(ctx context.Context) (common.Uint64, error) {
+func (a *Account) TransactionCount(ctx context.Context) (hexutil.Uint64, error) {
 	state, err := a.getState(ctx)
 	if err != nil {
 		return 0, err
 	}
-	return common.Uint64(state.GetNonce(a.address)), nil
+	return hexutil.Uint64(state.GetNonce(a.address)), nil
 }
 
-func (a *Account) Code(ctx context.Context) (common.Bytes, error) {
+func (a *Account) Code(ctx context.Context) (hexutil.Bytes, error) {
 	state, err := a.getState(ctx)
 	if err != nil {
-		return common.Bytes{}, err
+		return hexutil.Bytes{}, err
 	}
 	return state.GetCode(a.address), nil
 }
@@ -147,7 +147,7 @@ func (l *Log) Topics(ctx context.Context) []common.Hash {
 	return l.log.Topics
 }
 
-func (l *Log) Data(ctx context.Context) common.Bytes {
+func (l *Log) Data(ctx context.Context) hexutil.Bytes {
 	return l.log.Data
 }
 
@@ -198,44 +198,44 @@ func (t *Transaction) Hash(ctx context.Context) common.Hash {
 	return t.hash
 }
 
-func (t *Transaction) InputData(ctx context.Context) (common.Bytes, error) {
+func (t *Transaction) InputData(ctx context.Context) (hexutil.Bytes, error) {
 	tx, err := t.resolve(ctx)
 	if err != nil || tx == nil {
-		return common.Bytes{}, err
+		return hexutil.Bytes{}, err
 	}
 	return tx.Data(), nil
 }
 
-func (t *Transaction) Gas(ctx context.Context) (common.Uint64, error) {
+func (t *Transaction) Gas(ctx context.Context) (hexutil.Uint64, error) {
 	tx, err := t.resolve(ctx)
 	if err != nil || tx == nil {
 		return 0, err
 	}
-	return common.Uint64(tx.Gas()), nil
+	return hexutil.Uint64(tx.Gas()), nil
 }
 
-func (t *Transaction) GasPrice(ctx context.Context) (common.Big, error) {
+func (t *Transaction) GasPrice(ctx context.Context) (hexutil.Big, error) {
 	tx, err := t.resolve(ctx)
 	if err != nil || tx == nil {
-		return common.Big{}, err
+		return hexutil.Big{}, err
 	}
-	return common.Big(*tx.GasPrice()), nil
+	return hexutil.Big(*tx.GasPrice()), nil
 }
 
-func (t *Transaction) Value(ctx context.Context) (common.Big, error) {
+func (t *Transaction) Value(ctx context.Context) (hexutil.Big, error) {
 	tx, err := t.resolve(ctx)
 	if err != nil || tx == nil {
-		return common.Big{}, err
+		return hexutil.Big{}, err
 	}
-	return common.Big(*tx.Value()), nil
+	return hexutil.Big(*tx.Value()), nil
 }
 
-func (t *Transaction) Nonce(ctx context.Context) (common.Uint64, error) {
+func (t *Transaction) Nonce(ctx context.Context) (hexutil.Uint64, error) {
 	tx, err := t.resolve(ctx)
 	if err != nil || tx == nil {
 		return 0, err
 	}
-	return common.Uint64(tx.Nonce()), nil
+	return hexutil.Uint64(tx.Nonce()), nil
 }
 
 func (t *Transaction) To(ctx context.Context, args BlockNumberArgs) (*Account, error) {
@@ -381,31 +381,31 @@ func (t *Transaction) AccessList(ctx context.Context) (*[]*AccessTuple, error) {
 	return &ret, nil
 }
 
-func (t *Transaction) R(ctx context.Context) (common.Big, error) {
+func (t *Transaction) R(ctx context.Context) (hexutil.Big, error) {
 	tx, err := t.resolve(ctx)
 	if err != nil || tx == nil {
-		return common.Big{}, err
+		return hexutil.Big{}, err
 	}
 	_, r, _ := tx.RawSignatureValues()
-	return common.Big(*r), nil
+	return hexutil.Big(*r), nil
 }
 
-func (t *Transaction) S(ctx context.Context) (common.Big, error) {
+func (t *Transaction) S(ctx context.Context) (hexutil.Big, error) {
 	tx, err := t.resolve(ctx)
 	if err != nil || tx == nil {
-		return common.Big{}, err
+		return hexutil.Big{}, err
 	}
 	_, _, s := tx.RawSignatureValues()
-	return common.Big(*s), nil
+	return hexutil.Big(*s), nil
 }
 
-func (t *Transaction) V(ctx context.Context) (common.Big, error) {
+func (t *Transaction) V(ctx context.Context) (hexutil.Big, error) {
 	tx, err := t.resolve(ctx)
 	if err != nil || tx == nil {
-		return common.Big{}, err
+		return hexutil.Big{}, err
 	}
 	v, _, _ := tx.RawSignatureValues()
-	return common.Big(*v), nil
+	return hexutil.Big(*v), nil
 }
 
 type BlockType int
@@ -536,26 +536,26 @@ func (b *Block) Parent(ctx context.Context) (*Block, error) {
 	return nil, nil
 }
 
-func (b *Block) Difficulty(ctx context.Context) (common.Big, error) {
+func (b *Block) Difficulty(ctx context.Context) (hexutil.Big, error) {
 	header, err := b.resolveHeader(ctx)
 	if err != nil {
-		return common.Big{}, err
+		return hexutil.Big{}, err
 	}
-	return common.Big(*header.Difficulty), nil
+	return hexutil.Big(*header.Difficulty), nil
 }
 
-func (b *Block) Timestamp(ctx context.Context) (common.Uint64, error) {
+func (b *Block) Timestamp(ctx context.Context) (hexutil.Uint64, error) {
 	header, err := b.resolveHeader(ctx)
 	if err != nil {
 		return 0, err
 	}
-	return common.Uint64(header.Time), nil
+	return hexutil.Uint64(header.Time), nil
 }
 
-func (b *Block) Nonce(ctx context.Context) (common.Bytes, error) {
+func (b *Block) Nonce(ctx context.Context) (hexutil.Bytes, error) {
 	header, err := b.resolveHeader(ctx)
 	if err != nil {
-		return common.Bytes{}, err
+		return hexutil.Bytes{}, err
 	}
 	return header.Nonce[:], nil
 }
@@ -626,32 +626,32 @@ func (b *Block) Ommers(ctx context.Context) (*[]*Block, error) {
 	return &ret, nil
 }
 
-func (b *Block) ExtraData(ctx context.Context) (common.Bytes, error) {
+func (b *Block) ExtraData(ctx context.Context) (hexutil.Bytes, error) {
 	header, err := b.resolveHeader(ctx)
 	if err != nil {
-		return common.Bytes{}, err
+		return hexutil.Bytes{}, err
 	}
 	return header.Extra, nil
 }
 
-func (b *Block) LogsBloom(ctx context.Context) (common.Bytes, error) {
+func (b *Block) LogsBloom(ctx context.Context) (hexutil.Bytes, error) {
 	header, err := b.resolveHeader(ctx)
 	if err != nil {
-		return common.Bytes{}, err
+		return hexutil.Bytes{}, err
 	}
 	return header.Bloom.Bytes(), nil
 }
 
-func (b *Block) TotalDifficulty(ctx context.Context) (common.Big, error) {
+func (b *Block) TotalDifficulty(ctx context.Context) (hexutil.Big, error) {
 	h := b.hash
 	if h == (common.Hash{}) {
 		header, err := b.resolveHeader(ctx)
 		if err != nil {
-			return common.Big{}, err
+			return hexutil.Big{}, err
 		}
 		h = header.Hash()
 	}
-	return common.Big(*b.backend.GetTd(ctx, h)), nil
+	return hexutil.Big(*b.backend.GetTd(ctx, h)), nil
 }
 
 // BlockNumberArgs encapsulates arguments to accessors that specify a block number.
@@ -659,7 +659,7 @@ type BlockNumberArgs struct {
 	// TODO: Ideally we could use input unions to allow the query to specify the
 	// block parameter by hash, block number, or tag but input unions aren't part of the
 	// standard GraphQL schema SDL yet, see: https://github.com/graphql/graphql-spec/issues/488
-	Block *common.Uint64
+	Block *hexutil.Uint64
 }
 
 // NumberOr returns the provided block number argument, or the "current" block number or hash if none
@@ -836,20 +836,20 @@ func (b *Block) Account(ctx context.Context, args struct {
 type CallData struct {
 	From     *common.Address // The Ethereum address the call is from.
 	To       *common.Address // The Ethereum address the call is to.
-	Gas      *common.Uint64  // The amount of gas provided for the call.
-	GasPrice *common.Big     // The price of each unit of gas, in wei.
-	Value    *common.Big     // The value sent along with the call.
-	Data     *common.Bytes   // Any data sent with the call.
+	Gas      *hexutil.Uint64 // The amount of gas provided for the call.
+	GasPrice *hexutil.Big    // The price of each unit of gas, in wei.
+	Value    *hexutil.Big    // The value sent along with the call.
+	Data     *hexutil.Bytes  // Any data sent with the call.
 }
 
 // CallResult encapsulates the result of an invocation of the `call` accessor.
 type CallResult struct {
-	data    common.Bytes // The return data from the call
-	gasUsed Long         // The amount of gas used
-	status  Long         // The return status of the call - 0 for failure or 1 for success.
+	data    hexutil.Bytes // The return data from the call
+	gasUsed Long          // The amount of gas used
+	status  Long          // The return status of the call - 0 for failure or 1 for success.
 }
 
-func (c *CallResult) Data() common.Bytes {
+func (c *CallResult) Data() hexutil.Bytes {
 	return c.data
 }
 
@@ -1054,7 +1054,7 @@ func (r *Resolver) Transaction(ctx context.Context, args struct{ Hash common.Has
 	return tx, nil
 }
 
-func (r *Resolver) SendRawTransaction(ctx context.Context, args struct{ Data common.Bytes }) (common.Hash, error) {
+func (r *Resolver) SendRawTransaction(ctx context.Context, args struct{ Data hexutil.Bytes }) (common.Hash, error) {
 	tx := new(types.Transaction)
 	if err := tx.UnmarshalBinary(args.Data); err != nil {
 		return common.Hash{}, err
@@ -1065,8 +1065,8 @@ func (r *Resolver) SendRawTransaction(ctx context.Context, args struct{ Data com
 
 // FilterCriteria encapsulates the arguments to `logs` on the root resolver object.
 type FilterCriteria struct {
-	FromBlock *common.Uint64    // beginning of the queried range, nil means genesis block
-	ToBlock   *common.Uint64    // end of the range, nil means latest block
+	FromBlock *hexutil.Uint64   // beginning of the queried range, nil means genesis block
+	ToBlock   *hexutil.Uint64   // end of the range, nil means latest block
 	Addresses *[]common.Address // restricts matches to events created by specific contracts
 
 	// The Topic list restricts matches to particular event topics. Each event has a list
@@ -1106,13 +1106,13 @@ func (r *Resolver) Logs(ctx context.Context, args struct{ Filter FilterCriteria 
 	return runFilter(ctx, r.backend, filter)
 }
 
-func (r *Resolver) GasPrice(ctx context.Context) (common.Big, error) {
+func (r *Resolver) GasPrice(ctx context.Context) (hexutil.Big, error) {
 	price, err := r.backend.SuggestPrice(ctx)
-	return common.Big(*price), err
+	return hexutil.Big(*price), err
 }
 
-func (r *Resolver) ChainID(ctx context.Context) (common.Big, error) {
-	return common.Big(*r.backend.ChainConfig().ChainID), nil
+func (r *Resolver) ChainID(ctx context.Context) (hexutil.Big, error) {
+	return hexutil.Big(*r.backend.ChainConfig().ChainID), nil
 }
 
 // SyncState represents the synchronisation status returned from the `syncing` accessor.
@@ -1120,25 +1120,25 @@ type SyncState struct {
 	progress ethereum.SyncProgress
 }
 
-func (s *SyncState) StartingBlock() common.Uint64 {
-	return common.Uint64(s.progress.StartingBlock)
+func (s *SyncState) StartingBlock() hexutil.Uint64 {
+	return hexutil.Uint64(s.progress.StartingBlock)
 }
 
-func (s *SyncState) CurrentBlock() common.Uint64 {
-	return common.Uint64(s.progress.CurrentBlock)
+func (s *SyncState) CurrentBlock() hexutil.Uint64 {
+	return hexutil.Uint64(s.progress.CurrentBlock)
 }
 
-func (s *SyncState) HighestBlock() common.Uint64 {
-	return common.Uint64(s.progress.HighestBlock)
+func (s *SyncState) HighestBlock() hexutil.Uint64 {
+	return hexutil.Uint64(s.progress.HighestBlock)
 }
 
-func (s *SyncState) PulledStates() *common.Uint64 {
-	ret := common.Uint64(s.progress.PulledStates)
+func (s *SyncState) PulledStates() *hexutil.Uint64 {
+	ret := hexutil.Uint64(s.progress.PulledStates)
 	return &ret
 }
 
-func (s *SyncState) KnownStates() *common.Uint64 {
-	ret := common.Uint64(s.progress.KnownStates)
+func (s *SyncState) KnownStates() *hexutil.Uint64 {
+	ret := hexutil.Uint64(s.progress.KnownStates)
 	return &ret
 }
 

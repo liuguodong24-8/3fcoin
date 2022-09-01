@@ -26,7 +26,7 @@ import (
 
 	"github.com/VictoriaMetrics/fastcache"
 	"github.com/fff-chain/3f-chain/core/common"
-
+	"github.com/fff-chain/3f-chain/core/common/hexutil"
 	"github.com/fff-chain/3f-chain/core/common/math"
 	"github.com/fff-chain/3f-chain/core/core/rawdb"
 	"github.com/fff-chain/3f-chain/core/crypto"
@@ -390,16 +390,16 @@ func (dl *diskLayer) generateRange(root common.Hash, prefix []byte, kind string,
 	last := result.last()
 
 	// Construct contextual logger
-	logCtx := []interface{}{"kind", kind, "prefix", common.Encode(prefix)}
+	logCtx := []interface{}{"kind", kind, "prefix", hexutil.Encode(prefix)}
 	if len(origin) > 0 {
-		logCtx = append(logCtx, "origin", common.Encode(origin))
+		logCtx = append(logCtx, "origin", hexutil.Encode(origin))
 	}
 	logger := log.New(logCtx...)
 
 	// The range prover says the range is correct, skip trie iteration
 	if result.valid() {
 		snapSuccessfulRangeProofMeter.Mark(1)
-		logger.Trace("Proved state range", "last", common.Encode(last))
+		logger.Trace("Proved state range", "last", hexutil.Encode(last))
 
 		// The verification is passed, process each state with the given
 		// callback function. If this state represents a contract, the
@@ -410,7 +410,7 @@ func (dl *diskLayer) generateRange(root common.Hash, prefix []byte, kind string,
 		// Only abort the iteration when both database and trie are exhausted
 		return !result.diskMore && !result.trieMore, last, nil
 	}
-	logger.Trace("Detected outdated state range", "last", common.Encode(last), "err", result.proofErr)
+	logger.Trace("Detected outdated state range", "last", hexutil.Encode(last), "err", result.proofErr)
 	snapFailedRangeProofMeter.Mark(1)
 
 	// Special case, the entire trie is missing. In the original trie scheme,
@@ -524,7 +524,7 @@ func (dl *diskLayer) generateRange(root common.Hash, prefix []byte, kind string,
 	} else {
 		snapAccountTrieReadCounter.Inc((time.Since(start) - internal).Nanoseconds())
 	}
-	logger.Debug("Regenerated state range", "root", root, "last", common.Encode(last),
+	logger.Debug("Regenerated state range", "root", root, "last", hexutil.Encode(last),
 		"count", count, "created", created, "updated", updated, "untouched", untouched, "deleted", deleted)
 
 	// If there are either more trie items, or there are more snap items

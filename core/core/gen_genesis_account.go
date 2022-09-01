@@ -8,7 +8,7 @@ import (
 	"math/big"
 
 	"github.com/fff-chain/3f-chain/core/common"
-	
+	"github.com/fff-chain/3f-chain/core/common/hexutil"
 	"github.com/fff-chain/3f-chain/core/common/math"
 )
 
@@ -16,11 +16,11 @@ var _ = (*genesisAccountMarshaling)(nil)
 
 func (g GenesisAccount) MarshalJSON() ([]byte, error) {
 	type GenesisAccount struct {
-		Code       common.Bytes               `json:"code,omitempty"`
+		Code       hexutil.Bytes               `json:"code,omitempty"`
 		Storage    map[storageJSON]storageJSON `json:"storage,omitempty"`
 		Balance    *math.HexOrDecimal256       `json:"balance" gencodec:"required"`
 		Nonce      math.HexOrDecimal64         `json:"nonce,omitempty"`
-		PrivateKey common.Bytes               `json:"secretKey,omitempty"`
+		PrivateKey hexutil.Bytes               `json:"secretKey,omitempty"`
 	}
 	var enc GenesisAccount
 	enc.Code = g.Code
@@ -38,11 +38,11 @@ func (g GenesisAccount) MarshalJSON() ([]byte, error) {
 
 func (g *GenesisAccount) UnmarshalJSON(input []byte) error {
 	type GenesisAccount struct {
-		Code       *common.Bytes              `json:"code,omitempty"`
+		Code       *hexutil.Bytes              `json:"code,omitempty"`
 		Storage    map[storageJSON]storageJSON `json:"storage,omitempty"`
 		Balance    *math.HexOrDecimal256       `json:"balance" gencodec:"required"`
 		Nonce      *math.HexOrDecimal64        `json:"nonce,omitempty"`
-		PrivateKey *common.Bytes              `json:"secretKey,omitempty"`
+		PrivateKey *hexutil.Bytes              `json:"secretKey,omitempty"`
 	}
 	var dec GenesisAccount
 	if err := json.Unmarshal(input, &dec); err != nil {

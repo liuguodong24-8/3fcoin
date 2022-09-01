@@ -1,6 +1,8 @@
 package common
 
-import "strings"
+import (
+	"strings"
+)
 
 var (
 	FFFHeader = "FFF"

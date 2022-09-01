@@ -26,7 +26,7 @@ import (
 	"strings"
 
 	"github.com/fff-chain/3f-chain/core/common"
-
+	"github.com/fff-chain/3f-chain/core/common/hexutil"
 	"github.com/fff-chain/3f-chain/core/common/math"
 	"github.com/fff-chain/3f-chain/core/core/rawdb"
 	"github.com/fff-chain/3f-chain/core/core/state"
@@ -93,7 +93,7 @@ type GenesisAccount struct {
 type genesisSpecMarshaling struct {
 	Nonce      math.HexOrDecimal64
 	Timestamp  math.HexOrDecimal64
-	ExtraData  common.Bytes
+	ExtraData  hexutil.Bytes
 	GasLimit   math.HexOrDecimal64
 	GasUsed    math.HexOrDecimal64
 	Number     math.HexOrDecimal64
@@ -102,11 +102,11 @@ type genesisSpecMarshaling struct {
 }
 
 type genesisAccountMarshaling struct {
-	Code       common.Bytes
+	Code       hexutil.Bytes
 	Balance    *math.HexOrDecimal256
 	Nonce      math.HexOrDecimal64
 	Storage    map[storageJSON]storageJSON
-	PrivateKey common.Bytes
+	PrivateKey hexutil.Bytes
 }
 
 // storageJSON represents a 256 bit byte array, but allows less than 256 bits when
@@ -127,7 +127,7 @@ func (h *storageJSON) UnmarshalText(text []byte) error {
 }
 
 func (h storageJSON) MarshalText() ([]byte, error) {
-	return common.Bytes(h[:]).MarshalText()
+	return hexutil.Bytes(h[:]).MarshalText()
 }
 
 // GenesisMismatchError is raised when trying to overwrite an existing
@@ -350,7 +350,7 @@ func DefaultGenesisBlock() *Genesis {
 	return &Genesis{
 		Config:     params.MainnetChainConfig,
 		Nonce:      66,
-		ExtraData:  common.MustDecode("0x11bbe8db4e347b4e8c937c1c8370e4b5ed33adb3db69cbdb7a38e1e50b1b82fa"),
+		ExtraData:  hexutil.MustDecode("0x11bbe8db4e347b4e8c937c1c8370e4b5ed33adb3db69cbdb7a38e1e50b1b82fa"),
 		GasLimit:   5000,
 		Difficulty: big.NewInt(17179869184),
 		Alloc:      decodePrealloc(mainnetAllocData),
@@ -362,7 +362,7 @@ func DefaultRopstenGenesisBlock() *Genesis {
 	return &Genesis{
 		Config:     params.RopstenChainConfig,
 		Nonce:      66,
-		ExtraData:  common.MustDecode("0x3535353535353535353535353535353535353535353535353535353535353535"),
+		ExtraData:  hexutil.MustDecode("0x3535353535353535353535353535353535353535353535353535353535353535"),
 		GasLimit:   16777216,
 		Difficulty: big.NewInt(1048576),
 		Alloc:      decodePrealloc(ropstenAllocData),
@@ -374,7 +374,7 @@ func DefaultRinkebyGenesisBlock() *Genesis {
 	return &Genesis{
 		Config:     params.RinkebyChainConfig,
 		Timestamp:  1492009146,
-		ExtraData:  common.MustDecode("0x52657370656374206d7920617574686f7269746168207e452e436172746d616e42eb768f2244c8811c63729a21a3569731535f067ffc57839b00206d1ad20c69a1981b489f772031b279182d99e65703f0076e4812653aab85fca0f00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"),
+		ExtraData:  hexutil.MustDecode("0x52657370656374206d7920617574686f7269746168207e452e436172746d616e42eb768f2244c8811c63729a21a3569731535f067ffc57839b00206d1ad20c69a1981b489f772031b279182d99e65703f0076e4812653aab85fca0f00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"),
 		GasLimit:   4700000,
 		Difficulty: big.NewInt(1),
 		Alloc:      decodePrealloc(rinkebyAllocData),
@@ -386,7 +386,7 @@ func DefaultGoerliGenesisBlock() *Genesis {
 	return &Genesis{
 		Config:     params.GoerliChainConfig,
 		Timestamp:  1548854791,
-		ExtraData:  common.MustDecode("0x22466c6578692069732061207468696e6722202d204166726900000000000000e0a2bd4258d2768837baa26a28fe71dc079f84c70000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"),
+		ExtraData:  hexutil.MustDecode("0x22466c6578692069732061207468696e6722202d204166726900000000000000e0a2bd4258d2768837baa26a28fe71dc079f84c70000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"),
 		GasLimit:   10485760,
 		Difficulty: big.NewInt(1),
 		Alloc:      decodePrealloc(goerliAllocData),
@@ -398,7 +398,7 @@ func DefaultYoloV3GenesisBlock() *Genesis {
 	return &Genesis{
 		Config:     params.YoloV3ChainConfig,
 		Timestamp:  0x6027dd2e,
-		ExtraData:  common.MustDecode("0x00000000000000000000000000000000000000000000000000000000000000001041afbcb359d5a8dc58c15b2ff51354ff8a217d0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"),
+		ExtraData:  hexutil.MustDecode("0x00000000000000000000000000000000000000000000000000000000000000001041afbcb359d5a8dc58c15b2ff51354ff8a217d0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000"),
 		GasLimit:   0x47b760,
 		Difficulty: big.NewInt(1),
 		Alloc:      decodePrealloc(yoloV3AllocData),

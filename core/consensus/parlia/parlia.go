@@ -27,7 +27,7 @@ import (
 	"github.com/fff-chain/3f-chain/core/accounts/abi"
 	"github.com/fff-chain/3f-chain/core/common"
 	"github.com/fff-chain/3f-chain/core/common/gopool"
-
+	"github.com/fff-chain/3f-chain/core/common/hexutil"
 	"github.com/fff-chain/3f-chain/core/consensus"
 	"github.com/fff-chain/3f-chain/core/consensus/misc"
 	"github.com/fff-chain/3f-chain/core/core"
@@ -1024,9 +1024,9 @@ func (p *Parlia) getCurrentValidators(blockHash common.Hash) ([]common.Address, 
 		return nil, err
 	}
 	// call
-	msgData := (common.Bytes)(data)
+	msgData := (hexutil.Bytes)(data)
 	toAddress := common.HexToAddress(systemcontracts.ValidatorContract)
-	gas := (common.Uint64)(uint64(math.MaxUint64 / 2))
+	gas := (hexutil.Uint64)(uint64(math.MaxUint64 / 2))
 	result, err := p.ethAPI.Call(ctx, ethapi.CallArgs{
 		Gas:  &gas,
 		To:   &toAddress,

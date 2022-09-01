@@ -7,7 +7,7 @@ import (
 	"errors"
 
 	"github.com/fff-chain/3f-chain/core/common"
-	
+	"github.com/fff-chain/3f-chain/core/common/hexutil"
 )
 
 var _ = (*executableDataMarshaling)(nil)
@@ -19,27 +19,27 @@ func (e executableData) MarshalJSON() ([]byte, error) {
 		ParentHash   common.Hash     `json:"parentHash"    gencodec:"required"`
 		Miner        common.Address  `json:"miner"         gencodec:"required"`
 		StateRoot    common.Hash     `json:"stateRoot"     gencodec:"required"`
-		Number       common.Uint64  `json:"number"        gencodec:"required"`
-		GasLimit     common.Uint64  `json:"gasLimit"      gencodec:"required"`
-		GasUsed      common.Uint64  `json:"gasUsed"       gencodec:"required"`
-		Timestamp    common.Uint64  `json:"timestamp"     gencodec:"required"`
+		Number       hexutil.Uint64  `json:"number"        gencodec:"required"`
+		GasLimit     hexutil.Uint64  `json:"gasLimit"      gencodec:"required"`
+		GasUsed      hexutil.Uint64  `json:"gasUsed"       gencodec:"required"`
+		Timestamp    hexutil.Uint64  `json:"timestamp"     gencodec:"required"`
 		ReceiptRoot  common.Hash     `json:"receiptsRoot"  gencodec:"required"`
-		LogsBloom    common.Bytes   `json:"logsBloom"     gencodec:"required"`
-		Transactions []common.Bytes `json:"transactions"  gencodec:"required"`
+		LogsBloom    hexutil.Bytes   `json:"logsBloom"     gencodec:"required"`
+		Transactions []hexutil.Bytes `json:"transactions"  gencodec:"required"`
 	}
 	var enc executableData
 	enc.BlockHash = e.BlockHash
 	enc.ParentHash = e.ParentHash
 	enc.Miner = e.Miner
 	enc.StateRoot = e.StateRoot
-	enc.Number = common.Uint64(e.Number)
-	enc.GasLimit = common.Uint64(e.GasLimit)
-	enc.GasUsed = common.Uint64(e.GasUsed)
-	enc.Timestamp = common.Uint64(e.Timestamp)
+	enc.Number = hexutil.Uint64(e.Number)
+	enc.GasLimit = hexutil.Uint64(e.GasLimit)
+	enc.GasUsed = hexutil.Uint64(e.GasUsed)
+	enc.Timestamp = hexutil.Uint64(e.Timestamp)
 	enc.ReceiptRoot = e.ReceiptRoot
 	enc.LogsBloom = e.LogsBloom
 	if e.Transactions != nil {
-		enc.Transactions = make([]common.Bytes, len(e.Transactions))
+		enc.Transactions = make([]hexutil.Bytes, len(e.Transactions))
 		for k, v := range e.Transactions {
 			enc.Transactions[k] = v
 		}
@@ -54,13 +54,13 @@ func (e *executableData) UnmarshalJSON(input []byte) error {
 		ParentHash   *common.Hash    `json:"parentHash"    gencodec:"required"`
 		Miner        *common.Address `json:"miner"         gencodec:"required"`
 		StateRoot    *common.Hash    `json:"stateRoot"     gencodec:"required"`
-		Number       *common.Uint64 `json:"number"        gencodec:"required"`
-		GasLimit     *common.Uint64 `json:"gasLimit"      gencodec:"required"`
-		GasUsed      *common.Uint64 `json:"gasUsed"       gencodec:"required"`
-		Timestamp    *common.Uint64 `json:"timestamp"     gencodec:"required"`
+		Number       *hexutil.Uint64 `json:"number"        gencodec:"required"`
+		GasLimit     *hexutil.Uint64 `json:"gasLimit"      gencodec:"required"`
+		GasUsed      *hexutil.Uint64 `json:"gasUsed"       gencodec:"required"`
+		Timestamp    *hexutil.Uint64 `json:"timestamp"     gencodec:"required"`
 		ReceiptRoot  *common.Hash    `json:"receiptsRoot"  gencodec:"required"`
-		LogsBloom    *common.Bytes  `json:"logsBloom"     gencodec:"required"`
-		Transactions []common.Bytes `json:"transactions"  gencodec:"required"`
+		LogsBloom    *hexutil.Bytes  `json:"logsBloom"     gencodec:"required"`
+		Transactions []hexutil.Bytes `json:"transactions"  gencodec:"required"`
 	}
 	var dec executableData
 	if err := json.Unmarshal(input, &dec); err != nil {

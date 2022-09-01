@@ -25,7 +25,7 @@ import (
 	"unsafe"
 
 	"github.com/fff-chain/3f-chain/core/common"
-
+	"github.com/fff-chain/3f-chain/core/common/hexutil"
 	"github.com/fff-chain/3f-chain/core/crypto"
 	"github.com/fff-chain/3f-chain/core/params"
 	"github.com/fff-chain/3f-chain/core/rlp"
@@ -79,13 +79,13 @@ type Receipt struct {
 }
 
 type receiptMarshaling struct {
-	Type              common.Uint64
-	PostState         common.Bytes
-	Status            common.Uint64
-	CumulativeGasUsed common.Uint64
-	GasUsed           common.Uint64
-	BlockNumber       *common.Big
-	TransactionIndex  common.Uint
+	Type              hexutil.Uint64
+	PostState         hexutil.Bytes
+	Status            hexutil.Uint64
+	CumulativeGasUsed hexutil.Uint64
+	GasUsed           hexutil.Uint64
+	BlockNumber       *hexutil.Big
+	TransactionIndex  hexutil.Uint
 }
 
 // receiptRLP is the consensus encoding of a receipt.

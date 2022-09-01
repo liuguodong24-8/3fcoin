@@ -22,7 +22,7 @@ import (
 	"testing"
 
 	"github.com/fff-chain/3f-chain/core/common"
-
+	"github.com/fff-chain/3f-chain/core/common/hexutil"
 	"github.com/fff-chain/3f-chain/core/core/rawdb"
 	"github.com/fff-chain/3f-chain/core/core/state"
 	"github.com/fff-chain/3f-chain/core/params"
@@ -83,7 +83,7 @@ func TestEIP2200(t *testing.T) {
 
 		statedb, _ := state.New(common.Hash{}, state.NewDatabase(rawdb.NewMemoryDatabase()), nil)
 		statedb.CreateAccount(address)
-		statedb.SetCode(address, common.MustDecode(tt.input))
+		statedb.SetCode(address, hexutil.MustDecode(tt.input))
 		statedb.SetState(address, common.Hash{}, common.BytesToHash([]byte{tt.original}))
 		statedb.Finalise(true) // Push the state into the "original" slot
 

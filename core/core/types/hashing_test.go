@@ -25,7 +25,7 @@ import (
 	"testing"
 
 	"github.com/fff-chain/3f-chain/core/common"
-
+	"github.com/fff-chain/3f-chain/core/common/hexutil"
 	"github.com/fff-chain/3f-chain/core/core/types"
 	"github.com/fff-chain/3f-chain/core/crypto"
 	"github.com/fff-chain/3f-chain/core/rlp"
@@ -207,7 +207,7 @@ func (f flatList) Len() int {
 	return len(f)
 }
 func (f flatList) EncodeIndex(i int, w *bytes.Buffer) {
-	w.Write(common.MustDecode(f[i]))
+	w.Write(hexutil.MustDecode(f[i]))
 }
 
 type hashToHumanReadable struct {

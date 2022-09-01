@@ -23,6 +23,7 @@ import (
 	"strings"
 
 	"github.com/fff-chain/3f-chain/core/common"
+	"github.com/fff-chain/3f-chain/core/common/hexutil"
 	math2 "github.com/fff-chain/3f-chain/core/common/math"
 	"github.com/fff-chain/3f-chain/core/consensus/ethash"
 	"github.com/fff-chain/3f-chain/core/core"
@@ -36,37 +37,37 @@ type alethGenesisSpec struct {
 	SealEngine string `json:"sealEngine"`
 	Params     struct {
 		AccountStartNonce          math2.HexOrDecimal64   `json:"accountStartNonce"`
-		MaximumExtraDataSize       common.Uint64          `json:"maximumExtraDataSize"`
-		HomesteadForkBlock         *common.Big            `json:"homesteadForkBlock,omitempty"`
+		MaximumExtraDataSize       hexutil.Uint64         `json:"maximumExtraDataSize"`
+		HomesteadForkBlock         *hexutil.Big           `json:"homesteadForkBlock,omitempty"`
 		DaoHardforkBlock           math2.HexOrDecimal64   `json:"daoHardforkBlock"`
-		EIP150ForkBlock            *common.Big            `json:"EIP150ForkBlock,omitempty"`
-		EIP158ForkBlock            *common.Big            `json:"EIP158ForkBlock,omitempty"`
-		ByzantiumForkBlock         *common.Big            `json:"byzantiumForkBlock,omitempty"`
-		ConstantinopleForkBlock    *common.Big            `json:"constantinopleForkBlock,omitempty"`
-		ConstantinopleFixForkBlock *common.Big            `json:"constantinopleFixForkBlock,omitempty"`
-		IstanbulForkBlock          *common.Big            `json:"istanbulForkBlock,omitempty"`
-		MinGasLimit                common.Uint64          `json:"minGasLimit"`
-		MaxGasLimit                common.Uint64          `json:"maxGasLimit"`
+		EIP150ForkBlock            *hexutil.Big           `json:"EIP150ForkBlock,omitempty"`
+		EIP158ForkBlock            *hexutil.Big           `json:"EIP158ForkBlock,omitempty"`
+		ByzantiumForkBlock         *hexutil.Big           `json:"byzantiumForkBlock,omitempty"`
+		ConstantinopleForkBlock    *hexutil.Big           `json:"constantinopleForkBlock,omitempty"`
+		ConstantinopleFixForkBlock *hexutil.Big           `json:"constantinopleFixForkBlock,omitempty"`
+		IstanbulForkBlock          *hexutil.Big           `json:"istanbulForkBlock,omitempty"`
+		MinGasLimit                hexutil.Uint64         `json:"minGasLimit"`
+		MaxGasLimit                hexutil.Uint64         `json:"maxGasLimit"`
 		TieBreakingGas             bool                   `json:"tieBreakingGas"`
 		GasLimitBoundDivisor       math2.HexOrDecimal64   `json:"gasLimitBoundDivisor"`
-		MinimumDifficulty          *common.Big            `json:"minimumDifficulty"`
+		MinimumDifficulty          *hexutil.Big           `json:"minimumDifficulty"`
 		DifficultyBoundDivisor     *math2.HexOrDecimal256 `json:"difficultyBoundDivisor"`
 		DurationLimit              *math2.HexOrDecimal256 `json:"durationLimit"`
-		BlockReward                *common.Big            `json:"blockReward"`
-		NetworkID                  common.Uint64          `json:"networkID"`
-		ChainID                    common.Uint64          `json:"chainID"`
+		BlockReward                *hexutil.Big           `json:"blockReward"`
+		NetworkID                  hexutil.Uint64         `json:"networkID"`
+		ChainID                    hexutil.Uint64         `json:"chainID"`
 		AllowFutureBlocks          bool                   `json:"allowFutureBlocks"`
 	} `json:"params"`
 
 	Genesis struct {
 		Nonce      types.BlockNonce `json:"nonce"`
-		Difficulty *common.Big      `json:"difficulty"`
+		Difficulty *hexutil.Big     `json:"difficulty"`
 		MixHash    common.Hash      `json:"mixHash"`
 		Author     common.Address   `json:"author"`
-		Timestamp  common.Uint64    `json:"timestamp"`
+		Timestamp  hexutil.Uint64   `json:"timestamp"`
 		ParentHash common.Hash      `json:"parentHash"`
-		ExtraData  common.Bytes     `json:"extraData"`
-		GasLimit   common.Uint64    `json:"gasLimit"`
+		ExtraData  hexutil.Bytes    `json:"extraData"`
+		GasLimit   hexutil.Uint64   `json:"gasLimit"`
 	} `json:"genesis"`
 
 	Accounts map[common.Address]*alethGenesisSpecAccount `json:"accounts"`
@@ -83,7 +84,7 @@ type alethGenesisSpecAccount struct {
 // alethGenesisSpecBuiltin is the precompiled contract definition.
 type alethGenesisSpecBuiltin struct {
 	Name          string                         `json:"name,omitempty"`
-	StartingBlock *common.Big                    `json:"startingBlock,omitempty"`
+	StartingBlock *hexutil.Big                   `json:"startingBlock,omitempty"`
 	Linear        *alethGenesisSpecLinearPricing `json:"linear,omitempty"`
 }
 
@@ -114,45 +115,45 @@ func newAlethGenesisSpec(network string, genesis *core.Genesis) (*alethGenesisSp
 	spec.Params.DaoHardforkBlock = 0
 
 	if num := genesis.Config.HomesteadBlock; num != nil {
-		spec.Params.HomesteadForkBlock = (*common.Big)(num)
+		spec.Params.HomesteadForkBlock = (*hexutil.Big)(num)
 	}
 	if num := genesis.Config.EIP150Block; num != nil {
-		spec.Params.EIP150ForkBlock = (*common.Big)(num)
+		spec.Params.EIP150ForkBlock = (*hexutil.Big)(num)
 	}
 	if num := genesis.Config.EIP158Block; num != nil {
-		spec.Params.EIP158ForkBlock = (*common.Big)(num)
+		spec.Params.EIP158ForkBlock = (*hexutil.Big)(num)
 	}
 	if num := genesis.Config.ByzantiumBlock; num != nil {
-		spec.Params.ByzantiumForkBlock = (*common.Big)(num)
+		spec.Params.ByzantiumForkBlock = (*hexutil.Big)(num)
 	}
 	if num := genesis.Config.ConstantinopleBlock; num != nil {
-		spec.Params.ConstantinopleForkBlock = (*common.Big)(num)
+		spec.Params.ConstantinopleForkBlock = (*hexutil.Big)(num)
 	}
 	if num := genesis.Config.PetersburgBlock; num != nil {
-		spec.Params.ConstantinopleFixForkBlock = (*common.Big)(num)
+		spec.Params.ConstantinopleFixForkBlock = (*hexutil.Big)(num)
 	}
 	if num := genesis.Config.IstanbulBlock; num != nil {
-		spec.Params.IstanbulForkBlock = (*common.Big)(num)
+		spec.Params.IstanbulForkBlock = (*hexutil.Big)(num)
 	}
-	spec.Params.NetworkID = (common.Uint64)(genesis.Config.ChainID.Uint64())
-	spec.Params.ChainID = (common.Uint64)(genesis.Config.ChainID.Uint64())
-	spec.Params.MaximumExtraDataSize = (common.Uint64)(params.MaximumExtraDataSize)
-	spec.Params.MinGasLimit = (common.Uint64)(params.MinGasLimit)
-	spec.Params.MaxGasLimit = (common.Uint64)(math.MaxInt64)
-	spec.Params.MinimumDifficulty = (*common.Big)(params.MinimumDifficulty)
+	spec.Params.NetworkID = (hexutil.Uint64)(genesis.Config.ChainID.Uint64())
+	spec.Params.ChainID = (hexutil.Uint64)(genesis.Config.ChainID.Uint64())
+	spec.Params.MaximumExtraDataSize = (hexutil.Uint64)(params.MaximumExtraDataSize)
+	spec.Params.MinGasLimit = (hexutil.Uint64)(params.MinGasLimit)
+	spec.Params.MaxGasLimit = (hexutil.Uint64)(math.MaxInt64)
+	spec.Params.MinimumDifficulty = (*hexutil.Big)(params.MinimumDifficulty)
 	spec.Params.DifficultyBoundDivisor = (*math2.HexOrDecimal256)(params.DifficultyBoundDivisor)
 	spec.Params.GasLimitBoundDivisor = (math2.HexOrDecimal64)(params.GasLimitBoundDivisor)
 	spec.Params.DurationLimit = (*math2.HexOrDecimal256)(params.DurationLimit)
-	spec.Params.BlockReward = (*common.Big)(ethash.FrontierBlockReward)
+	spec.Params.BlockReward = (*hexutil.Big)(ethash.FrontierBlockReward)
 
 	spec.Genesis.Nonce = types.EncodeNonce(genesis.Nonce)
 	spec.Genesis.MixHash = genesis.Mixhash
-	spec.Genesis.Difficulty = (*common.Big)(genesis.Difficulty)
+	spec.Genesis.Difficulty = (*hexutil.Big)(genesis.Difficulty)
 	spec.Genesis.Author = genesis.Coinbase
-	spec.Genesis.Timestamp = (common.Uint64)(genesis.Timestamp)
+	spec.Genesis.Timestamp = (hexutil.Uint64)(genesis.Timestamp)
 	spec.Genesis.ParentHash = genesis.ParentHash
 	spec.Genesis.ExtraData = genesis.ExtraData
-	spec.Genesis.GasLimit = (common.Uint64)(genesis.GasLimit)
+	spec.Genesis.GasLimit = (hexutil.Uint64)(genesis.GasLimit)
 
 	for address, account := range genesis.Alloc {
 		spec.setAccount(address, account)
@@ -168,15 +169,15 @@ func newAlethGenesisSpec(network string, genesis *core.Genesis) (*alethGenesisSp
 		Linear: &alethGenesisSpecLinearPricing{Base: 15, Word: 3}})
 	if genesis.Config.ByzantiumBlock != nil {
 		spec.setPrecompile(5, &alethGenesisSpecBuiltin{Name: "modexp",
-			StartingBlock: (*common.Big)(genesis.Config.ByzantiumBlock)})
+			StartingBlock: (*hexutil.Big)(genesis.Config.ByzantiumBlock)})
 		spec.setPrecompile(6, &alethGenesisSpecBuiltin{Name: "alt_bn128_G1_add",
-			StartingBlock: (*common.Big)(genesis.Config.ByzantiumBlock),
+			StartingBlock: (*hexutil.Big)(genesis.Config.ByzantiumBlock),
 			Linear:        &alethGenesisSpecLinearPricing{Base: 500}})
 		spec.setPrecompile(7, &alethGenesisSpecBuiltin{Name: "alt_bn128_G1_mul",
-			StartingBlock: (*common.Big)(genesis.Config.ByzantiumBlock),
+			StartingBlock: (*hexutil.Big)(genesis.Config.ByzantiumBlock),
 			Linear:        &alethGenesisSpecLinearPricing{Base: 40000}})
 		spec.setPrecompile(8, &alethGenesisSpecBuiltin{Name: "alt_bn128_pairing_product",
-			StartingBlock: (*common.Big)(genesis.Config.ByzantiumBlock)})
+			StartingBlock: (*hexutil.Big)(genesis.Config.ByzantiumBlock)})
 	}
 	if genesis.Config.IstanbulBlock != nil {
 		if genesis.Config.ByzantiumBlock == nil {
@@ -184,15 +185,15 @@ func newAlethGenesisSpec(network string, genesis *core.Genesis) (*alethGenesisSp
 		}
 		spec.setPrecompile(6, &alethGenesisSpecBuiltin{
 			Name:          "alt_bn128_G1_add",
-			StartingBlock: (*common.Big)(genesis.Config.ByzantiumBlock),
+			StartingBlock: (*hexutil.Big)(genesis.Config.ByzantiumBlock),
 		}) // Aleth hardcoded the gas policy
 		spec.setPrecompile(7, &alethGenesisSpecBuiltin{
 			Name:          "alt_bn128_G1_mul",
-			StartingBlock: (*common.Big)(genesis.Config.ByzantiumBlock),
+			StartingBlock: (*hexutil.Big)(genesis.Config.ByzantiumBlock),
 		}) // Aleth hardcoded the gas policy
 		spec.setPrecompile(9, &alethGenesisSpecBuiltin{
 			Name:          "blake2_compression",
-			StartingBlock: (*common.Big)(genesis.Config.IstanbulBlock),
+			StartingBlock: (*hexutil.Big)(genesis.Config.IstanbulBlock),
 		})
 	}
 	return spec, nil
@@ -231,61 +232,61 @@ type parityChainSpec struct {
 	Engine  struct {
 		Ethash struct {
 			Params struct {
-				MinimumDifficulty      *common.Big       `json:"minimumDifficulty"`
-				DifficultyBoundDivisor *common.Big       `json:"difficultyBoundDivisor"`
-				DurationLimit          *common.Big       `json:"durationLimit"`
+				MinimumDifficulty      *hexutil.Big      `json:"minimumDifficulty"`
+				DifficultyBoundDivisor *hexutil.Big      `json:"difficultyBoundDivisor"`
+				DurationLimit          *hexutil.Big      `json:"durationLimit"`
 				BlockReward            map[string]string `json:"blockReward"`
 				DifficultyBombDelays   map[string]string `json:"difficultyBombDelays"`
-				HomesteadTransition    common.Uint64     `json:"homesteadTransition"`
-				EIP100bTransition      common.Uint64     `json:"eip100bTransition"`
+				HomesteadTransition    hexutil.Uint64    `json:"homesteadTransition"`
+				EIP100bTransition      hexutil.Uint64    `json:"eip100bTransition"`
 			} `json:"params"`
 		} `json:"Ethash"`
 	} `json:"engine"`
 
 	Params struct {
-		AccountStartNonce         common.Uint64        `json:"accountStartNonce"`
-		MaximumExtraDataSize      common.Uint64        `json:"maximumExtraDataSize"`
-		MinGasLimit               common.Uint64        `json:"minGasLimit"`
+		AccountStartNonce         hexutil.Uint64       `json:"accountStartNonce"`
+		MaximumExtraDataSize      hexutil.Uint64       `json:"maximumExtraDataSize"`
+		MinGasLimit               hexutil.Uint64       `json:"minGasLimit"`
 		GasLimitBoundDivisor      math2.HexOrDecimal64 `json:"gasLimitBoundDivisor"`
-		NetworkID                 common.Uint64        `json:"networkID"`
-		ChainID                   common.Uint64        `json:"chainID"`
-		MaxCodeSize               common.Uint64        `json:"maxCodeSize"`
-		MaxCodeSizeTransition     common.Uint64        `json:"maxCodeSizeTransition"`
-		EIP98Transition           common.Uint64        `json:"eip98Transition"`
-		EIP150Transition          common.Uint64        `json:"eip150Transition"`
-		EIP160Transition          common.Uint64        `json:"eip160Transition"`
-		EIP161abcTransition       common.Uint64        `json:"eip161abcTransition"`
-		EIP161dTransition         common.Uint64        `json:"eip161dTransition"`
-		EIP155Transition          common.Uint64        `json:"eip155Transition"`
-		EIP140Transition          common.Uint64        `json:"eip140Transition"`
-		EIP211Transition          common.Uint64        `json:"eip211Transition"`
-		EIP214Transition          common.Uint64        `json:"eip214Transition"`
-		EIP658Transition          common.Uint64        `json:"eip658Transition"`
-		EIP145Transition          common.Uint64        `json:"eip145Transition"`
-		EIP1014Transition         common.Uint64        `json:"eip1014Transition"`
-		EIP1052Transition         common.Uint64        `json:"eip1052Transition"`
-		EIP1283Transition         common.Uint64        `json:"eip1283Transition"`
-		EIP1283DisableTransition  common.Uint64        `json:"eip1283DisableTransition"`
-		EIP1283ReenableTransition common.Uint64        `json:"eip1283ReenableTransition"`
-		EIP1344Transition         common.Uint64        `json:"eip1344Transition"`
-		EIP1884Transition         common.Uint64        `json:"eip1884Transition"`
-		EIP2028Transition         common.Uint64        `json:"eip2028Transition"`
+		NetworkID                 hexutil.Uint64       `json:"networkID"`
+		ChainID                   hexutil.Uint64       `json:"chainID"`
+		MaxCodeSize               hexutil.Uint64       `json:"maxCodeSize"`
+		MaxCodeSizeTransition     hexutil.Uint64       `json:"maxCodeSizeTransition"`
+		EIP98Transition           hexutil.Uint64       `json:"eip98Transition"`
+		EIP150Transition          hexutil.Uint64       `json:"eip150Transition"`
+		EIP160Transition          hexutil.Uint64       `json:"eip160Transition"`
+		EIP161abcTransition       hexutil.Uint64       `json:"eip161abcTransition"`
+		EIP161dTransition         hexutil.Uint64       `json:"eip161dTransition"`
+		EIP155Transition          hexutil.Uint64       `json:"eip155Transition"`
+		EIP140Transition          hexutil.Uint64       `json:"eip140Transition"`
+		EIP211Transition          hexutil.Uint64       `json:"eip211Transition"`
+		EIP214Transition          hexutil.Uint64       `json:"eip214Transition"`
+		EIP658Transition          hexutil.Uint64       `json:"eip658Transition"`
+		EIP145Transition          hexutil.Uint64       `json:"eip145Transition"`
+		EIP1014Transition         hexutil.Uint64       `json:"eip1014Transition"`
+		EIP1052Transition         hexutil.Uint64       `json:"eip1052Transition"`
+		EIP1283Transition         hexutil.Uint64       `json:"eip1283Transition"`
+		EIP1283DisableTransition  hexutil.Uint64       `json:"eip1283DisableTransition"`
+		EIP1283ReenableTransition hexutil.Uint64       `json:"eip1283ReenableTransition"`
+		EIP1344Transition         hexutil.Uint64       `json:"eip1344Transition"`
+		EIP1884Transition         hexutil.Uint64       `json:"eip1884Transition"`
+		EIP2028Transition         hexutil.Uint64       `json:"eip2028Transition"`
 	} `json:"params"`
 
 	Genesis struct {
 		Seal struct {
 			Ethereum struct {
 				Nonce   types.BlockNonce `json:"nonce"`
-				MixHash common.Bytes     `json:"mixHash"`
+				MixHash hexutil.Bytes    `json:"mixHash"`
 			} `json:"ethereum"`
 		} `json:"seal"`
 
-		Difficulty *common.Big    `json:"difficulty"`
+		Difficulty *hexutil.Big   `json:"difficulty"`
 		Author     common.Address `json:"author"`
-		Timestamp  common.Uint64  `json:"timestamp"`
+		Timestamp  hexutil.Uint64 `json:"timestamp"`
 		ParentHash common.Hash    `json:"parentHash"`
-		ExtraData  common.Bytes   `json:"extraData"`
-		GasLimit   common.Uint64  `json:"gasLimit"`
+		ExtraData  hexutil.Bytes  `json:"extraData"`
+		GasLimit   hexutil.Uint64 `json:"gasLimit"`
 	} `json:"genesis"`
 
 	Nodes    []string                                   `json:"nodes"`
@@ -302,9 +303,9 @@ type parityChainSpecAccount struct {
 
 // parityChainSpecBuiltin is the precompiled contract definition.
 type parityChainSpecBuiltin struct {
-	Name       string      `json:"name"`                  // Each builtin should has it own name
-	Pricing    interface{} `json:"pricing"`               // Each builtin should has it own price strategy
-	ActivateAt *common.Big `json:"activate_at,omitempty"` // ActivateAt can't be omitted if empty, default means no fork
+	Name       string       `json:"name"`                  // Each builtin should has it own name
+	Pricing    interface{}  `json:"pricing"`               // Each builtin should has it own price strategy
+	ActivateAt *hexutil.Big `json:"activate_at,omitempty"` // ActivateAt can't be omitted if empty, default means no fork
 }
 
 // parityChainSpecPricing represents the different pricing models that builtin
@@ -376,24 +377,24 @@ func newParityChainSpec(network string, genesis *core.Genesis, bootnodes []strin
 	spec.Engine.Ethash.Params.BlockReward = make(map[string]string)
 	spec.Engine.Ethash.Params.DifficultyBombDelays = make(map[string]string)
 	// Frontier
-	spec.Engine.Ethash.Params.MinimumDifficulty = (*common.Big)(params.MinimumDifficulty)
-	spec.Engine.Ethash.Params.DifficultyBoundDivisor = (*common.Big)(params.DifficultyBoundDivisor)
-	spec.Engine.Ethash.Params.DurationLimit = (*common.Big)(params.DurationLimit)
-	spec.Engine.Ethash.Params.BlockReward["0x0"] = common.EncodeBig(ethash.FrontierBlockReward)
+	spec.Engine.Ethash.Params.MinimumDifficulty = (*hexutil.Big)(params.MinimumDifficulty)
+	spec.Engine.Ethash.Params.DifficultyBoundDivisor = (*hexutil.Big)(params.DifficultyBoundDivisor)
+	spec.Engine.Ethash.Params.DurationLimit = (*hexutil.Big)(params.DurationLimit)
+	spec.Engine.Ethash.Params.BlockReward["0x0"] = hexutil.EncodeBig(ethash.FrontierBlockReward)
 
 	// Homestead
-	spec.Engine.Ethash.Params.HomesteadTransition = common.Uint64(genesis.Config.HomesteadBlock.Uint64())
+	spec.Engine.Ethash.Params.HomesteadTransition = hexutil.Uint64(genesis.Config.HomesteadBlock.Uint64())
 
 	// Tangerine Whistle : 150
 	// https://github.com/ethereum/EIPs/blob/master/EIPS/eip-608.md
-	spec.Params.EIP150Transition = common.Uint64(genesis.Config.EIP150Block.Uint64())
+	spec.Params.EIP150Transition = hexutil.Uint64(genesis.Config.EIP150Block.Uint64())
 
 	// Spurious Dragon: 155, 160, 161, 170
 	// https://github.com/ethereum/EIPs/blob/master/EIPS/eip-607.md
-	spec.Params.EIP155Transition = common.Uint64(genesis.Config.EIP155Block.Uint64())
-	spec.Params.EIP160Transition = common.Uint64(genesis.Config.EIP155Block.Uint64())
-	spec.Params.EIP161abcTransition = common.Uint64(genesis.Config.EIP158Block.Uint64())
-	spec.Params.EIP161dTransition = common.Uint64(genesis.Config.EIP158Block.Uint64())
+	spec.Params.EIP155Transition = hexutil.Uint64(genesis.Config.EIP155Block.Uint64())
+	spec.Params.EIP160Transition = hexutil.Uint64(genesis.Config.EIP155Block.Uint64())
+	spec.Params.EIP161abcTransition = hexutil.Uint64(genesis.Config.EIP158Block.Uint64())
+	spec.Params.EIP161dTransition = hexutil.Uint64(genesis.Config.EIP158Block.Uint64())
 
 	// Byzantium
 	if num := genesis.Config.ByzantiumBlock; num != nil {
@@ -411,11 +412,11 @@ func newParityChainSpec(network string, genesis *core.Genesis, bootnodes []strin
 	if num := genesis.Config.IstanbulBlock; num != nil {
 		spec.setIstanbul(num)
 	}
-	spec.Params.MaximumExtraDataSize = (common.Uint64)(params.MaximumExtraDataSize)
-	spec.Params.MinGasLimit = (common.Uint64)(params.MinGasLimit)
+	spec.Params.MaximumExtraDataSize = (hexutil.Uint64)(params.MaximumExtraDataSize)
+	spec.Params.MinGasLimit = (hexutil.Uint64)(params.MinGasLimit)
 	spec.Params.GasLimitBoundDivisor = (math2.HexOrDecimal64)(params.GasLimitBoundDivisor)
-	spec.Params.NetworkID = (common.Uint64)(genesis.Config.ChainID.Uint64())
-	spec.Params.ChainID = (common.Uint64)(genesis.Config.ChainID.Uint64())
+	spec.Params.NetworkID = (hexutil.Uint64)(genesis.Config.ChainID.Uint64())
+	spec.Params.ChainID = (hexutil.Uint64)(genesis.Config.ChainID.Uint64())
 	spec.Params.MaxCodeSize = params.MaxCodeSize
 	// geth has it set from zero
 	spec.Params.MaxCodeSizeTransition = 0
@@ -425,12 +426,12 @@ func newParityChainSpec(network string, genesis *core.Genesis, bootnodes []strin
 
 	spec.Genesis.Seal.Ethereum.Nonce = types.EncodeNonce(genesis.Nonce)
 	spec.Genesis.Seal.Ethereum.MixHash = genesis.Mixhash[:]
-	spec.Genesis.Difficulty = (*common.Big)(genesis.Difficulty)
+	spec.Genesis.Difficulty = (*hexutil.Big)(genesis.Difficulty)
 	spec.Genesis.Author = genesis.Coinbase
-	spec.Genesis.Timestamp = (common.Uint64)(genesis.Timestamp)
+	spec.Genesis.Timestamp = (hexutil.Uint64)(genesis.Timestamp)
 	spec.Genesis.ParentHash = genesis.ParentHash
 	spec.Genesis.ExtraData = genesis.ExtraData
-	spec.Genesis.GasLimit = (common.Uint64)(genesis.GasLimit)
+	spec.Genesis.GasLimit = (hexutil.Uint64)(genesis.GasLimit)
 
 	spec.Accounts = make(map[common.Address]*parityChainSpecAccount)
 	for address, account := range genesis.Alloc {
@@ -456,28 +457,28 @@ func newParityChainSpec(network string, genesis *core.Genesis, bootnodes []strin
 	if genesis.Config.ByzantiumBlock != nil {
 		spec.setPrecompile(5, &parityChainSpecBuiltin{
 			Name:       "modexp",
-			ActivateAt: (*common.Big)(genesis.Config.ByzantiumBlock),
+			ActivateAt: (*hexutil.Big)(genesis.Config.ByzantiumBlock),
 			Pricing: &parityChainSpecPricing{
 				ModExp: &parityChainSpecModExpPricing{Divisor: 20},
 			},
 		})
 		spec.setPrecompile(6, &parityChainSpecBuiltin{
 			Name:       "alt_bn128_add",
-			ActivateAt: (*common.Big)(genesis.Config.ByzantiumBlock),
+			ActivateAt: (*hexutil.Big)(genesis.Config.ByzantiumBlock),
 			Pricing: &parityChainSpecPricing{
 				Linear: &parityChainSpecLinearPricing{Base: 500, Word: 0},
 			},
 		})
 		spec.setPrecompile(7, &parityChainSpecBuiltin{
 			Name:       "alt_bn128_mul",
-			ActivateAt: (*common.Big)(genesis.Config.ByzantiumBlock),
+			ActivateAt: (*hexutil.Big)(genesis.Config.ByzantiumBlock),
 			Pricing: &parityChainSpecPricing{
 				Linear: &parityChainSpecLinearPricing{Base: 40000, Word: 0},
 			},
 		})
 		spec.setPrecompile(8, &parityChainSpecBuiltin{
 			Name:       "alt_bn128_pairing",
-			ActivateAt: (*common.Big)(genesis.Config.ByzantiumBlock),
+			ActivateAt: (*hexutil.Big)(genesis.Config.ByzantiumBlock),
 			Pricing: &parityChainSpecPricing{
 				AltBnPairing: &parityChainSepcAltBnPairingPricing{Base: 100000, Pair: 80000},
 			},
@@ -489,14 +490,14 @@ func newParityChainSpec(network string, genesis *core.Genesis, bootnodes []strin
 		}
 		spec.setPrecompile(6, &parityChainSpecBuiltin{
 			Name:       "alt_bn128_add",
-			ActivateAt: (*common.Big)(genesis.Config.ByzantiumBlock),
-			Pricing: map[*common.Big]*parityChainSpecVersionedPricing{
-				(*common.Big)(big.NewInt(0)): {
+			ActivateAt: (*hexutil.Big)(genesis.Config.ByzantiumBlock),
+			Pricing: map[*hexutil.Big]*parityChainSpecVersionedPricing{
+				(*hexutil.Big)(big.NewInt(0)): {
 					Price: &parityChainSpecAlternativePrice{
 						AltBnConstOperationPrice: &parityChainSpecAltBnConstOperationPricing{Price: 500},
 					},
 				},
-				(*common.Big)(genesis.Config.IstanbulBlock): {
+				(*hexutil.Big)(genesis.Config.IstanbulBlock): {
 					Price: &parityChainSpecAlternativePrice{
 						AltBnConstOperationPrice: &parityChainSpecAltBnConstOperationPricing{Price: 150},
 					},
@@ -505,14 +506,14 @@ func newParityChainSpec(network string, genesis *core.Genesis, bootnodes []strin
 		})
 		spec.setPrecompile(7, &parityChainSpecBuiltin{
 			Name:       "alt_bn128_mul",
-			ActivateAt: (*common.Big)(genesis.Config.ByzantiumBlock),
-			Pricing: map[*common.Big]*parityChainSpecVersionedPricing{
-				(*common.Big)(big.NewInt(0)): {
+			ActivateAt: (*hexutil.Big)(genesis.Config.ByzantiumBlock),
+			Pricing: map[*hexutil.Big]*parityChainSpecVersionedPricing{
+				(*hexutil.Big)(big.NewInt(0)): {
 					Price: &parityChainSpecAlternativePrice{
 						AltBnConstOperationPrice: &parityChainSpecAltBnConstOperationPricing{Price: 40000},
 					},
 				},
-				(*common.Big)(genesis.Config.IstanbulBlock): {
+				(*hexutil.Big)(genesis.Config.IstanbulBlock): {
 					Price: &parityChainSpecAlternativePrice{
 						AltBnConstOperationPrice: &parityChainSpecAltBnConstOperationPricing{Price: 6000},
 					},
@@ -521,14 +522,14 @@ func newParityChainSpec(network string, genesis *core.Genesis, bootnodes []strin
 		})
 		spec.setPrecompile(8, &parityChainSpecBuiltin{
 			Name:       "alt_bn128_pairing",
-			ActivateAt: (*common.Big)(genesis.Config.ByzantiumBlock),
-			Pricing: map[*common.Big]*parityChainSpecVersionedPricing{
-				(*common.Big)(big.NewInt(0)): {
+			ActivateAt: (*hexutil.Big)(genesis.Config.ByzantiumBlock),
+			Pricing: map[*hexutil.Big]*parityChainSpecVersionedPricing{
+				(*hexutil.Big)(big.NewInt(0)): {
 					Price: &parityChainSpecAlternativePrice{
 						AltBnPairingPrice: &parityChainSepcAltBnPairingPricing{Base: 100000, Pair: 80000},
 					},
 				},
-				(*common.Big)(genesis.Config.IstanbulBlock): {
+				(*hexutil.Big)(genesis.Config.IstanbulBlock): {
 					Price: &parityChainSpecAlternativePrice{
 						AltBnPairingPrice: &parityChainSepcAltBnPairingPricing{Base: 45000, Pair: 34000},
 					},
@@ -537,7 +538,7 @@ func newParityChainSpec(network string, genesis *core.Genesis, bootnodes []strin
 		})
 		spec.setPrecompile(9, &parityChainSpecBuiltin{
 			Name:       "blake2_f",
-			ActivateAt: (*common.Big)(genesis.Config.IstanbulBlock),
+			ActivateAt: (*hexutil.Big)(genesis.Config.IstanbulBlock),
 			Pricing: &parityChainSpecPricing{
 				Blake2F: &parityChainSpecBlakePricing{GasPerRound: 1},
 			},
@@ -558,9 +559,9 @@ func (spec *parityChainSpec) setPrecompile(address byte, data *parityChainSpecBu
 }
 
 func (spec *parityChainSpec) setByzantium(num *big.Int) {
-	spec.Engine.Ethash.Params.BlockReward[common.EncodeBig(num)] = common.EncodeBig(ethash.ByzantiumBlockReward)
-	spec.Engine.Ethash.Params.DifficultyBombDelays[common.EncodeBig(num)] = common.EncodeUint64(3000000)
-	n := common.Uint64(num.Uint64())
+	spec.Engine.Ethash.Params.BlockReward[hexutil.EncodeBig(num)] = hexutil.EncodeBig(ethash.ByzantiumBlockReward)
+	spec.Engine.Ethash.Params.DifficultyBombDelays[hexutil.EncodeBig(num)] = hexutil.EncodeUint64(3000000)
+	n := hexutil.Uint64(num.Uint64())
 	spec.Engine.Ethash.Params.EIP100bTransition = n
 	spec.Params.EIP140Transition = n
 	spec.Params.EIP211Transition = n
@@ -569,9 +570,9 @@ func (spec *parityChainSpec) setByzantium(num *big.Int) {
 }
 
 func (spec *parityChainSpec) setConstantinople(num *big.Int) {
-	spec.Engine.Ethash.Params.BlockReward[common.EncodeBig(num)] = common.EncodeBig(ethash.ConstantinopleBlockReward)
-	spec.Engine.Ethash.Params.DifficultyBombDelays[common.EncodeBig(num)] = common.EncodeUint64(2000000)
-	n := common.Uint64(num.Uint64())
+	spec.Engine.Ethash.Params.BlockReward[hexutil.EncodeBig(num)] = hexutil.EncodeBig(ethash.ConstantinopleBlockReward)
+	spec.Engine.Ethash.Params.DifficultyBombDelays[hexutil.EncodeBig(num)] = hexutil.EncodeUint64(2000000)
+	n := hexutil.Uint64(num.Uint64())
 	spec.Params.EIP145Transition = n
 	spec.Params.EIP1014Transition = n
 	spec.Params.EIP1052Transition = n
@@ -579,24 +580,24 @@ func (spec *parityChainSpec) setConstantinople(num *big.Int) {
 }
 
 func (spec *parityChainSpec) setConstantinopleFix(num *big.Int) {
-	spec.Params.EIP1283DisableTransition = common.Uint64(num.Uint64())
+	spec.Params.EIP1283DisableTransition = hexutil.Uint64(num.Uint64())
 }
 
 func (spec *parityChainSpec) setIstanbul(num *big.Int) {
-	spec.Params.EIP1344Transition = common.Uint64(num.Uint64())
-	spec.Params.EIP1884Transition = common.Uint64(num.Uint64())
-	spec.Params.EIP2028Transition = common.Uint64(num.Uint64())
-	spec.Params.EIP1283ReenableTransition = common.Uint64(num.Uint64())
+	spec.Params.EIP1344Transition = hexutil.Uint64(num.Uint64())
+	spec.Params.EIP1884Transition = hexutil.Uint64(num.Uint64())
+	spec.Params.EIP2028Transition = hexutil.Uint64(num.Uint64())
+	spec.Params.EIP1283ReenableTransition = hexutil.Uint64(num.Uint64())
 }
 
 // pyEthereumGenesisSpec represents the genesis specification format used by the
 // Python Ethereum implementation.
 type pyEthereumGenesisSpec struct {
 	Nonce      types.BlockNonce  `json:"nonce"`
-	Timestamp  common.Uint64     `json:"timestamp"`
-	ExtraData  common.Bytes      `json:"extraData"`
-	GasLimit   common.Uint64     `json:"gasLimit"`
-	Difficulty *common.Big       `json:"difficulty"`
+	Timestamp  hexutil.Uint64    `json:"timestamp"`
+	ExtraData  hexutil.Bytes     `json:"extraData"`
+	GasLimit   hexutil.Uint64    `json:"gasLimit"`
+	Difficulty *hexutil.Big      `json:"difficulty"`
 	Mixhash    common.Hash       `json:"mixhash"`
 	Coinbase   common.Address    `json:"coinbase"`
 	Alloc      core.GenesisAlloc `json:"alloc"`
@@ -612,10 +613,10 @@ func newPyEthereumGenesisSpec(network string, genesis *core.Genesis) (*pyEthereu
 	}
 	spec := &pyEthereumGenesisSpec{
 		Nonce:      types.EncodeNonce(genesis.Nonce),
-		Timestamp:  (common.Uint64)(genesis.Timestamp),
+		Timestamp:  (hexutil.Uint64)(genesis.Timestamp),
 		ExtraData:  genesis.ExtraData,
-		GasLimit:   (common.Uint64)(genesis.GasLimit),
-		Difficulty: (*common.Big)(genesis.Difficulty),
+		GasLimit:   (hexutil.Uint64)(genesis.GasLimit),
+		Difficulty: (*hexutil.Big)(genesis.Difficulty),
 		Mixhash:    genesis.Mixhash,
 		Coinbase:   genesis.Coinbase,
 		Alloc:      genesis.Alloc,

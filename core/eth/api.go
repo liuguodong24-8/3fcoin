@@ -29,7 +29,7 @@ import (
 	"time"
 
 	"github.com/fff-chain/3f-chain/core/common"
-
+	"github.com/fff-chain/3f-chain/core/common/hexutil"
 	"github.com/fff-chain/3f-chain/core/core"
 	"github.com/fff-chain/3f-chain/core/core/rawdb"
 	"github.com/fff-chain/3f-chain/core/core/state"
@@ -62,8 +62,8 @@ func (api *PublicEthereumAPI) Coinbase() (common.Address, error) {
 }
 
 // Hashrate returns the POW hashrate
-func (api *PublicEthereumAPI) Hashrate() common.Uint64 {
-	return common.Uint64(api.e.Miner().Hashrate())
+func (api *PublicEthereumAPI) Hashrate() hexutil.Uint64 {
+	return hexutil.Uint64(api.e.Miner().Hashrate())
 }
 
 // PublicMinerAPI provides an API to control the miner.
@@ -120,7 +120,7 @@ func (api *PrivateMinerAPI) SetExtra(extra string) (bool, error) {
 }
 
 // SetGasPrice sets the minimum accepted gas price for the miner.
-func (api *PrivateMinerAPI) SetGasPrice(gasPrice common.Big) bool {
+func (api *PrivateMinerAPI) SetGasPrice(gasPrice hexutil.Big) bool {
 	api.e.lock.Lock()
 	api.e.gasPrice = (*big.Int)(&gasPrice)
 	api.e.lock.Unlock()
@@ -300,7 +300,7 @@ func NewPrivateDebugAPI(eth *Ethereum) *PrivateDebugAPI {
 }
 
 // Preimage is a debug API function that returns the preimage for a sha3 hash, if known.
-func (api *PrivateDebugAPI) Preimage(ctx context.Context, hash common.Hash) (common.Bytes, error) {
+func (api *PrivateDebugAPI) Preimage(ctx context.Context, hash common.Hash) (hexutil.Bytes, error) {
 	if preimage := rawdb.ReadPreimage(api.eth.ChainDb(), hash); preimage != nil {
 		return preimage, nil
 	}
@@ -406,7 +406,7 @@ type storageEntry struct {
 }
 
 // StorageRangeAt returns the storage at the given block height and transaction index.
-func (api *PrivateDebugAPI) StorageRangeAt(blockHash common.Hash, txIndex int, contractAddress common.Address, keyStart common.Bytes, maxResult int) (StorageRangeResult, error) {
+func (api *PrivateDebugAPI) StorageRangeAt(blockHash common.Hash, txIndex int, contractAddress common.Address, keyStart hexutil.Bytes, maxResult int) (StorageRangeResult, error) {
 	// Retrieve the block
 	block := api.eth.blockchain.GetBlockByHash(blockHash)
 	if block == nil {

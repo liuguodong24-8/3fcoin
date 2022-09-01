@@ -5,7 +5,7 @@ import (
 	"math/big"
 
 	"github.com/fff-chain/3f-chain/core/common"
-
+	"github.com/fff-chain/3f-chain/core/common/hexutil"
 	"github.com/fff-chain/3f-chain/core/common/math"
 )
 
@@ -14,7 +14,7 @@ import (
 // See 'SafeMultisigTransaction' on https://safe-transaction.mainnet.gnosis.io/
 type GnosisSafeTx struct {
 	// These fields are only used on output
-	Signature  common.Bytes            `json:"signature"`
+	Signature  hexutil.Bytes           `json:"signature"`
 	SafeTxHash common.Hash             `json:"contractTransactionHash"`
 	Sender     common.MixedcaseAddress `json:"sender"`
 	// These fields are used both on input and output
@@ -22,7 +22,7 @@ type GnosisSafeTx struct {
 	To             common.MixedcaseAddress `json:"to"`
 	Value          math.Decimal256         `json:"value"`
 	GasPrice       math.Decimal256         `json:"gasPrice"`
-	Data           *common.Bytes           `json:"data"`
+	Data           *hexutil.Bytes          `json:"data"`
 	Operation      uint8                   `json:"operation"`
 	GasToken       common.Address          `json:"gasToken"`
 	RefundReceiver common.Address          `json:"refundReceiver"`
@@ -34,7 +34,7 @@ type GnosisSafeTx struct {
 
 // ToTypedData converts the tx to a EIP-712 Typed Data structure for signing
 func (tx *GnosisSafeTx) ToTypedData() TypedData {
-	var data common.Bytes
+	var data hexutil.Bytes
 	if tx.Data != nil {
 		data = *tx.Data
 	}
@@ -80,10 +80,10 @@ func (tx *GnosisSafeTx) ArgsForValidation() *SendTxArgs {
 	args := &SendTxArgs{
 		From:     tx.Safe,
 		To:       &tx.To,
-		Gas:      common.Uint64(tx.SafeTxGas.Uint64()),
-		GasPrice: common.Big(tx.GasPrice),
-		Value:    common.Big(tx.Value),
-		Nonce:    common.Uint64(tx.Nonce.Uint64()),
+		Gas:      hexutil.Uint64(tx.SafeTxGas.Uint64()),
+		GasPrice: hexutil.Big(tx.GasPrice),
+		Value:    hexutil.Big(tx.Value),
+		Nonce:    hexutil.Uint64(tx.Nonce.Uint64()),
 		Data:     tx.Data,
 		Input:    nil,
 	}

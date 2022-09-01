@@ -21,7 +21,7 @@ import (
 	"fmt"
 	"math/big"
 
-	"github.com/fff-chain/3f-chain/core/common"
+	"github.com/fff-chain/3f-chain/core/common/hexutil"
 	"github.com/fff-chain/3f-chain/core/crypto"
 )
 
@@ -94,12 +94,12 @@ func (b Bloom) Test(topic []byte) bool {
 
 // MarshalText encodes b as a hex string with 0x prefix.
 func (b Bloom) MarshalText() ([]byte, error) {
-	return common.Bytes(b[:]).MarshalText()
+	return hexutil.Bytes(b[:]).MarshalText()
 }
 
 // UnmarshalText b as a hex string with 0x prefix.
 func (b *Bloom) UnmarshalText(input []byte) error {
-	return common.UnmarshalFixedText("Bloom", input, b[:])
+	return hexutil.UnmarshalFixedText("Bloom", input, b[:])
 }
 
 // CreateBloom creates a bloom filter out of the give Receipts (+Logs)

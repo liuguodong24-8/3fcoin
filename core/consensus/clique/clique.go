@@ -29,7 +29,7 @@ import (
 	"github.com/fff-chain/3f-chain/core/accounts"
 	"github.com/fff-chain/3f-chain/core/common"
 	"github.com/fff-chain/3f-chain/core/common/gopool"
-
+	"github.com/fff-chain/3f-chain/core/common/hexutil"
 	"github.com/fff-chain/3f-chain/core/consensus"
 	"github.com/fff-chain/3f-chain/core/consensus/misc"
 	"github.com/fff-chain/3f-chain/core/core/state"
@@ -60,8 +60,8 @@ var (
 	extraVanity = 32                     // Fixed number of extra-data prefix bytes reserved for signer vanity
 	extraSeal   = crypto.SignatureLength // Fixed number of extra-data suffix bytes reserved for signer seal
 
-	nonceAuthVote = common.MustDecode("0xffffffffffffffff") // Magic nonce number to vote on adding a new signer
-	nonceDropVote = common.MustDecode("0x0000000000000000") // Magic nonce number to vote on removing a signer.
+	nonceAuthVote = hexutil.MustDecode("0xffffffffffffffff") // Magic nonce number to vote on adding a new signer
+	nonceDropVote = hexutil.MustDecode("0x0000000000000000") // Magic nonce number to vote on removing a signer.
 
 	uncleHash = types.CalcUncleHash(nil) // Always Keccak256(RLP([])) as uncles are meaningless outside of PoW.
 

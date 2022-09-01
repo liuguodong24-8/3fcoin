@@ -21,7 +21,7 @@ import (
 	"testing"
 
 	"github.com/fff-chain/3f-chain/core/common"
-
+	"github.com/fff-chain/3f-chain/core/common/hexutil"
 	"github.com/fff-chain/3f-chain/core/core"
 	"github.com/fff-chain/3f-chain/core/core/rawdb"
 	"github.com/fff-chain/3f-chain/core/core/types"
@@ -33,16 +33,16 @@ import (
 
 // callTrace is the result of a callTracer run.
 type callTrace struct {
-	Type    string         `json:"type"`
-	From    common.Address `json:"from"`
-	To      common.Address `json:"to"`
-	Input   common.Bytes   `json:"input"`
-	Output  common.Bytes   `json:"output"`
-	Gas     *common.Uint64 `json:"gas,omitempty"`
-	GasUsed *common.Uint64 `json:"gasUsed,omitempty"`
-	Value   *common.Big    `json:"value,omitempty"`
-	Error   string         `json:"error,omitempty"`
-	Calls   []callTrace    `json:"calls,omitempty"`
+	Type    string          `json:"type"`
+	From    common.Address  `json:"from"`
+	To      common.Address  `json:"to"`
+	Input   hexutil.Bytes   `json:"input"`
+	Output  hexutil.Bytes   `json:"output"`
+	Gas     *hexutil.Uint64 `json:"gas,omitempty"`
+	GasUsed *hexutil.Uint64 `json:"gasUsed,omitempty"`
+	Value   *hexutil.Big    `json:"value,omitempty"`
+	Error   string          `json:"error,omitempty"`
+	Calls   []callTrace     `json:"calls,omitempty"`
 }
 
 func BenchmarkTransactionTrace(b *testing.B) {

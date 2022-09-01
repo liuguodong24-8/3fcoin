@@ -21,7 +21,7 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/fff-chain/3f-chain/core/common"
+	"github.com/fff-chain/3f-chain/core/common/hexutil"
 	"github.com/fff-chain/3f-chain/core/common/mclock"
 	vfs "github.com/fff-chain/3f-chain/core/les/vflux/server"
 	"github.com/fff-chain/3f-chain/core/p2p/enode"
@@ -377,7 +377,7 @@ func (api *PrivateLightAPI) LatestCheckpoint() ([4]string, error) {
 	if cp.Empty() {
 		return res, errNoCheckpoint
 	}
-	res[0] = common.EncodeUint64(cp.SectionIndex)
+	res[0] = hexutil.EncodeUint64(cp.SectionIndex)
 	res[1], res[2], res[3] = cp.SectionHead.Hex(), cp.CHTRoot.Hex(), cp.BloomRoot.Hex()
 	return res, nil
 }

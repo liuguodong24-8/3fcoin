@@ -27,6 +27,7 @@ import (
 	"github.com/fff-chain/3f-chain/core/accounts/abi"
 	"github.com/fff-chain/3f-chain/core/accounts/abi/bind"
 	"github.com/fff-chain/3f-chain/core/common"
+	"github.com/fff-chain/3f-chain/core/common/hexutil"
 	"github.com/fff-chain/3f-chain/core/core/types"
 	"github.com/fff-chain/3f-chain/core/crypto"
 	"github.com/fff-chain/3f-chain/core/rlp"
@@ -245,7 +246,7 @@ func newMockLog(topics []common.Hash, txHash common.Hash) types.Log {
 	return types.Log{
 		Address:     common.HexToAddress("0x0"),
 		Topics:      topics,
-		Data:        common.MustDecode(hexData),
+		Data:        hexutil.MustDecode(hexData),
 		BlockNumber: uint64(26),
 		TxHash:      txHash,
 		TxIndex:     111,

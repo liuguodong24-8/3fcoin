@@ -5,6 +5,8 @@ import (
 	"fmt"
 	"math/big"
 	. "strings"
+
+	"github.com/fff-chain/3f-chain/core/common/hexutil"
 )
 
 // FFFAddress represents the 20 byte address of an Ethereum account.
@@ -17,39 +19,29 @@ func BytesToFFFAddress(b []byte) FFFAddress {
 	a.SetBytes(b)
 	return a
 }
+
 func FFFAddressToAddress(address FFFAddress) Address {
-
 	return BytesToAddress(address.Bytes())
-
 }
+
 func AddressToFFFAddress(address Address) FFFAddress {
-
 	return BytesToFFFAddress(address.Bytes())
-
 }
+
 func AddressesToFFFAddresses(address []Address) []FFFAddress {
-
 	var fffAddress []FFFAddress
-
 	for z := range address {
-
 		fffAddress = append(fffAddress, AddressToFFFAddress(address[z]))
 	}
-
 	return fffAddress
-
 }
+
 func FFFAddressesToAddresses(address []FFFAddress) []Address {
-
 	var fffAddress []Address
-
 	for z := range address {
-
 		fffAddress = append(fffAddress, FFFAddressToAddress(address[z]))
 	}
-
 	return fffAddress
-
 }
 
 // BigToAddress returns FFFAddress with byte values of b.
@@ -114,11 +106,12 @@ func (a FFFAddress) MarshalText() ([]byte, error) {
 func (a *FFFAddress) UnmarshalText(input []byte) error {
 	s := HexToAddress(FFFAddressDecode(string(input)))
 	a.SetBytes(HexToAddress(FFFAddressDecode(string(input))).Bytes())
-	return UnmarshalFixedText("Address", []byte(s.hex()), a[:])
+	return hexutil.UnmarshalFixedText("Address", []byte(s.hex()), a[:])
 }
 
 // UnmarshalJSON parses a hash in hex syntax.
 func (a *FFFAddress) UnmarshalJSON(input []byte) error {
+
 	s := string(input)
 	s = ReplaceAll(s, `"`, ``)
 	return a.UnmarshalText([]byte(s))

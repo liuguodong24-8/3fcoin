@@ -29,7 +29,7 @@ import (
 	"time"
 
 	"github.com/fff-chain/3f-chain/core/common"
-
+	"github.com/fff-chain/3f-chain/core/common/hexutil"
 	"github.com/fff-chain/3f-chain/core/consensus/ethash"
 	"github.com/fff-chain/3f-chain/core/eth"
 	"github.com/fff-chain/3f-chain/core/eth/downloader"
@@ -311,7 +311,7 @@ func getHead(ctx context.Context, t *testing.T, client *rpc.Client) (uint64, com
 	if !ok {
 		t.Fatalf("RPC block number field invalid")
 	}
-	num, err := common.DecodeUint64(numStr)
+	num, err := hexutil.DecodeUint64(numStr)
 	if err != nil {
 		t.Fatalf("Failed to decode RPC block number: %v", err)
 	}

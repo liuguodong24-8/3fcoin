@@ -30,7 +30,7 @@ import (
 	"github.com/fff-chain/3f-chain/core/accounts"
 	"github.com/fff-chain/3f-chain/core/accounts/keystore"
 	"github.com/fff-chain/3f-chain/core/common"
-
+	"github.com/fff-chain/3f-chain/core/common/hexutil"
 	"github.com/fff-chain/3f-chain/core/core/types"
 	"github.com/fff-chain/3f-chain/core/lib/ethapi"
 	"github.com/fff-chain/3f-chain/core/rlp"
@@ -63,7 +63,7 @@ func (ui *headlessUi) ApproveTx(request *core.SignTxRequest) (core.SignTxRespons
 		// The headless UI always modifies the transaction
 		old := big.Int(request.Transaction.Value)
 		newVal := big.NewInt(0).Add(&old, big.NewInt(1))
-		request.Transaction.Value = common.Big(*newVal)
+		request.Transaction.Value = hexutil.Big(*newVal)
 		return core.SignTxResponse{request.Transaction, true}, nil
 	default:
 		return core.SignTxResponse{request.Transaction, false}, nil
@@ -225,11 +225,11 @@ func TestNewAcc(t *testing.T) {
 
 func mkTestTx(from common.MixedcaseAddress) core.SendTxArgs {
 	to := common.NewMixedcaseAddress(common.HexToAddress("0x1337"))
-	gas := common.Uint64(21000)
-	gasPrice := (common.Big)(*big.NewInt(2000000000))
-	value := (common.Big)(*big.NewInt(1e18))
-	nonce := (common.Uint64)(0)
-	data := common.Bytes(common.Hex2Bytes("01020304050607080a"))
+	gas := hexutil.Uint64(21000)
+	gasPrice := (hexutil.Big)(*big.NewInt(2000000000))
+	value := (hexutil.Big)(*big.NewInt(1e18))
+	nonce := (hexutil.Uint64)(0)
+	data := hexutil.Bytes(common.Hex2Bytes("01020304050607080a"))
 	tx := core.SendTxArgs{
 		From:     from,
 		To:       &to,

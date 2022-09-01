@@ -23,7 +23,7 @@ import (
 	"strings"
 
 	"github.com/fff-chain/3f-chain/core/common"
-
+	"github.com/fff-chain/3f-chain/core/common/hexutil"
 	"github.com/fff-chain/3f-chain/core/core/types"
 )
 
@@ -69,17 +69,17 @@ func (v *ValidationMessages) getWarnings() error {
 type SendTxArgs struct {
 	From     common.MixedcaseAddress  `json:"from"`
 	To       *common.MixedcaseAddress `json:"to"`
-	Gas      common.Uint64            `json:"gas"`
-	GasPrice common.Big               `json:"gasPrice"`
-	Value    common.Big               `json:"value"`
-	Nonce    common.Uint64            `json:"nonce"`
+	Gas      hexutil.Uint64           `json:"gas"`
+	GasPrice hexutil.Big              `json:"gasPrice"`
+	Value    hexutil.Big              `json:"value"`
+	Nonce    hexutil.Uint64           `json:"nonce"`
 	// We accept "data" and "input" for backwards-compatibility reasons.
-	Data  *common.Bytes `json:"data"`
-	Input *common.Bytes `json:"input,omitempty"`
+	Data  *hexutil.Bytes `json:"data"`
+	Input *hexutil.Bytes `json:"input,omitempty"`
 
 	// For non-legacy transactions
 	AccessList *types.AccessList `json:"accessList,omitempty"`
-	ChainID    *common.Big       `json:"chainId,omitempty"`
+	ChainID    *hexutil.Big      `json:"chainId,omitempty"`
 }
 
 func (args SendTxArgs) String() string {

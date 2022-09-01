@@ -24,7 +24,7 @@ import (
 
 	"github.com/fff-chain/3f-chain/core/accounts"
 	"github.com/fff-chain/3f-chain/core/common"
-
+	"github.com/fff-chain/3f-chain/core/common/hexutil"
 	"github.com/fff-chain/3f-chain/core/core/types"
 	"github.com/fff-chain/3f-chain/core/lib/ethapi"
 	"github.com/fff-chain/3f-chain/core/signer/core"
@@ -424,12 +424,12 @@ const ExampleTxWindow = `
 
 `
 
-func dummyTx(value common.Big) *core.SignTxRequest {
+func dummyTx(value hexutil.Big) *core.SignTxRequest {
 	to, _ := mixAddr("000000000000000000000000000000000000dead")
 	from, _ := mixAddr("000000000000000000000000000000000000dead")
-	n := common.Uint64(3)
-	gas := common.Uint64(21000)
-	gasPrice := common.Big(*big.NewInt(2000000))
+	n := hexutil.Uint64(3)
+	gas := hexutil.Uint64(21000)
+	gasPrice := hexutil.Big(*big.NewInt(2000000))
 
 	return &core.SignTxRequest{
 		Transaction: core.SendTxArgs{
@@ -449,7 +449,7 @@ func dummyTx(value common.Big) *core.SignTxRequest {
 
 func dummyTxWithV(value uint64) *core.SignTxRequest {
 	v := big.NewInt(0).SetUint64(value)
-	h := common.Big(*v)
+	h := hexutil.Big(*v)
 	return dummyTx(h)
 }
 
@@ -469,7 +469,7 @@ func TestLimitWindow(t *testing.T) {
 	}
 	// 0.3 ether: 429D069189E0000 wei
 	v := big.NewInt(0).SetBytes(common.Hex2Bytes("0429D069189E0000"))
-	h := common.Big(*v)
+	h := hexutil.Big(*v)
 	// The first three should succeed
 	for i := 0; i < 3; i++ {
 		unsigned := dummyTx(h)

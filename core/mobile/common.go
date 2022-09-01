@@ -25,6 +25,7 @@ import (
 	"strings"
 
 	"github.com/fff-chain/3f-chain/core/common"
+	"github.com/fff-chain/3f-chain/core/common/hexutil"
 )
 
 // Hash represents the 32 byte Keccak256 hash of arbitrary data.
@@ -241,10 +242,10 @@ func (a *Addresses) Append(address *Address) {
 
 // EncodeToHex encodes b as a hex string with 0x prefix.
 func EncodeToHex(b []byte) string {
-	return common.Encode(b)
+	return hexutil.Encode(b)
 }
 
 // DecodeFromHex decodes a hex string with 0x prefix.
 func DecodeFromHex(s string) ([]byte, error) {
-	return common.Decode(s)
+	return hexutil.Decode(s)
 }

@@ -8,7 +8,7 @@ import (
 	"github.com/holiman/uint256"
 
 	"github.com/fff-chain/3f-chain/core/common"
-	
+	"github.com/fff-chain/3f-chain/core/common/hexutil"
 	"github.com/fff-chain/3f-chain/core/common/math"
 )
 
@@ -21,10 +21,10 @@ func (s StructLog) MarshalJSON() ([]byte, error) {
 		Op            OpCode                      `json:"op"`
 		Gas           math.HexOrDecimal64         `json:"gas"`
 		GasCost       math.HexOrDecimal64         `json:"gasCost"`
-		Memory        common.Bytes               `json:"memory"`
+		Memory        hexutil.Bytes               `json:"memory"`
 		MemorySize    int                         `json:"memSize"`
 		Stack         []uint256.Int               `json:"stack"`
-		ReturnData    common.Bytes               `json:"returnData"`
+		ReturnData    hexutil.Bytes               `json:"returnData"`
 		Storage       map[common.Hash]common.Hash `json:"-"`
 		Depth         int                         `json:"depth"`
 		RefundCounter uint64                      `json:"refund"`
@@ -57,10 +57,10 @@ func (s *StructLog) UnmarshalJSON(input []byte) error {
 		Op            *OpCode                     `json:"op"`
 		Gas           *math.HexOrDecimal64        `json:"gas"`
 		GasCost       *math.HexOrDecimal64        `json:"gasCost"`
-		Memory        *common.Bytes              `json:"memory"`
+		Memory        *hexutil.Bytes              `json:"memory"`
 		MemorySize    *int                        `json:"memSize"`
 		Stack         []uint256.Int               `json:"stack"`
-		ReturnData    *common.Bytes              `json:"returnData"`
+		ReturnData    *hexutil.Bytes              `json:"returnData"`
 		Storage       map[common.Hash]common.Hash `json:"-"`
 		Depth         *int                        `json:"depth"`
 		RefundCounter *uint64                     `json:"refund"`

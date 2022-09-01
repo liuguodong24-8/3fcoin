@@ -24,7 +24,7 @@ import (
 	ethereum "github.com/fff-chain/3f-chain"
 	"github.com/fff-chain/3f-chain/core/accounts"
 	"github.com/fff-chain/3f-chain/core/common"
-
+	"github.com/fff-chain/3f-chain/core/common/hexutil"
 	"github.com/fff-chain/3f-chain/core/core/types"
 	"github.com/fff-chain/3f-chain/core/event"
 	"github.com/fff-chain/3f-chain/core/log"
@@ -158,12 +158,12 @@ func (api *ExternalSigner) signHash(account accounts.Account, hash []byte) ([]by
 
 // SignData signs keccak256(data). The mimetype parameter describes the type of data being signed
 func (api *ExternalSigner) SignData(account accounts.Account, mimeType string, data []byte) ([]byte, error) {
-	var res common.Bytes
+	var res hexutil.Bytes
 	var signAddress = common.NewMixedcaseAddress(account.Address)
 	if err := api.client.Call(&res, "account_signData",
 		mimeType,
 		&signAddress, // Need to use the pointer here, because of how MarshalJSON is defined
-		common.Encode(data)); err != nil {
+		hexutil.Encode(data)); err != nil {
 		return nil, err
 	}
 	// If V is on 27/28-form, convert to to 0/1 for Clique and Parlia
@@ -174,12 +174,12 @@ func (api *ExternalSigner) SignData(account accounts.Account, mimeType string, d
 }
 
 func (api *ExternalSigner) SignText(account accounts.Account, text []byte) ([]byte, error) {
-	var signature common.Bytes
+	var signature hexutil.Bytes
 	var signAddress = common.NewMixedcaseAddress(account.Address)
 	if err := api.client.Call(&signature, "account_signData",
 		accounts.MimetypeTextPlain,
 		&signAddress, // Need to use the pointer here, because of how MarshalJSON is defined
-		common.Encode(text)); err != nil {
+		hexutil.Encode(text)); err != nil {
 		return nil, err
 	}
 	if signature[64] == 27 || signature[64] == 28 {
@@ -192,12 +192,12 @@ func (api *ExternalSigner) SignText(account accounts.Account, text []byte) ([]by
 
 // signTransactionResult represents the signinig result returned by clef.
 type signTransactionResult struct {
-	Raw common.Bytes       `json:"raw"`
+	Raw hexutil.Bytes      `json:"raw"`
 	Tx  *types.Transaction `json:"tx"`
 }
 
 func (api *ExternalSigner) SignTx(account accounts.Account, tx *types.Transaction, chainID *big.Int) (*types.Transaction, error) {
-	data := common.Bytes(tx.Data())
+	data := hexutil.Bytes(tx.Data())
 	var to *common.MixedcaseAddress
 	if tx.To() != nil {
 		t := common.NewMixedcaseAddress(*tx.To())
@@ -205,22 +205,22 @@ func (api *ExternalSigner) SignTx(account accounts.Account, tx *types.Transactio
 	}
 	args := &core.SendTxArgs{
 		Data:     &data,
-		Nonce:    common.Uint64(tx.Nonce()),
-		Value:    common.Big(*tx.Value()),
-		Gas:      common.Uint64(tx.Gas()),
-		GasPrice: common.Big(*tx.GasPrice()),
+		Nonce:    hexutil.Uint64(tx.Nonce()),
+		Value:    hexutil.Big(*tx.Value()),
+		Gas:      hexutil.Uint64(tx.Gas()),
+		GasPrice: hexutil.Big(*tx.GasPrice()),
 		To:       to,
 		From:     common.NewMixedcaseAddress(account.Address),
 	}
 	// We should request the default chain id that we're operating with
 	// (the chain we're executing on)
 	if chainID != nil {
-		args.ChainID = (*common.Big)(chainID)
+		args.ChainID = (*hexutil.Big)(chainID)
 	}
 	// However, if the user asked for a particular chain id, then we should
 	// use that instead.
 	if tx.Type() != types.LegacyTxType && tx.ChainId() != nil {
-		args.ChainID = (*common.Big)(tx.ChainId())
+		args.ChainID = (*hexutil.Big)(tx.ChainId())
 	}
 	if tx.Type() == types.AccessListTxType {
 		accessList := tx.AccessList()

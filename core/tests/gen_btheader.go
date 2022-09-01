@@ -7,7 +7,7 @@ import (
 	"math/big"
 
 	"github.com/fff-chain/3f-chain/core/common"
-	
+	"github.com/fff-chain/3f-chain/core/common/hexutil"
 	"github.com/fff-chain/3f-chain/core/common/math"
 	"github.com/fff-chain/3f-chain/core/core/types"
 )
@@ -28,7 +28,7 @@ func (b btHeader) MarshalJSON() ([]byte, error) {
 		StateRoot        common.Hash
 		TransactionsTrie common.Hash
 		UncleHash        common.Hash
-		ExtraData        common.Bytes
+		ExtraData        hexutil.Bytes
 		Difficulty       *math.HexOrDecimal256
 		GasLimit         math.HexOrDecimal64
 		GasUsed          math.HexOrDecimal64
@@ -68,7 +68,7 @@ func (b *btHeader) UnmarshalJSON(input []byte) error {
 		StateRoot        *common.Hash
 		TransactionsTrie *common.Hash
 		UncleHash        *common.Hash
-		ExtraData        *common.Bytes
+		ExtraData        *hexutil.Bytes
 		Difficulty       *math.HexOrDecimal256
 		GasLimit         *math.HexOrDecimal64
 		GasUsed          *math.HexOrDecimal64

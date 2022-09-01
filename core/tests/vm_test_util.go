@@ -23,6 +23,7 @@ import (
 	"math/big"
 
 	"github.com/fff-chain/3f-chain/core/common"
+	"github.com/fff-chain/3f-chain/core/common/hexutil"
 	"github.com/fff-chain/3f-chain/core/common/math"
 	"github.com/fff-chain/3f-chain/core/core"
 	"github.com/fff-chain/3f-chain/core/core/rawdb"
@@ -47,7 +48,7 @@ type vmJSON struct {
 	Exec          vmExec                `json:"exec"`
 	Logs          common.UnprefixedHash `json:"logs"`
 	GasRemaining  *math.HexOrDecimal64  `json:"gas"`
-	Out           common.Bytes          `json:"out"`
+	Out           hexutil.Bytes         `json:"out"`
 	Pre           core.GenesisAlloc     `json:"pre"`
 	Post          core.GenesisAlloc     `json:"post"`
 	PostStateRoot common.Hash           `json:"postStateRoot"`
@@ -70,8 +71,8 @@ type vmExecMarshaling struct {
 	Address  common.Address
 	Caller   common.Address
 	Origin   common.Address
-	Code     common.Bytes
-	Data     common.Bytes
+	Code     hexutil.Bytes
+	Data     hexutil.Bytes
 	Value    *math.HexOrDecimal256
 	GasLimit math.HexOrDecimal64
 	GasPrice *math.HexOrDecimal256

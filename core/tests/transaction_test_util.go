@@ -20,6 +20,7 @@ import (
 	"fmt"
 
 	"github.com/fff-chain/3f-chain/core/common"
+	"github.com/fff-chain/3f-chain/core/common/hexutil"
 	"github.com/fff-chain/3f-chain/core/core"
 	"github.com/fff-chain/3f-chain/core/core/types"
 	"github.com/fff-chain/3f-chain/core/params"
@@ -28,7 +29,7 @@ import (
 
 // TransactionTest checks RLP decoding and sender derivation of transactions.
 type TransactionTest struct {
-	RLP            common.Bytes `json:"rlp"`
+	RLP            hexutil.Bytes `json:"rlp"`
 	Byzantium      ttFork
 	Constantinople ttFork
 	Istanbul       ttFork
@@ -44,7 +45,7 @@ type ttFork struct {
 }
 
 func (tt *TransactionTest) Run(config *params.ChainConfig) error {
-	validateTx := func(rlpData common.Bytes, signer types.Signer, isHomestead bool, isIstanbul bool) (*common.Address, *common.Hash, error) {
+	validateTx := func(rlpData hexutil.Bytes, signer types.Signer, isHomestead bool, isIstanbul bool) (*common.Address, *common.Hash, error) {
 		tx := new(types.Transaction)
 		if err := rlp.DecodeBytes(rlpData, tx); err != nil {
 			return nil, nil, err

@@ -8,6 +8,7 @@ import (
 	"math/big"
 
 	"github.com/fff-chain/3f-chain/core/common"
+	"github.com/fff-chain/3f-chain/core/common/hexutil"
 	"github.com/fff-chain/3f-chain/core/common/math"
 )
 
@@ -19,8 +20,8 @@ func (v vmExec) MarshalJSON() ([]byte, error) {
 		Address  common.Address `json:"address"  gencodec:"required"`
 		Caller   common.Address `json:"caller"   gencodec:"required"`
 		Origin   common.Address `json:"origin"   gencodec:"required"`
-		Code     common.Bytes            `json:"code"     gencodec:"required"`
-		Data     common.Bytes            `json:"data"     gencodec:"required"`
+		Code     hexutil.Bytes            `json:"code"     gencodec:"required"`
+		Data     hexutil.Bytes            `json:"data"     gencodec:"required"`
 		Value    *math.HexOrDecimal256    `json:"value"    gencodec:"required"`
 		GasLimit math.HexOrDecimal64      `json:"gas"      gencodec:"required"`
 		GasPrice *math.HexOrDecimal256    `json:"gasPrice" gencodec:"required"`
@@ -43,8 +44,8 @@ func (v *vmExec) UnmarshalJSON(input []byte) error {
 		Address  *common.Address `json:"address"  gencodec:"required"`
 		Caller   *common.Address `json:"caller"   gencodec:"required"`
 		Origin   *common.Address `json:"origin"   gencodec:"required"`
-		Code     *common.Bytes            `json:"code"     gencodec:"required"`
-		Data     *common.Bytes            `json:"data"     gencodec:"required"`
+		Code     *hexutil.Bytes            `json:"code"     gencodec:"required"`
+		Data     *hexutil.Bytes            `json:"data"     gencodec:"required"`
 		Value    *math.HexOrDecimal256     `json:"value"    gencodec:"required"`
 		GasLimit *math.HexOrDecimal64      `json:"gas"      gencodec:"required"`
 		GasPrice *math.HexOrDecimal256     `json:"gasPrice" gencodec:"required"`

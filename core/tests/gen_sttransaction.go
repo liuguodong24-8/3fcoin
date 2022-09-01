@@ -5,7 +5,8 @@ package tests
 import (
 	"encoding/json"
 	"math/big"
-	"github.com/fff-chain/3f-chain/core/common"
+
+	"github.com/fff-chain/3f-chain/core/common/hexutil"
 	"github.com/fff-chain/3f-chain/core/common/math"
 	"github.com/fff-chain/3f-chain/core/core/types"
 )
@@ -22,7 +23,7 @@ func (s stTransaction) MarshalJSON() ([]byte, error) {
 		AccessLists []*types.AccessList   `json:"accessLists,omitempty"`
 		GasLimit    []math.HexOrDecimal64 `json:"gasLimit"`
 		Value       []string              `json:"value"`
-		PrivateKey  common.Bytes         `json:"secretKey"`
+		PrivateKey  hexutil.Bytes         `json:"secretKey"`
 	}
 	var enc stTransaction
 	enc.GasPrice = (*math.HexOrDecimal256)(s.GasPrice)
@@ -51,7 +52,7 @@ func (s *stTransaction) UnmarshalJSON(input []byte) error {
 		AccessLists []*types.AccessList   `json:"accessLists,omitempty"`
 		GasLimit    []math.HexOrDecimal64 `json:"gasLimit"`
 		Value       []string              `json:"value"`
-		PrivateKey  *common.Bytes        `json:"secretKey"`
+		PrivateKey  *hexutil.Bytes        `json:"secretKey"`
 	}
 	var dec stTransaction
 	if err := json.Unmarshal(input, &dec); err != nil {

@@ -26,6 +26,7 @@ import (
 
 	"github.com/fff-chain/3f-chain/cmd/utils"
 	"github.com/fff-chain/3f-chain/core/common"
+	"github.com/fff-chain/3f-chain/core/common/hexutil"
 	"github.com/fff-chain/3f-chain/core/console/prompt"
 	"github.com/fff-chain/3f-chain/core/core/rawdb"
 	"github.com/fff-chain/3f-chain/core/ethdb"
@@ -276,14 +277,14 @@ func inspect(ctx *cli.Context) error {
 		return fmt.Errorf("Max 2 arguments: %v", ctx.Command.ArgsUsage)
 	}
 	if ctx.NArg() >= 1 {
-		if d, err := common.Decode(ctx.Args().Get(0)); err != nil {
+		if d, err := hexutil.Decode(ctx.Args().Get(0)); err != nil {
 			return fmt.Errorf("failed to hex-decode 'prefix': %v", err)
 		} else {
 			prefix = d
 		}
 	}
 	if ctx.NArg() >= 2 {
-		if d, err := common.Decode(ctx.Args().Get(1)); err != nil {
+		if d, err := hexutil.Decode(ctx.Args().Get(1)); err != nil {
 			return fmt.Errorf("failed to hex-decode 'start': %v", err)
 		} else {
 			start = d
@@ -362,7 +363,7 @@ func dbGet(ctx *cli.Context) error {
 	db := utils.MakeChainDatabase(ctx, stack, true, false)
 	defer db.Close()
 
-	key, err := common.Decode(ctx.Args().Get(0))
+	key, err := hexutil.Decode(ctx.Args().Get(0))
 	if err != nil {
 		log.Info("Could not decode the key", "error", err)
 		return err
@@ -387,7 +388,7 @@ func dbDelete(ctx *cli.Context) error {
 	db := utils.MakeChainDatabase(ctx, stack, false, false)
 	defer db.Close()
 
-	key, err := common.Decode(ctx.Args().Get(0))
+	key, err := hexutil.Decode(ctx.Args().Get(0))
 	if err != nil {
 		log.Info("Could not decode the key", "error", err)
 		return err
@@ -420,12 +421,12 @@ func dbPut(ctx *cli.Context) error {
 		data  []byte
 		err   error
 	)
-	key, err = common.Decode(ctx.Args().Get(0))
+	key, err = hexutil.Decode(ctx.Args().Get(0))
 	if err != nil {
 		log.Info("Could not decode the key", "error", err)
 		return err
 	}
-	value, err = common.Decode(ctx.Args().Get(1))
+	value, err = hexutil.Decode(ctx.Args().Get(1))
 	if err != nil {
 		log.Info("Could not decode the value", "error", err)
 		return err
@@ -453,13 +454,13 @@ func dbDumpTrie(ctx *cli.Context) error {
 		max   = int64(-1)
 		err   error
 	)
-	if root, err = common.Decode(ctx.Args().Get(0)); err != nil {
+	if root, err = hexutil.Decode(ctx.Args().Get(0)); err != nil {
 		log.Info("Could not decode the root", "error", err)
 		return err
 	}
 	stRoot := common.BytesToHash(root)
 	if ctx.NArg() >= 2 {
-		if start, err = common.Decode(ctx.Args().Get(1)); err != nil {
+		if start, err = hexutil.Decode(ctx.Args().Get(1)); err != nil {
 			log.Info("Could not decode the seek position", "error", err)
 			return err
 		}

@@ -24,6 +24,7 @@ import (
 	"strings"
 
 	"github.com/fff-chain/3f-chain/core/common"
+	"github.com/fff-chain/3f-chain/core/common/hexutil"
 )
 
 // API describes the set of methods offered over the RPC interface
@@ -85,7 +86,7 @@ func (bn *BlockNumber) UnmarshalJSON(data []byte) error {
 		return nil
 	}
 
-	blckNum, err := common.DecodeUint64(input)
+	blckNum, err := hexutil.DecodeUint64(input)
 	if err != nil {
 		return err
 	}
@@ -147,7 +148,7 @@ func (bnh *BlockNumberOrHash) UnmarshalJSON(data []byte) error {
 			bnh.BlockHash = &hash
 			return nil
 		} else {
-			blckNum, err := common.DecodeUint64(input)
+			blckNum, err := hexutil.DecodeUint64(input)
 			if err != nil {
 				return err
 			}

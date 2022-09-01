@@ -8,7 +8,7 @@ import (
 	"math/big"
 
 	"github.com/fff-chain/3f-chain/core/common"
-	
+	"github.com/fff-chain/3f-chain/core/common/hexutil"
 	"github.com/fff-chain/3f-chain/core/common/math"
 	"github.com/fff-chain/3f-chain/core/params"
 )
@@ -20,7 +20,7 @@ func (g Genesis) MarshalJSON() ([]byte, error) {
 		Config     *params.ChainConfig                         `json:"config"`
 		Nonce      math.HexOrDecimal64                         `json:"nonce"`
 		Timestamp  math.HexOrDecimal64                         `json:"timestamp"`
-		ExtraData  common.Bytes                               `json:"extraData"`
+		ExtraData  hexutil.Bytes                               `json:"extraData"`
 		GasLimit   math.HexOrDecimal64                         `json:"gasLimit"   gencodec:"required"`
 		Difficulty *math.HexOrDecimal256                       `json:"difficulty" gencodec:"required"`
 		Mixhash    common.Hash                                 `json:"mixHash"`
@@ -56,7 +56,7 @@ func (g *Genesis) UnmarshalJSON(input []byte) error {
 		Config     *params.ChainConfig                         `json:"config"`
 		Nonce      *math.HexOrDecimal64                        `json:"nonce"`
 		Timestamp  *math.HexOrDecimal64                        `json:"timestamp"`
-		ExtraData  *common.Bytes                              `json:"extraData"`
+		ExtraData  *hexutil.Bytes                              `json:"extraData"`
 		GasLimit   *math.HexOrDecimal64                        `json:"gasLimit"   gencodec:"required"`
 		Difficulty *math.HexOrDecimal256                       `json:"difficulty" gencodec:"required"`
 		Mixhash    *common.Hash                                `json:"mixHash"`

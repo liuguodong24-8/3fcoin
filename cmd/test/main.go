@@ -7,22 +7,16 @@ import (
 )
 
 func main() {
-	UnmarshalFixedUnprefixedText()
-}
+	newS := "\"FFF3QTZ3uQoVCiATg2ELuMjLb3SqoYtq6fnxV6jGMPFbLwJctj1q2qGj3F\""
 
-func UnmarshalFixedUnprefixedText() {
-	tests := []struct {
-		input   string
-		want    []byte
-		wantErr error
-	}{
-		{input: "0x3e09c89e643cc3f30601fa08adb07e87546e65f9", wantErr: common.ErrOddLength},
+	if common.IsHexAddress(newS[1 : len(newS)-1]) {
+		fmt.Println(1)
 	}
 
-	for _, test := range tests {
-		out := make([]byte, 20)
-		err := common.UnmarshalFixedText("common.Address", []byte(test.input), out)
-		fmt.Println(err)
-	}
+	fmt.Println(common.FFFAddressEncode("0x0d023dfc9c025e263d974985f3367d99f91e071b"))
+	fmt.Println(common.FFFAddressDecode("FFF3QTZ3uQoVCiATg2ELuMjLb3SqoYtq6fnxV6jGMPFbLwJctj1q2qGj3F"))
+	fmt.Println()
+	// input = []byte(`"` + common.FFFAddressDecode(newS[1:len(newS)-1]) + `"`)
 
+	// return hexutil.UnmarshalFixedJSON(addressT, input, a[:])
 }

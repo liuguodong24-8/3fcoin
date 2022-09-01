@@ -25,6 +25,7 @@ import (
 	"strings"
 
 	"github.com/fff-chain/3f-chain/core/common"
+	"github.com/fff-chain/3f-chain/core/common/hexutil"
 	"github.com/fff-chain/3f-chain/core/common/math"
 	"github.com/fff-chain/3f-chain/core/core"
 	"github.com/fff-chain/3f-chain/core/core/rawdb"
@@ -59,7 +60,7 @@ type stJSON struct {
 	Env  stEnv                    `json:"env"`
 	Pre  core.GenesisAlloc        `json:"pre"`
 	Tx   stTransaction            `json:"transaction"`
-	Out  common.Bytes             `json:"out"`
+	Out  hexutil.Bytes            `json:"out"`
 	Post map[string][]stPostState `json:"post"`
 }
 
@@ -108,7 +109,7 @@ type stTransactionMarshaling struct {
 	GasPrice   *math.HexOrDecimal256
 	Nonce      math.HexOrDecimal64
 	GasLimit   []math.HexOrDecimal64
-	PrivateKey common.Bytes
+	PrivateKey hexutil.Bytes
 }
 
 // GetChainConfig takes a fork definition and returns a chain config.

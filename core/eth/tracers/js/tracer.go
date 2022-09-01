@@ -29,7 +29,7 @@ import (
 	"unsafe"
 
 	"github.com/fff-chain/3f-chain/core/common"
-
+	"github.com/fff-chain/3f-chain/core/common/hexutil"
 	"github.com/fff-chain/3f-chain/core/core"
 	"github.com/fff-chain/3f-chain/core/core/vm"
 	"github.com/fff-chain/3f-chain/core/crypto"
@@ -457,7 +457,7 @@ func newJsTracer(code string, ctx *tracers2.Context) (tracers2.Tracer, error) {
 	}
 	// Set up builtins for this environment
 	tracer.vm.PushGlobalGoFunction("toHex", func(ctx *duktape.Context) int {
-		ctx.PushString(common.Encode(popSlice(ctx)))
+		ctx.PushString(hexutil.Encode(popSlice(ctx)))
 		return 1
 	})
 	tracer.vm.PushGlobalGoFunction("toWord", func(ctx *duktape.Context) int {

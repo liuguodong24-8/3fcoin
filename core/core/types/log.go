@@ -20,7 +20,7 @@ import (
 	"io"
 
 	"github.com/fff-chain/3f-chain/core/common"
-
+	"github.com/fff-chain/3f-chain/core/common/hexutil"
 	"github.com/fff-chain/3f-chain/core/rlp"
 )
 
@@ -82,10 +82,10 @@ type FFFLog struct {
 }
 
 type logMarshaling struct {
-	Data        common.Bytes
-	BlockNumber common.Uint64
-	TxIndex     common.Uint
-	Index       common.Uint
+	Data        hexutil.Bytes
+	BlockNumber hexutil.Uint64
+	TxIndex     hexutil.Uint
+	Index       hexutil.Uint
 }
 
 type rlpLog struct {

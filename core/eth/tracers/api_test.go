@@ -30,7 +30,7 @@ import (
 	"time"
 
 	"github.com/fff-chain/3f-chain/core/common"
-
+	"github.com/fff-chain/3f-chain/core/common/hexutil"
 	"github.com/fff-chain/3f-chain/core/consensus"
 	"github.com/fff-chain/3f-chain/core/consensus/ethash"
 	"github.com/fff-chain/3f-chain/core/core"
@@ -210,7 +210,7 @@ func TestTraceCall(t *testing.T) {
 			call: ethapi.CallArgs{
 				From:  &accounts[0].addr,
 				To:    &accounts[1].addr,
-				Value: (*common.Big)(big.NewInt(1000)),
+				Value: (*hexutil.Big)(big.NewInt(1000)),
 			},
 			config:    nil,
 			expectErr: nil,
@@ -227,7 +227,7 @@ func TestTraceCall(t *testing.T) {
 			call: ethapi.CallArgs{
 				From:  &accounts[0].addr,
 				To:    &accounts[1].addr,
-				Value: (*common.Big)(big.NewInt(1000)),
+				Value: (*hexutil.Big)(big.NewInt(1000)),
 			},
 			config:    nil,
 			expectErr: nil,
@@ -244,7 +244,7 @@ func TestTraceCall(t *testing.T) {
 			call: ethapi.CallArgs{
 				From:  &accounts[0].addr,
 				To:    &accounts[1].addr,
-				Value: (*common.Big)(big.NewInt(1000)),
+				Value: (*hexutil.Big)(big.NewInt(1000)),
 			},
 			config:    nil,
 			expectErr: fmt.Errorf("block #%d not found", genBlocks+1),
@@ -256,7 +256,7 @@ func TestTraceCall(t *testing.T) {
 			call: ethapi.CallArgs{
 				From:  &accounts[0].addr,
 				To:    &accounts[1].addr,
-				Value: (*common.Big)(big.NewInt(1000)),
+				Value: (*hexutil.Big)(big.NewInt(1000)),
 			},
 			config:    nil,
 			expectErr: nil,
@@ -273,7 +273,7 @@ func TestTraceCall(t *testing.T) {
 			call: ethapi.CallArgs{
 				From:  &accounts[0].addr,
 				To:    &accounts[1].addr,
-				Value: (*common.Big)(big.NewInt(1000)),
+				Value: (*hexutil.Big)(big.NewInt(1000)),
 			},
 			config:    nil,
 			expectErr: nil,
@@ -453,7 +453,7 @@ func TestTracingWithOverrides(t *testing.T) {
 			call: ethapi.CallArgs{
 				From:  &randomAccounts[0].addr,
 				To:    &randomAccounts[1].addr,
-				Value: (*common.Big)(big.NewInt(1000)),
+				Value: (*hexutil.Big)(big.NewInt(1000)),
 			},
 			config: &TraceCallConfig{
 				StateOverrides: &ethapi.StateOverride{
@@ -468,7 +468,7 @@ func TestTracingWithOverrides(t *testing.T) {
 			call: ethapi.CallArgs{
 				From:  &randomAccounts[0].addr,
 				To:    &randomAccounts[1].addr,
-				Value: (*common.Big)(big.NewInt(1000)),
+				Value: (*hexutil.Big)(big.NewInt(1000)),
 			},
 			config:    &TraceCallConfig{},
 			expectErr: core.ErrInsufficientFundsForTransfer,
@@ -559,13 +559,13 @@ func newAccounts(n int) (accounts Accounts) {
 	return accounts
 }
 
-func newRPCBalance(balance *big.Int) **common.Big {
-	rpcBalance := (*common.Big)(balance)
+func newRPCBalance(balance *big.Int) **hexutil.Big {
+	rpcBalance := (*hexutil.Big)(balance)
 	return &rpcBalance
 }
 
-func newRPCBytes(bytes []byte) *common.Bytes {
-	rpcBytes := common.Bytes(bytes)
+func newRPCBytes(bytes []byte) *hexutil.Bytes {
+	rpcBytes := hexutil.Bytes(bytes)
 	return &rpcBytes
 }
 

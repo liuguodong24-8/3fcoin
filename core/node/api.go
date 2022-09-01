@@ -21,9 +21,8 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/fff-chain/3f-chain/core/common"
 	"github.com/fff-chain/3f-chain/core/common/gopool"
-
+	"github.com/fff-chain/3f-chain/core/common/hexutil"
 	"github.com/fff-chain/3f-chain/core/crypto"
 	"github.com/fff-chain/3f-chain/core/lib/debug"
 	"github.com/fff-chain/3f-chain/core/log"
@@ -340,6 +339,6 @@ func (s *publicWeb3API) ClientVersion() string {
 
 // Sha3 applies the ethereum sha3 implementation on the input.
 // It assumes the input is hex encoded.
-func (s *publicWeb3API) Sha3(input common.Bytes) common.Bytes {
+func (s *publicWeb3API) Sha3(input hexutil.Bytes) hexutil.Bytes {
 	return crypto.Keccak256(input)
 }

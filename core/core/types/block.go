@@ -28,7 +28,7 @@ import (
 	"time"
 
 	"github.com/fff-chain/3f-chain/core/common"
-
+	"github.com/fff-chain/3f-chain/core/common/hexutil"
 	"github.com/fff-chain/3f-chain/core/crypto"
 	"github.com/fff-chain/3f-chain/core/rlp"
 )
@@ -59,12 +59,12 @@ func (n BlockNonce) Uint64() uint64 {
 
 // MarshalText encodes n as a hex string with 0x prefix.
 func (n BlockNonce) MarshalText() ([]byte, error) {
-	return common.Bytes(n[:]).MarshalText()
+	return hexutil.Bytes(n[:]).MarshalText()
 }
 
 // UnmarshalText implements encoding.TextUnmarshaler.
 func (n *BlockNonce) UnmarshalText(input []byte) error {
-	return common.UnmarshalFixedText("BlockNonce", input, n[:])
+	return hexutil.UnmarshalFixedText("BlockNonce", input, n[:])
 }
 
 //go:generate gencodec -type Header -field-override headerMarshaling -out gen_header_json.go
@@ -90,12 +90,12 @@ type Header struct {
 
 // field type overrides for gencodec
 type headerMarshaling struct {
-	Difficulty *common.Big
-	Number     *common.Big
-	GasLimit   common.Uint64
-	GasUsed    common.Uint64
-	Time       common.Uint64
-	Extra      common.Bytes
+	Difficulty *hexutil.Big
+	Number     *hexutil.Big
+	GasLimit   hexutil.Uint64
+	GasUsed    hexutil.Uint64
+	Time       hexutil.Uint64
+	Extra      hexutil.Bytes
 	Hash       common.Hash `json:"hash"` // adds call to Hash() in MarshalJSON
 }
 

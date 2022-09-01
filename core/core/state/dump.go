@@ -21,7 +21,7 @@ import (
 	"fmt"
 
 	"github.com/fff-chain/3f-chain/core/common"
-
+	"github.com/fff-chain/3f-chain/core/common/hexutil"
 	"github.com/fff-chain/3f-chain/core/log"
 	"github.com/fff-chain/3f-chain/core/rlp"
 	"github.com/fff-chain/3f-chain/core/trie"
@@ -44,7 +44,7 @@ type DumpAccount struct {
 	Code      string                 `json:"code,omitempty"`
 	Storage   map[common.Hash]string `json:"storage,omitempty"`
 	Address   *common.Address        `json:"address,omitempty"` // Address only present in iterative (line-by-line) mode
-	SecureKey common.Bytes           `json:"key,omitempty"`     // If we don't have address, we can output the key
+	SecureKey hexutil.Bytes          `json:"key,omitempty"`     // If we don't have address, we can output the key
 
 }
 
@@ -57,7 +57,7 @@ type FFFDumpAccount struct {
 	Code      string                 `json:"code,omitempty"`
 	Storage   map[common.Hash]string `json:"storage,omitempty"`
 	Address   *common.FFFAddress     `json:"address,omitempty"` // Address only present in iterative (line-by-line) mode
-	SecureKey common.Bytes           `json:"key,omitempty"`     // If we don't have address, we can output the key
+	SecureKey hexutil.Bytes          `json:"key,omitempty"`     // If we don't have address, we can output the key
 
 }
 

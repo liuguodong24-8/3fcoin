@@ -8,7 +8,7 @@ import (
 	"math/big"
 
 	"github.com/fff-chain/3f-chain/core/common"
-	
+	"github.com/fff-chain/3f-chain/core/common/hexutil"
 )
 
 var _ = (*receiptMarshaling)(nil)
@@ -16,50 +16,50 @@ var _ = (*receiptMarshaling)(nil)
 // MarshalJSON marshals as JSON.
 func (r Receipt) MarshalJSON() ([]byte, error) {
 	type Receipt struct {
-		Type              common.Uint64 `json:"type,omitempty"`
-		PostState         common.Bytes  `json:"root"`
-		Status            common.Uint64 `json:"status"`
-		CumulativeGasUsed common.Uint64 `json:"cumulativeGasUsed" gencodec:"required"`
+		Type              hexutil.Uint64 `json:"type,omitempty"`
+		PostState         hexutil.Bytes  `json:"root"`
+		Status            hexutil.Uint64 `json:"status"`
+		CumulativeGasUsed hexutil.Uint64 `json:"cumulativeGasUsed" gencodec:"required"`
 		Bloom             Bloom          `json:"logsBloom"         gencodec:"required"`
 		Logs              []*Log         `json:"logs"              gencodec:"required"`
 		TxHash            common.Hash    `json:"transactionHash" gencodec:"required"`
 		ContractAddress   common.Address `json:"contractAddress"`
-		GasUsed           common.Uint64 `json:"gasUsed" gencodec:"required"`
+		GasUsed           hexutil.Uint64 `json:"gasUsed" gencodec:"required"`
 		BlockHash         common.Hash    `json:"blockHash,omitempty"`
-		BlockNumber       *common.Big   `json:"blockNumber,omitempty"`
-		TransactionIndex  common.Uint   `json:"transactionIndex"`
+		BlockNumber       *hexutil.Big   `json:"blockNumber,omitempty"`
+		TransactionIndex  hexutil.Uint   `json:"transactionIndex"`
 	}
 	var enc Receipt
-	enc.Type = common.Uint64(r.Type)
+	enc.Type = hexutil.Uint64(r.Type)
 	enc.PostState = r.PostState
-	enc.Status = common.Uint64(r.Status)
-	enc.CumulativeGasUsed = common.Uint64(r.CumulativeGasUsed)
+	enc.Status = hexutil.Uint64(r.Status)
+	enc.CumulativeGasUsed = hexutil.Uint64(r.CumulativeGasUsed)
 	enc.Bloom = r.Bloom
 	enc.Logs = r.Logs
 	enc.TxHash = r.TxHash
 	enc.ContractAddress = r.ContractAddress
-	enc.GasUsed = common.Uint64(r.GasUsed)
+	enc.GasUsed = hexutil.Uint64(r.GasUsed)
 	enc.BlockHash = r.BlockHash
-	enc.BlockNumber = (*common.Big)(r.BlockNumber)
-	enc.TransactionIndex = common.Uint(r.TransactionIndex)
+	enc.BlockNumber = (*hexutil.Big)(r.BlockNumber)
+	enc.TransactionIndex = hexutil.Uint(r.TransactionIndex)
 	return json.Marshal(&enc)
 }
 
 // UnmarshalJSON unmarshals from JSON.
 func (r *Receipt) UnmarshalJSON(input []byte) error {
 	type Receipt struct {
-		Type              *common.Uint64 `json:"type,omitempty"`
-		PostState         *common.Bytes  `json:"root"`
-		Status            *common.Uint64 `json:"status"`
-		CumulativeGasUsed *common.Uint64 `json:"cumulativeGasUsed" gencodec:"required"`
+		Type              *hexutil.Uint64 `json:"type,omitempty"`
+		PostState         *hexutil.Bytes  `json:"root"`
+		Status            *hexutil.Uint64 `json:"status"`
+		CumulativeGasUsed *hexutil.Uint64 `json:"cumulativeGasUsed" gencodec:"required"`
 		Bloom             *Bloom          `json:"logsBloom"         gencodec:"required"`
 		Logs              []*Log          `json:"logs"              gencodec:"required"`
 		TxHash            *common.Hash    `json:"transactionHash" gencodec:"required"`
 		ContractAddress   *common.Address `json:"contractAddress"`
-		GasUsed           *common.Uint64 `json:"gasUsed" gencodec:"required"`
+		GasUsed           *hexutil.Uint64 `json:"gasUsed" gencodec:"required"`
 		BlockHash         *common.Hash    `json:"blockHash,omitempty"`
-		BlockNumber       *common.Big    `json:"blockNumber,omitempty"`
-		TransactionIndex  *common.Uint   `json:"transactionIndex"`
+		BlockNumber       *hexutil.Big    `json:"blockNumber,omitempty"`
+		TransactionIndex  *hexutil.Uint   `json:"transactionIndex"`
 	}
 	var dec Receipt
 	if err := json.Unmarshal(input, &dec); err != nil {

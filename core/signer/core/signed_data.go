@@ -32,7 +32,7 @@ import (
 
 	"github.com/fff-chain/3f-chain/core/accounts"
 	"github.com/fff-chain/3f-chain/core/common"
-
+	"github.com/fff-chain/3f-chain/core/common/hexutil"
 	"github.com/fff-chain/3f-chain/core/common/math"
 	"github.com/fff-chain/3f-chain/core/consensus/clique"
 	"github.com/fff-chain/3f-chain/core/consensus/parliautil"
@@ -71,7 +71,7 @@ var (
 
 type ValidatorData struct {
 	Address common.Address
-	Message common.Bytes
+	Message hexutil.Bytes
 }
 
 type TypedData struct {
@@ -130,7 +130,7 @@ var typedDataReferenceTypeRegexp = regexp.MustCompile(`^[A-Z](\w*)(\[\])?$`)
 //
 // Note, the produced signature conforms to the secp256k1 curve R, S and V values,
 // where the V value will be 27 or 28 for legacy reasons, if legacyV==true.
-func (api *SignerAPI) sign(req *SignDataRequest, legacyV bool) (common.Bytes, error) {
+func (api *SignerAPI) sign(req *SignDataRequest, legacyV bool) (hexutil.Bytes, error) {
 	// We make the request prior to looking up if we actually have the account, to prevent
 	// account-enumeration via the API
 	res, err := api.UI.ApproveSignData(req)
@@ -167,7 +167,7 @@ func (api *SignerAPI) sign(req *SignDataRequest, legacyV bool) (common.Bytes, er
 // depending on the content-type specified.
 //
 // Different types of validation occur.
-func (api *SignerAPI) SignData(ctx context.Context, contentType string, addr common.MixedcaseAddress, data interface{}) (common.Bytes, error) {
+func (api *SignerAPI) SignData(ctx context.Context, contentType string, addr common.MixedcaseAddress, data interface{}) (hexutil.Bytes, error) {
 	var req, transformV, err = api.determineSignatureFormat(ctx, contentType, addr, data)
 	if err != nil {
 		return nil, err
@@ -233,7 +233,7 @@ func (api *SignerAPI) determineSignatureFormat(ctx context.Context, contentType 
 		if !ok {
 			return nil, useEthereumV, fmt.Errorf("input for %v must be an hex-encoded string", ApplicationClique.Mime)
 		}
-		cliqueData, err := common.Decode(stringData)
+		cliqueData, err := hexutil.Decode(stringData)
 		if err != nil {
 			return nil, useEthereumV, err
 		}
@@ -268,7 +268,7 @@ func (api *SignerAPI) determineSignatureFormat(ctx context.Context, contentType 
 		if !ok {
 			return nil, useEthereumV, fmt.Errorf("input for %v must be an hex-encoded string", ApplicationParlia.Mime)
 		}
-		parliaData, err := common.Decode(stringData)
+		parliaData, err := hexutil.Decode(stringData)
 		if err != nil {
 			return nil, useEthereumV, err
 		}
@@ -305,7 +305,7 @@ func (api *SignerAPI) determineSignatureFormat(ctx context.Context, contentType 
 		if stringData, ok := data.(string); !ok {
 			return nil, useEthereumV, fmt.Errorf("input for text/plain must be an hex-encoded string")
 		} else {
-			if textData, err := common.Decode(stringData); err != nil {
+			if textData, err := hexutil.Decode(stringData); err != nil {
 				return nil, useEthereumV, err
 			} else {
 				sighash, msg := accounts.TextAndHash(textData)
@@ -328,7 +328,7 @@ func (api *SignerAPI) determineSignatureFormat(ctx context.Context, contentType 
 // SignTextWithValidator signs the given message which can be further recovered
 // with the given validator.
 // hash = keccak256("\x19\x00"${address}${data}).
-func SignTextValidator(validatorData ValidatorData) (common.Bytes, string) {
+func SignTextValidator(validatorData ValidatorData) (hexutil.Bytes, string) {
 	msg := fmt.Sprintf("\x19\x00%s%s", string(validatorData.Address.Bytes()), string(validatorData.Message))
 	return crypto.Keccak256([]byte(msg)), msg
 }
@@ -365,7 +365,7 @@ func parliaHeaderHashAndRlp(header *types.Header, chainId *big.Int) (hash, rlp [
 // It returns
 // - the signature,
 // - and/or any error
-func (api *SignerAPI) SignTypedData(ctx context.Context, addr common.MixedcaseAddress, typedData TypedData) (common.Bytes, error) {
+func (api *SignerAPI) SignTypedData(ctx context.Context, addr common.MixedcaseAddress, typedData TypedData) (hexutil.Bytes, error) {
 	signature, _, err := api.signTypedData(ctx, addr, typedData, nil)
 	return signature, err
 }
@@ -373,7 +373,7 @@ func (api *SignerAPI) SignTypedData(ctx context.Context, addr common.MixedcaseAd
 // signTypedData is identical to the capitalized version, except that it also returns the hash (preimage)
 // - the signature preimage (hash)
 func (api *SignerAPI) signTypedData(ctx context.Context, addr common.MixedcaseAddress,
-	typedData TypedData, validationMessages *ValidationMessages) (common.Bytes, common.Bytes, error) {
+	typedData TypedData, validationMessages *ValidationMessages) (hexutil.Bytes, hexutil.Bytes, error) {
 	domainSeparator, err := typedData.HashStruct("EIP712Domain", typedData.Domain.Map())
 	if err != nil {
 		return nil, nil, err
@@ -406,7 +406,7 @@ func (api *SignerAPI) signTypedData(ctx context.Context, addr common.MixedcaseAd
 }
 
 // HashStruct generates a keccak256 hash of the encoding of the provided data
-func (typedData *TypedData) HashStruct(primaryType string, data TypedDataMessage) (common.Bytes, error) {
+func (typedData *TypedData) HashStruct(primaryType string, data TypedDataMessage) (hexutil.Bytes, error) {
 	encodedData, err := typedData.EncodeData(primaryType, data, 1)
 	if err != nil {
 		return nil, err
@@ -446,7 +446,7 @@ func (typedData *TypedData) Dependencies(primaryType string, found []string) []s
 // `name ‖ "(" ‖ member₁ ‖ "," ‖ member₂ ‖ "," ‖ … ‖ memberₙ ")"`
 //
 // each member is written as `type ‖ " " ‖ name` encodings cascade down and are sorted by name
-func (typedData *TypedData) EncodeType(primaryType string) common.Bytes {
+func (typedData *TypedData) EncodeType(primaryType string) hexutil.Bytes {
 	// Get dependencies primary first, then alphabetical
 	deps := typedData.Dependencies(primaryType, []string{})
 	if len(deps) > 0 {
@@ -473,7 +473,7 @@ func (typedData *TypedData) EncodeType(primaryType string) common.Bytes {
 }
 
 // TypeHash creates the keccak256 hash  of the data
-func (typedData *TypedData) TypeHash(primaryType string) common.Bytes {
+func (typedData *TypedData) TypeHash(primaryType string) hexutil.Bytes {
 	return crypto.Keccak256(typedData.EncodeType(primaryType))
 }
 
@@ -481,7 +481,7 @@ func (typedData *TypedData) TypeHash(primaryType string) common.Bytes {
 // `enc(value₁) ‖ enc(value₂) ‖ … ‖ enc(valueₙ)`
 //
 // each encoded member is 32-byte long
-func (typedData *TypedData) EncodeData(primaryType string, data map[string]interface{}, depth int) (common.Bytes, error) {
+func (typedData *TypedData) EncodeData(primaryType string, data map[string]interface{}, depth int) (hexutil.Bytes, error) {
 	if err := typedData.validate(); err != nil {
 		return nil, err
 	}
@@ -550,15 +550,15 @@ func (typedData *TypedData) EncodeData(primaryType string, data map[string]inter
 	return buffer.Bytes(), nil
 }
 
-// Attempt to parse bytes in different formats: byte array, hex string, common.Bytes.
+// Attempt to parse bytes in different formats: byte array, hex string, hexutil.Bytes.
 func parseBytes(encType interface{}) ([]byte, bool) {
 	switch v := encType.(type) {
 	case []byte:
 		return v, true
-	case common.Bytes:
+	case hexutil.Bytes:
 		return v, true
 	case string:
-		bytes, err := common.Decode(v)
+		bytes, err := hexutil.Decode(v)
 		if err != nil {
 			return nil, false
 		}
@@ -690,7 +690,7 @@ func dataMismatchError(encType string, encValue interface{}) error {
 
 // EcRecover recovers the address associated with the given sig.
 // Only compatible with `text/plain`
-func (api *SignerAPI) EcRecover(ctx context.Context, data common.Bytes, sig common.Bytes) (common.Address, error) {
+func (api *SignerAPI) EcRecover(ctx context.Context, data hexutil.Bytes, sig hexutil.Bytes) (common.Address, error) {
 	// Returns the address for the Account that was used to create the signature.
 	//
 	// Note, this function is compatible with eth_sign and personal_sign. As such it recovers
@@ -727,7 +727,7 @@ func UnmarshalValidatorData(data interface{}) (ValidatorData, error) {
 	if !ok {
 		return ValidatorData{}, errors.New("validator address is not sent as a string")
 	}
-	addrBytes, err := common.Decode(addr)
+	addrBytes, err := hexutil.Decode(addr)
 	if err != nil {
 		return ValidatorData{}, err
 	}
@@ -739,7 +739,7 @@ func UnmarshalValidatorData(data interface{}) (ValidatorData, error) {
 	if !ok {
 		return ValidatorData{}, errors.New("message is not sent as a string")
 	}
-	messageBytes, err := common.Decode(message)
+	messageBytes, err := hexutil.Decode(message)
 	if err != nil {
 		return ValidatorData{}, err
 	}

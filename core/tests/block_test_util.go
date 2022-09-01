@@ -25,7 +25,7 @@ import (
 	"math/big"
 
 	"github.com/fff-chain/3f-chain/core/common"
-
+	"github.com/fff-chain/3f-chain/core/common/hexutil"
 	"github.com/fff-chain/3f-chain/core/common/math"
 	"github.com/fff-chain/3f-chain/core/consensus"
 	"github.com/fff-chain/3f-chain/core/consensus/ethash"
@@ -86,7 +86,7 @@ type btHeader struct {
 }
 
 type btHeaderMarshaling struct {
-	ExtraData  common.Bytes
+	ExtraData  hexutil.Bytes
 	Number     *math.HexOrDecimal256
 	Difficulty *math.HexOrDecimal256
 	GasLimit   math.HexOrDecimal64
@@ -306,7 +306,7 @@ func (t *BlockTest) validateImportedHeaders(cm *core.BlockChain, validBlocks []b
 }
 
 func (bb *btBlock) decode() (*types.Block, error) {
-	data, err := common.Decode(bb.Rlp)
+	data, err := hexutil.Decode(bb.Rlp)
 	if err != nil {
 		return nil, err
 	}

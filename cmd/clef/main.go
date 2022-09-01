@@ -39,6 +39,7 @@ import (
 	"github.com/fff-chain/3f-chain/core/accounts"
 	"github.com/fff-chain/3f-chain/core/accounts/keystore"
 	"github.com/fff-chain/3f-chain/core/common"
+	"github.com/fff-chain/3f-chain/core/common/hexutil"
 	"github.com/fff-chain/3f-chain/core/core/types"
 	"github.com/fff-chain/3f-chain/core/crypto"
 	"github.com/fff-chain/3f-chain/core/lib/ethapi"
@@ -887,7 +888,7 @@ func testExternalUI(api *core.SignerAPI) {
 			utils.Fatalf("Should not error: %v", err)
 		}
 		addr, _ := common.NewMixedcaseAddressFromString("0x0011223344556677889900112233445566778899")
-		_, err = api.SignData(ctx, accounts.MimetypeClique, *addr, common.Encode(cliqueRlp))
+		_, err = api.SignData(ctx, accounts.MimetypeClique, *addr, hexutil.Encode(cliqueRlp))
 		expectApprove("signdata - clique header", err)
 	}
 	{ // Sign data test - typed data
@@ -895,7 +896,7 @@ func testExternalUI(api *core.SignerAPI) {
 		time.Sleep(delay)
 		addr, _ := common.NewMixedcaseAddressFromString("0x0011223344556677889900112233445566778899")
 		data := `{"types":{"EIP712Domain":[{"name":"name","type":"string"},{"name":"version","type":"string"},{"name":"chainId","type":"uint256"},{"name":"verifyingContract","type":"address"}],"Person":[{"name":"name","type":"string"},{"name":"test","type":"uint8"},{"name":"wallet","type":"address"}],"Mail":[{"name":"from","type":"Person"},{"name":"to","type":"Person"},{"name":"contents","type":"string"}]},"primaryType":"Mail","domain":{"name":"Ether Mail","version":"1","chainId":"1","verifyingContract":"0xCCCcccccCCCCcCCCCCCcCcCccCcCCCcCcccccccC"},"message":{"from":{"name":"Cow","test":"3","wallet":"0xcD2a3d9F938E13CD947Ec05AbC7FE734Df8DD826"},"to":{"name":"Bob","wallet":"0xbBbBBBBbbBBBbbbBbbBbbbbBBbBbbbbBbBbbBBbB","test":"2"},"contents":"Hello, Bob!"}}`
-		//_, err := api.SignData(ctx, accounts.MimetypeTypedData, *addr, common.Encode([]byte(data)))
+		//_, err := api.SignData(ctx, accounts.MimetypeTypedData, *addr, hexutil.Encode([]byte(data)))
 		var typedData core.TypedData
 		json.Unmarshal([]byte(data), &typedData)
 		_, err := api.SignTypedData(ctx, *addr, typedData)
@@ -905,29 +906,29 @@ func testExternalUI(api *core.SignerAPI) {
 		api.UI.ShowInfo("Please approve the next request for signing text")
 		time.Sleep(delay)
 		addr, _ := common.NewMixedcaseAddressFromString("0x0011223344556677889900112233445566778899")
-		_, err := api.SignData(ctx, accounts.MimetypeTextPlain, *addr, common.Encode([]byte("hello world")))
+		_, err := api.SignData(ctx, accounts.MimetypeTextPlain, *addr, hexutil.Encode([]byte("hello world")))
 		expectApprove("signdata - text", err)
 	}
 	{ // Sign data test - plain text reject
 		api.UI.ShowInfo("Please deny the next request for signing text")
 		time.Sleep(delay)
 		addr, _ := common.NewMixedcaseAddressFromString("0x0011223344556677889900112233445566778899")
-		_, err := api.SignData(ctx, accounts.MimetypeTextPlain, *addr, common.Encode([]byte("hello world")))
+		_, err := api.SignData(ctx, accounts.MimetypeTextPlain, *addr, hexutil.Encode([]byte("hello world")))
 		expectDeny("signdata - text", err)
 	}
 	{ // Sign transaction
 
 		api.UI.ShowInfo("Please reject next transaction")
 		time.Sleep(delay)
-		data := common.Bytes([]byte{})
+		data := hexutil.Bytes([]byte{})
 		to := common.NewMixedcaseAddress(a)
 		tx := core.SendTxArgs{
 			Data:     &data,
 			Nonce:    0x1,
-			Value:    common.Big(*big.NewInt(6)),
+			Value:    hexutil.Big(*big.NewInt(6)),
 			From:     common.NewMixedcaseAddress(a),
 			To:       &to,
-			GasPrice: common.Big(*big.NewInt(5)),
+			GasPrice: hexutil.Big(*big.NewInt(5)),
 			Gas:      1000,
 			Input:    nil,
 		}
@@ -1050,7 +1051,7 @@ func GenDoc(ctx *cli.Context) {
 			"they must be identical, otherwise an error is generated. " +
 			"However, Clef will always use `data` when passing this struct on (if Clef does otherwise, please file a ticket)"
 
-		data := common.Bytes([]byte{0x01, 0x02, 0x03, 0x04})
+		data := hexutil.Bytes([]byte{0x01, 0x02, 0x03, 0x04})
 		add("SignTxRequest", desc, &core.SignTxRequest{
 			Meta: meta,
 			Callinfo: []core.ValidationInfo{
@@ -1060,26 +1061,26 @@ func GenDoc(ctx *cli.Context) {
 			Transaction: core.SendTxArgs{
 				Data:     &data,
 				Nonce:    0x1,
-				Value:    common.Big(*big.NewInt(6)),
+				Value:    hexutil.Big(*big.NewInt(6)),
 				From:     common.NewMixedcaseAddress(a),
 				To:       nil,
-				GasPrice: common.Big(*big.NewInt(5)),
+				GasPrice: hexutil.Big(*big.NewInt(5)),
 				Gas:      1000,
 				Input:    nil,
 			}})
 	}
 	{ // Sign tx response
-		data := common.Bytes([]byte{0x04, 0x03, 0x02, 0x01})
+		data := hexutil.Bytes([]byte{0x04, 0x03, 0x02, 0x01})
 		add("SignTxResponse - approve", "Response to request to sign a transaction. This response needs to contain the `transaction`"+
 			", because the UI is free to make modifications to the transaction.",
 			&core.SignTxResponse{Approved: true,
 				Transaction: core.SendTxArgs{
 					Data:     &data,
 					Nonce:    0x4,
-					Value:    common.Big(*big.NewInt(6)),
+					Value:    hexutil.Big(*big.NewInt(6)),
 					From:     common.NewMixedcaseAddress(a),
 					To:       nil,
-					GasPrice: common.Big(*big.NewInt(5)),
+					GasPrice: hexutil.Big(*big.NewInt(5)),
 					Gas:      1000,
 					Input:    nil,
 				}})

@@ -20,7 +20,7 @@ import (
 	"errors"
 
 	"github.com/fff-chain/3f-chain/core/common"
-
+	"github.com/fff-chain/3f-chain/core/common/hexutil"
 	"github.com/fff-chain/3f-chain/core/core/types"
 )
 
@@ -90,7 +90,7 @@ func (api *API) SubmitWork(nonce types.BlockNonce, hash, digest common.Hash) boo
 //
 // It accepts the miner hash rate and an identifier which must be unique
 // between nodes.
-func (api *API) SubmitHashrate(rate common.Uint64, id common.Hash) bool {
+func (api *API) SubmitHashrate(rate hexutil.Uint64, id common.Hash) bool {
 	if api.ethash.remote == nil {
 		return false
 	}

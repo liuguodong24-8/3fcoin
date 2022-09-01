@@ -7,7 +7,7 @@ import (
 	"errors"
 
 	"github.com/fff-chain/3f-chain/core/common"
-	
+	"github.com/fff-chain/3f-chain/core/common/hexutil"
 )
 
 var _ = (*assembleBlockParamsMarshaling)(nil)
@@ -16,11 +16,11 @@ var _ = (*assembleBlockParamsMarshaling)(nil)
 func (a assembleBlockParams) MarshalJSON() ([]byte, error) {
 	type assembleBlockParams struct {
 		ParentHash common.Hash    `json:"parentHash"    gencodec:"required"`
-		Timestamp  common.Uint64 `json:"timestamp"     gencodec:"required"`
+		Timestamp  hexutil.Uint64 `json:"timestamp"     gencodec:"required"`
 	}
 	var enc assembleBlockParams
 	enc.ParentHash = a.ParentHash
-	enc.Timestamp = common.Uint64(a.Timestamp)
+	enc.Timestamp = hexutil.Uint64(a.Timestamp)
 	return json.Marshal(&enc)
 }
 
@@ -28,7 +28,7 @@ func (a assembleBlockParams) MarshalJSON() ([]byte, error) {
 func (a *assembleBlockParams) UnmarshalJSON(input []byte) error {
 	type assembleBlockParams struct {
 		ParentHash *common.Hash    `json:"parentHash"    gencodec:"required"`
-		Timestamp  *common.Uint64 `json:"timestamp"     gencodec:"required"`
+		Timestamp  *hexutil.Uint64 `json:"timestamp"     gencodec:"required"`
 	}
 	var dec assembleBlockParams
 	if err := json.Unmarshal(input, &dec); err != nil {

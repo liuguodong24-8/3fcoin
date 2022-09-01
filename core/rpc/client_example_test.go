@@ -21,7 +21,7 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/fff-chain/3f-chain/core/common"
+	"github.com/fff-chain/3f-chain/core/common/hexutil"
 	"github.com/fff-chain/3f-chain/core/rpc"
 )
 
@@ -35,7 +35,7 @@ import (
 //    creates a subscription which fires block objects when new blocks arrive.
 
 type Block struct {
-	Number *common.Big
+	Number *hexutil.Big
 }
 
 func ExampleClientSubscription() {

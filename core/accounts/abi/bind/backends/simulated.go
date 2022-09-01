@@ -28,6 +28,7 @@ import (
 	"github.com/fff-chain/3f-chain/core/accounts/abi"
 	"github.com/fff-chain/3f-chain/core/accounts/abi/bind"
 	"github.com/fff-chain/3f-chain/core/common"
+	"github.com/fff-chain/3f-chain/core/common/hexutil"
 	"github.com/fff-chain/3f-chain/core/common/math"
 	"github.com/fff-chain/3f-chain/core/consensus/ethash"
 	"github.com/fff-chain/3f-chain/core/core"
@@ -353,7 +354,7 @@ func newRevertError(result *core.ExecutionResult) *revertError {
 	}
 	return &revertError{
 		error:  err,
-		reason: common.Encode(result.Revert()),
+		reason: hexutil.Encode(result.Revert()),
 	}
 }
 

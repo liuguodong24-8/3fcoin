@@ -28,6 +28,7 @@ import (
 	"github.com/fff-chain/3f-chain/cmd/utils"
 	"github.com/fff-chain/3f-chain/core/accounts"
 	"github.com/fff-chain/3f-chain/core/common"
+	"github.com/fff-chain/3f-chain/core/common/hexutil"
 	"github.com/fff-chain/3f-chain/core/contracts/checkpointoracle"
 	"github.com/fff-chain/3f-chain/core/contracts/checkpointoracle/contract"
 	"github.com/fff-chain/3f-chain/core/crypto"
@@ -213,7 +214,7 @@ func sign(ctx *cli.Context) error {
 	buf := make([]byte, 8)
 	binary.BigEndian.PutUint64(buf, cindex)
 	p["address"] = address.Hex()
-	p["message"] = common.Encode(append(buf, chash.Bytes()...))
+	p["message"] = hexutil.Encode(append(buf, chash.Bytes()...))
 
 	fmt.Println("Sending signing request to Clef...")
 	if err := clef.Call(&signature, "account_signData", accounts.MimetypeDataWithValidator, signer, p); err != nil {

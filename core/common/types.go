@@ -26,6 +26,8 @@ import (
 	"math/rand"
 	"reflect"
 
+	"github.com/fff-chain/3f-chain/core/common/hexutil"
+
 	"golang.org/x/crypto/sha3"
 )
 
@@ -68,7 +70,7 @@ func (h Hash) Bytes() []byte { return h[:] }
 func (h Hash) Big() *big.Int { return new(big.Int).SetBytes(h[:]) }
 
 // Hex converts a hash to a hex string.
-func (h Hash) Hex() string { return Encode(h[:]) }
+func (h Hash) Hex() string { return hexutil.Encode(h[:]) }
 
 // TerminalString implements log.TerminalStringer, formatting a string for console
 // output during logging.
@@ -114,17 +116,17 @@ func (h Hash) Format(s fmt.State, c rune) {
 
 // UnmarshalText parses a hash in hex syntax.
 func (h *Hash) UnmarshalText(input []byte) error {
-	return UnmarshalFixedText("Hash", input, h[:])
+	return hexutil.UnmarshalFixedText("Hash", input, h[:])
 }
 
 // UnmarshalJSON parses a hash in hex syntax.
 func (h *Hash) UnmarshalJSON(input []byte) error {
-	return UnmarshalFixedJSON(hashT, input, h[:])
+	return hexutil.UnmarshalFixedJSON(hashT, input, h[:])
 }
 
 // MarshalText returns the hex representation of h.
 func (h Hash) MarshalText() ([]byte, error) {
-	return Bytes(h[:]).MarshalText()
+	return hexutil.Bytes(h[:]).MarshalText()
 }
 
 // SetBytes sets the hash to the value of b.
@@ -185,7 +187,7 @@ type UnprefixedHash Hash
 
 // UnmarshalText decodes the hash from hex. The 0x prefix is optional.
 func (h *UnprefixedHash) UnmarshalText(input []byte) error {
-	return UnmarshalFixedUnprefixedText("UnprefixedHash", input, h[:])
+	return hexutil.UnmarshalFixedUnprefixedText("UnprefixedHash", input, h[:])
 }
 
 // MarshalText encodes the hash as hex.
@@ -317,7 +319,7 @@ func (a *Address) SetBytes(b []byte) {
 // MarshalText returns the hex representation of a.
 func (a Address) MarshalText() ([]byte, error) {
 	return []byte(a.String()), nil
-	// return common.Bytes(a[:]).MarshalText()
+	// return hexutil.Bytes(a[:]).MarshalText()
 }
 
 // UnmarshalText parses a hash in hex syntax.
@@ -325,15 +327,31 @@ func (a *Address) UnmarshalText(input []byte) error {
 
 	input = []byte(FFFAddressDecode(string(input)))
 
-	return UnmarshalFixedText("Address", input, a[:])
+	return hexutil.UnmarshalFixedText("Address", input, a[:])
 }
 
 // UnmarshalJSON parses a hash in hex syntax.
+// func (a *Address) UnmarshalJSON(input []byte) error {
+// 	newS := string(input)
+// 	input = []byte(`"` + FFFAddressDecode(newS[1:len(newS)-1]) + `"`)
+// 	return hexutil.UnmarshalFixedJSON(addressT, input, a[:])
+// }
+
 func (a *Address) UnmarshalJSON(input []byte) error {
 	newS := string(input)
+	if !IsHexAddress(newS[1 : len(newS)-1]) {
+		return hexutil.UnmarshalFixedJSON(addressT, input, a[:])
+	}
 	input = []byte(`"` + FFFAddressDecode(newS[1:len(newS)-1]) + `"`)
-	return UnmarshalFixedJSON(addressT, input, a[:])
+	return hexutil.UnmarshalFixedJSON(addressT, input, a[:])
 }
+
+// if !IsHexFFFAddress(newS) {
+// 	s := HexToAddress(FFFAddressDecode(newS))
+// 	return hexutil.UnmarshalFixedJSON(addressT, input, a[:])
+// }
+
+// input = []byte(`"` + FFFAddressDecode(newS[1:len(newS)-1]) + `"`)
 
 // Scan implements Scanner for database/sql.
 func (a *Address) Scan(src interface{}) error {

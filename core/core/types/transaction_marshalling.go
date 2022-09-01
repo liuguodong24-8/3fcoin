@@ -22,26 +22,27 @@ import (
 	"math/big"
 
 	"github.com/fff-chain/3f-chain/core/common"
+	"github.com/fff-chain/3f-chain/core/common/hexutil"
 )
 
 // txJSON is the JSON representation of transactions.
 type txJSON struct {
-	Type common.Uint64 `json:"type"`
+	Type hexutil.Uint64 `json:"type"`
 
 	// Common transaction fields:
-	Nonce    *common.Uint64  `json:"nonce"`
-	GasPrice *common.Big     `json:"gasPrice"`
-	Gas      *common.Uint64  `json:"gas"`
-	Value    *common.Big     `json:"value"`
-	Data     *common.Bytes   `json:"input"`
-	V        *common.Big     `json:"v"`
-	R        *common.Big     `json:"r"`
-	S        *common.Big     `json:"s"`
+	Nonce    *hexutil.Uint64 `json:"nonce"`
+	GasPrice *hexutil.Big    `json:"gasPrice"`
+	Gas      *hexutil.Uint64 `json:"gas"`
+	Value    *hexutil.Big    `json:"value"`
+	Data     *hexutil.Bytes  `json:"input"`
+	V        *hexutil.Big    `json:"v"`
+	R        *hexutil.Big    `json:"r"`
+	S        *hexutil.Big    `json:"s"`
 	To       *common.Address `json:"to"`
 
 	// Access list transaction fields:
-	ChainID    *common.Big `json:"chainId,omitempty"`
-	AccessList *AccessList `json:"accessList,omitempty"`
+	ChainID    *hexutil.Big `json:"chainId,omitempty"`
+	AccessList *AccessList  `json:"accessList,omitempty"`
 
 	// Only used for encoding:
 	Hash common.Hash `json:"hash"`
@@ -52,32 +53,32 @@ func (t *Transaction) MarshalJSON() ([]byte, error) {
 	var enc txJSON
 	// These are set for all tx types.
 	enc.Hash = t.Hash()
-	enc.Type = common.Uint64(t.Type())
+	enc.Type = hexutil.Uint64(t.Type())
 
 	// Other fields are set conditionally depending on tx type.
 	switch tx := t.inner.(type) {
 	case *LegacyTx:
-		enc.Nonce = (*common.Uint64)(&tx.Nonce)
-		enc.Gas = (*common.Uint64)(&tx.Gas)
-		enc.GasPrice = (*common.Big)(tx.GasPrice)
-		enc.Value = (*common.Big)(tx.Value)
-		enc.Data = (*common.Bytes)(&tx.Data)
+		enc.Nonce = (*hexutil.Uint64)(&tx.Nonce)
+		enc.Gas = (*hexutil.Uint64)(&tx.Gas)
+		enc.GasPrice = (*hexutil.Big)(tx.GasPrice)
+		enc.Value = (*hexutil.Big)(tx.Value)
+		enc.Data = (*hexutil.Bytes)(&tx.Data)
 		enc.To = t.To()
-		enc.V = (*common.Big)(tx.V)
-		enc.R = (*common.Big)(tx.R)
-		enc.S = (*common.Big)(tx.S)
+		enc.V = (*hexutil.Big)(tx.V)
+		enc.R = (*hexutil.Big)(tx.R)
+		enc.S = (*hexutil.Big)(tx.S)
 	case *AccessListTx:
-		enc.ChainID = (*common.Big)(tx.ChainID)
+		enc.ChainID = (*hexutil.Big)(tx.ChainID)
 		enc.AccessList = &tx.AccessList
-		enc.Nonce = (*common.Uint64)(&tx.Nonce)
-		enc.Gas = (*common.Uint64)(&tx.Gas)
-		enc.GasPrice = (*common.Big)(tx.GasPrice)
-		enc.Value = (*common.Big)(tx.Value)
-		enc.Data = (*common.Bytes)(&tx.Data)
+		enc.Nonce = (*hexutil.Uint64)(&tx.Nonce)
+		enc.Gas = (*hexutil.Uint64)(&tx.Gas)
+		enc.GasPrice = (*hexutil.Big)(tx.GasPrice)
+		enc.Value = (*hexutil.Big)(tx.Value)
+		enc.Data = (*hexutil.Bytes)(&tx.Data)
 		enc.To = t.To()
-		enc.V = (*common.Big)(tx.V)
-		enc.R = (*common.Big)(tx.R)
-		enc.S = (*common.Big)(tx.S)
+		enc.V = (*hexutil.Big)(tx.V)
+		enc.R = (*hexutil.Big)(tx.R)
+		enc.S = (*hexutil.Big)(tx.S)
 	}
 	return json.Marshal(&enc)
 }

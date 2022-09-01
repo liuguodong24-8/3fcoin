@@ -30,7 +30,7 @@ import (
 
 	"github.com/fff-chain/3f-chain/core/accounts"
 	"github.com/fff-chain/3f-chain/core/common"
-
+	"github.com/fff-chain/3f-chain/core/common/hexutil"
 	"github.com/fff-chain/3f-chain/core/core/types"
 	"github.com/fff-chain/3f-chain/core/crypto"
 	"github.com/fff-chain/3f-chain/core/log"
@@ -506,7 +506,7 @@ func (w *ledgerDriver) ledgerExchange(opcode ledgerOpcode, p1 ledgerParam1, p2 l
 			apdu = nil
 		}
 		// Send over to the device
-		w.log.Trace("Data chunk sent to the Ledger", "chunk", common.Bytes(chunk))
+		w.log.Trace("Data chunk sent to the Ledger", "chunk", hexutil.Bytes(chunk))
 		if _, err := w.device.Write(chunk); err != nil {
 			return nil, err
 		}
@@ -519,7 +519,7 @@ func (w *ledgerDriver) ledgerExchange(opcode ledgerOpcode, p1 ledgerParam1, p2 l
 		if _, err := io.ReadFull(w.device, chunk); err != nil {
 			return nil, err
 		}
-		w.log.Trace("Data chunk received from the Ledger", "chunk", common.Bytes(chunk))
+		w.log.Trace("Data chunk received from the Ledger", "chunk", hexutil.Bytes(chunk))
 
 		// Make sure the transport header matches
 		if chunk[0] != 0x01 || chunk[1] != 0x01 || chunk[2] != 0x05 {

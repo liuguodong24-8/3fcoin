@@ -21,20 +21,20 @@ import (
 	"testing"
 
 	"github.com/fff-chain/3f-chain/core/common"
-
+	"github.com/fff-chain/3f-chain/core/common/hexutil"
 	"github.com/fff-chain/3f-chain/core/signer/core"
 )
 
 func mixAddr(a string) (*common.MixedcaseAddress, error) {
 	return common.NewMixedcaseAddressFromString(a)
 }
-func toHexBig(h string) common.Big {
+func toHexBig(h string) hexutil.Big {
 	b := big.NewInt(0).SetBytes(common.FromHex(h))
-	return common.Big(*b)
+	return hexutil.Big(*b)
 }
-func toHexUint(h string) common.Uint64 {
+func toHexUint(h string) hexutil.Uint64 {
 	b := big.NewInt(0).SetBytes(common.FromHex(h))
-	return common.Uint64(b.Uint64())
+	return hexutil.Uint64(b.Uint64())
 }
 func dummyTxArgs(t txtestcase) *core.SendTxArgs {
 	to, _ := mixAddr(t.to)
@@ -44,14 +44,14 @@ func dummyTxArgs(t txtestcase) *core.SendTxArgs {
 	gasPrice := toHexBig(t.gp)
 	value := toHexBig(t.value)
 	var (
-		data, input *common.Bytes
+		data, input *hexutil.Bytes
 	)
 	if t.d != "" {
-		a := common.Bytes(common.FromHex(t.d))
+		a := hexutil.Bytes(common.FromHex(t.d))
 		data = &a
 	}
 	if t.i != "" {
-		a := common.Bytes(common.FromHex(t.i))
+		a := hexutil.Bytes(common.FromHex(t.i))
 		input = &a
 
 	}

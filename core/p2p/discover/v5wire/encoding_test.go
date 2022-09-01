@@ -31,7 +31,7 @@ import (
 	"testing"
 
 	"github.com/davecgh/go-spew/spew"
-	"github.com/fff-chain/3f-chain/core/common"
+	"github.com/fff-chain/3f-chain/core/common/hexutil"
 	"github.com/fff-chain/3f-chain/core/common/mclock"
 	"github.com/fff-chain/3f-chain/core/crypto"
 	"github.com/fff-chain/3f-chain/core/p2p/enode"
@@ -288,8 +288,8 @@ func TestTestVectorsV5(t *testing.T) {
 		idB     = enode.PubkeyToIDV4(&testKeyB.PublicKey)
 		addr    = "127.0.0.1"
 		session = &session{
-			writeKey: common.MustDecode("0x00000000000000000000000000000000"),
-			readKey:  common.MustDecode("0x01010101010101010101010101010101"),
+			writeKey: hexutil.MustDecode("0x00000000000000000000000000000000"),
+			readKey:  hexutil.MustDecode("0x01010101010101010101010101010101"),
 		}
 		challenge0A, challenge1A, challenge0B Whoareyou
 	)
