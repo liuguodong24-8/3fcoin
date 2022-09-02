@@ -21,8 +21,8 @@ import (
 	"bytes"
 	"encoding/binary"
 
-	"github.com/fff-chain/3f-chain/core/common"
-	"github.com/fff-chain/3f-chain/core/metrics"
+	"github.com/liuguodong24-8/3fcoin/core/common"
+	"github.com/liuguodong24-8/3fcoin/core/metrics"
 )
 
 // The fields below define the low level database schema prefixing.

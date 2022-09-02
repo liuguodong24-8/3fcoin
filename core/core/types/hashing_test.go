@@ -1,4 +1,4 @@
-// Copyright 2021 The go-ethereum Authors
+﻿// Copyright 2021 The go-ethereum Authors
 // This file is part of the go-ethereum library.
 //
 // The go-ethereum library is free software: you can redistribute it and/or modify
@@ -24,12 +24,12 @@ import (
 	mrand "math/rand"
 	"testing"
 
-	"github.com/fff-chain/3f-chain/core/common"
-	"github.com/fff-chain/3f-chain/core/common/hexutil"
-	"github.com/fff-chain/3f-chain/core/core/types"
-	"github.com/fff-chain/3f-chain/core/crypto"
-	"github.com/fff-chain/3f-chain/core/rlp"
-	"github.com/fff-chain/3f-chain/core/trie"
+	"github.com/liuguodong24-8/3fcoin/core/common"
+	"github.com/liuguodong24-8/3fcoin/core/common/hexutil"
+	"github.com/liuguodong24-8/3fcoin/core/core/types"
+	"github.com/liuguodong24-8/3fcoin/core/crypto"
+	"github.com/liuguodong24-8/3fcoin/core/rlp"
+	"github.com/liuguodong24-8/3fcoin/core/trie"
 )
 
 func TestDeriveSha(t *testing.T) {

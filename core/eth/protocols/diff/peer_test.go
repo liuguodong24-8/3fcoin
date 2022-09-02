@@ -22,8 +22,8 @@ package diff
 import (
 	"crypto/rand"
 
-	"github.com/fff-chain/3f-chain/core/p2p"
-	"github.com/fff-chain/3f-chain/core/p2p/enode"
+	"github.com/liuguodong24-8/3fcoin/core/p2p"
+	"github.com/liuguodong24-8/3fcoin/core/p2p/enode"
 )
 
 // testPeer is a simulated peer to allow testing direct network calls.

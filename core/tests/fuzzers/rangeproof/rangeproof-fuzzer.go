@@ -23,9 +23,9 @@ import (
 	"io"
 	"sort"
 
-	"github.com/fff-chain/3f-chain/core/common"
-	"github.com/fff-chain/3f-chain/core/ethdb/memorydb"
-	"github.com/fff-chain/3f-chain/core/trie"
+	"github.com/liuguodong24-8/3fcoin/core/common"
+	"github.com/liuguodong24-8/3fcoin/core/ethdb/memorydb"
+	"github.com/liuguodong24-8/3fcoin/core/trie"
 )
 
 type kv struct {

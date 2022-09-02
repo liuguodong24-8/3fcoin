@@ -20,10 +20,10 @@ import (
 	"context"
 	"sync"
 
-	ethereum "github.com/fff-chain/3f-chain"
-	"github.com/fff-chain/3f-chain/core/common/gopool"
-	"github.com/fff-chain/3f-chain/core/event"
-	"github.com/fff-chain/3f-chain/core/rpc"
+	ethereum "github.com/liuguodong24-8/3fcoin"
+	"github.com/liuguodong24-8/3fcoin/core/common/gopool"
+	"github.com/liuguodong24-8/3fcoin/core/event"
+	"github.com/liuguodong24-8/3fcoin/core/rpc"
 )
 
 // PublicDownloaderAPI provides an API which gives information about the current synchronisation status.

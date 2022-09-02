@@ -1,4 +1,4 @@
-// Copyright 2016 The go-ethereum Authors
+﻿// Copyright 2016 The go-ethereum Authors
 // This file is part of the go-ethereum library.
 //
 // The go-ethereum library is free software: you can redistribute it and/or modify
@@ -19,7 +19,7 @@ package miner
 import (
 	"testing"
 
-	"github.com/fff-chain/3f-chain/core/core/types"
+	"github.com/liuguodong24-8/3fcoin/core/core/types"
 )
 
 // noopChainRetriever is an implementation of headerRetriever that always

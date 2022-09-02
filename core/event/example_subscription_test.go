@@ -19,7 +19,7 @@ package event_test
 import (
 	"fmt"
 
-	"github.com/fff-chain/3f-chain/core/event"
+	"github.com/liuguodong24-8/3fcoin/core/event"
 )
 
 func ExampleNewSubscription() {

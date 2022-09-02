@@ -22,7 +22,7 @@ import (
 	"errors"
 	"math/big"
 
-	"github.com/fff-chain/3f-chain/core/common"
+	"github.com/liuguodong24-8/3fcoin/core/common"
 )
 
 // A BigInt represents a signed multi-precision integer.

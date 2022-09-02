@@ -19,9 +19,9 @@ package eth
 import (
 	"fmt"
 
-	"github.com/fff-chain/3f-chain/core/core"
-	"github.com/fff-chain/3f-chain/core/eth/protocols/diff"
-	"github.com/fff-chain/3f-chain/core/p2p/enode"
+	"github.com/liuguodong24-8/3fcoin/core/core"
+	"github.com/liuguodong24-8/3fcoin/core/eth/protocols/diff"
+	"github.com/liuguodong24-8/3fcoin/core/p2p/enode"
 )
 
 // diffHandler implements the diff.Backend interface to handle the various network

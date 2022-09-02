@@ -19,8 +19,8 @@ package les
 import (
 	"time"
 
-	"github.com/fff-chain/3f-chain/core/common/bitutil"
-	"github.com/fff-chain/3f-chain/core/light"
+	"github.com/liuguodong24-8/3fcoin/core/common/bitutil"
+	"github.com/liuguodong24-8/3fcoin/core/light"
 )
 
 const (

@@ -19,9 +19,9 @@ package simulations
 import (
 	"testing"
 
-	"github.com/fff-chain/3f-chain/core/node"
-	"github.com/fff-chain/3f-chain/core/p2p/enode"
-	"github.com/fff-chain/3f-chain/core/p2p/simulations/adapters"
+	"github.com/liuguodong24-8/3fcoin/core/node"
+	"github.com/liuguodong24-8/3fcoin/core/p2p/enode"
+	"github.com/liuguodong24-8/3fcoin/core/p2p/simulations/adapters"
 )
 
 func newTestNetwork(t *testing.T, nodeCount int) (*Network, []enode.ID) {

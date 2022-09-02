@@ -19,9 +19,9 @@ package main
 import (
 	"os"
 
-	"github.com/fff-chain/3f-chain/cmd/devp2p/internal/v4test"
-	"github.com/fff-chain/3f-chain/core/lib/utesting"
-	"github.com/fff-chain/3f-chain/core/log"
+	"github.com/liuguodong24-8/3fcoin/cmd/devp2p/internal/v4test"
+	"github.com/liuguodong24-8/3fcoin/core/lib/utesting"
+	"github.com/liuguodong24-8/3fcoin/core/log"
 	"gopkg.in/urfave/cli.v1"
 )
 

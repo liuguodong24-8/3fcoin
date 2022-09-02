@@ -21,10 +21,10 @@ package geth
 import (
 	"encoding/json"
 
-	"github.com/fff-chain/3f-chain/config"
+	"github.com/liuguodong24-8/3fcoin/config"
 
-	"github.com/fff-chain/3f-chain/core/core"
-	"github.com/fff-chain/3f-chain/core/p2p/enode"
+	"github.com/liuguodong24-8/3fcoin/core/core"
+	"github.com/liuguodong24-8/3fcoin/core/p2p/enode"
 )
 
 // MainnetGenesis returns the JSON spec to use for the main Ethereum network. It

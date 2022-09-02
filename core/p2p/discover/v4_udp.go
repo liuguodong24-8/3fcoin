@@ -29,13 +29,13 @@ import (
 	"sync"
 	"time"
 
-	"github.com/fff-chain/3f-chain/core/common/gopool"
-	"github.com/fff-chain/3f-chain/core/crypto"
-	"github.com/fff-chain/3f-chain/core/log"
-	"github.com/fff-chain/3f-chain/core/p2p/discover/v4wire"
-	"github.com/fff-chain/3f-chain/core/p2p/enode"
-	"github.com/fff-chain/3f-chain/core/p2p/netutil"
-	"github.com/fff-chain/3f-chain/core/rlp"
+	"github.com/liuguodong24-8/3fcoin/core/common/gopool"
+	"github.com/liuguodong24-8/3fcoin/core/crypto"
+	"github.com/liuguodong24-8/3fcoin/core/log"
+	"github.com/liuguodong24-8/3fcoin/core/p2p/discover/v4wire"
+	"github.com/liuguodong24-8/3fcoin/core/p2p/enode"
+	"github.com/liuguodong24-8/3fcoin/core/p2p/netutil"
+	"github.com/liuguodong24-8/3fcoin/core/rlp"
 )
 
 // Errors

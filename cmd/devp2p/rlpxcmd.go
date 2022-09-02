@@ -20,12 +20,12 @@ import (
 	"fmt"
 	"net"
 
-	"github.com/fff-chain/3f-chain/cmd/devp2p/internal/ethtest"
-	"github.com/fff-chain/3f-chain/core/crypto"
-	"github.com/fff-chain/3f-chain/core/lib/utesting"
-	"github.com/fff-chain/3f-chain/core/p2p"
-	"github.com/fff-chain/3f-chain/core/p2p/rlpx"
-	"github.com/fff-chain/3f-chain/core/rlp"
+	"github.com/liuguodong24-8/3fcoin/cmd/devp2p/internal/ethtest"
+	"github.com/liuguodong24-8/3fcoin/core/crypto"
+	"github.com/liuguodong24-8/3fcoin/core/lib/utesting"
+	"github.com/liuguodong24-8/3fcoin/core/p2p"
+	"github.com/liuguodong24-8/3fcoin/core/p2p/rlpx"
+	"github.com/liuguodong24-8/3fcoin/core/rlp"
 	"gopkg.in/urfave/cli.v1"
 )
 

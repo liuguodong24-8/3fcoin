@@ -1,4 +1,4 @@
-// Copyright 2019 The go-ethereum Authors
+﻿// Copyright 2019 The go-ethereum Authors
 // This file is part of the go-ethereum library.
 //
 // The go-ethereum library is free software: you can redistribute it and/or modify
@@ -22,12 +22,12 @@ import (
 	"testing"
 	"time"
 
-	"github.com/fff-chain/3f-chain/core/accounts/abi/bind"
-	"github.com/fff-chain/3f-chain/core/core"
-	"github.com/fff-chain/3f-chain/core/core/types"
-	"github.com/fff-chain/3f-chain/core/crypto"
-	"github.com/fff-chain/3f-chain/core/light"
-	"github.com/fff-chain/3f-chain/core/params"
+	"github.com/liuguodong24-8/3fcoin/core/accounts/abi/bind"
+	"github.com/liuguodong24-8/3fcoin/core/core"
+	"github.com/liuguodong24-8/3fcoin/core/core/types"
+	"github.com/liuguodong24-8/3fcoin/core/crypto"
+	"github.com/liuguodong24-8/3fcoin/core/light"
+	"github.com/liuguodong24-8/3fcoin/core/params"
 )
 
 // Test light syncing which will download all headers from genesis.
@@ -196,7 +196,7 @@ func testMissOracleBackend(t *testing.T, hasCheckpoint bool, protocol int) {
 	// that user wants to unlock something which blocks the oracle backend
 	// initialisation. But at the same time syncing starts.
 	//
-	// See https://github.com/fff-chain/3f-chain/core/issues/20097 for more detail.
+	// See https://github.com/liuguodong24-8/3fcoin/core/issues/20097 for more detail.
 	//
 	// In this case, client should run light sync or legacy checkpoint sync
 	// if hardcoded checkpoint is configured.

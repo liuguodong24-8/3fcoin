@@ -16,7 +16,7 @@
 
 package core
 
-import "github.com/fff-chain/3f-chain/core/common"
+import "github.com/liuguodong24-8/3fcoin/core/common"
 
 // BadHashes represent a set of manually tracked bad hashes (usually hard forks)
 var BadHashes = map[common.Hash]bool{

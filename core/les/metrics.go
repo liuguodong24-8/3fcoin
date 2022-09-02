@@ -17,8 +17,8 @@
 package les
 
 import (
-	"github.com/fff-chain/3f-chain/core/metrics"
-	"github.com/fff-chain/3f-chain/core/p2p"
+	"github.com/liuguodong24-8/3fcoin/core/metrics"
+	"github.com/liuguodong24-8/3fcoin/core/p2p"
 )
 
 var (

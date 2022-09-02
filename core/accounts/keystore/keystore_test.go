@@ -1,4 +1,4 @@
-// Copyright 2017 The go-ethereum Authors
+﻿// Copyright 2017 The go-ethereum Authors
 // This file is part of the go-ethereum library.
 //
 // The go-ethereum library is free software: you can redistribute it and/or modify
@@ -28,10 +28,10 @@ import (
 	"testing"
 	"time"
 
-	"github.com/fff-chain/3f-chain/core/accounts"
-	"github.com/fff-chain/3f-chain/core/common"
-	"github.com/fff-chain/3f-chain/core/crypto"
-	"github.com/fff-chain/3f-chain/core/event"
+	"github.com/liuguodong24-8/3fcoin/core/accounts"
+	"github.com/liuguodong24-8/3fcoin/core/common"
+	"github.com/liuguodong24-8/3fcoin/core/crypto"
+	"github.com/liuguodong24-8/3fcoin/core/event"
 )
 
 var testSigData = make([]byte, 32)

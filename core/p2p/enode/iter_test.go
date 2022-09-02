@@ -23,7 +23,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/fff-chain/3f-chain/core/p2p/enr"
+	"github.com/liuguodong24-8/3fcoin/core/p2p/enr"
 )
 
 func TestReadNodes(t *testing.T) {

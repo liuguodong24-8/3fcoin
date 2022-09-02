@@ -23,12 +23,12 @@ import (
 	"testing"
 
 	"github.com/VictoriaMetrics/fastcache"
-	"github.com/fff-chain/3f-chain/core/common"
-	"github.com/fff-chain/3f-chain/core/core/rawdb"
-	"github.com/fff-chain/3f-chain/core/ethdb"
-	"github.com/fff-chain/3f-chain/core/ethdb/leveldb"
-	"github.com/fff-chain/3f-chain/core/ethdb/memorydb"
-	"github.com/fff-chain/3f-chain/core/rlp"
+	"github.com/liuguodong24-8/3fcoin/core/common"
+	"github.com/liuguodong24-8/3fcoin/core/core/rawdb"
+	"github.com/liuguodong24-8/3fcoin/core/ethdb"
+	"github.com/liuguodong24-8/3fcoin/core/ethdb/leveldb"
+	"github.com/liuguodong24-8/3fcoin/core/ethdb/memorydb"
+	"github.com/liuguodong24-8/3fcoin/core/rlp"
 )
 
 // reverse reverses the contents of a byte slice. It's used to update random accs

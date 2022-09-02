@@ -21,7 +21,7 @@ import (
 	"math/big"
 	"sort"
 
-	"github.com/fff-chain/3f-chain/core/params"
+	"github.com/liuguodong24-8/3fcoin/core/params"
 )
 
 // Forks table defines supported forks and their chain config.

@@ -11,8 +11,8 @@ import (
 	"testing"
 	"time"
 
-	"github.com/fff-chain/3f-chain/core/p2p"
-	"github.com/fff-chain/3f-chain/core/rpc"
+	"github.com/liuguodong24-8/3fcoin/core/p2p"
+	"github.com/liuguodong24-8/3fcoin/core/rpc"
 )
 
 type gethrpc struct {

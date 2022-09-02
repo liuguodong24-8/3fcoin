@@ -1,4 +1,4 @@
-// Copyright 2020 The go-ethereum Authors
+﻿// Copyright 2020 The go-ethereum Authors
 // This file is part of the go-ethereum library.
 //
 // The go-ethereum library is free software: you can redistribute it and/or modify
@@ -21,17 +21,17 @@ import (
 	"testing"
 	"time"
 
-	"github.com/fff-chain/3f-chain/core/common"
-	"github.com/fff-chain/3f-chain/core/consensus/clique"
-	"github.com/fff-chain/3f-chain/core/core"
-	"github.com/fff-chain/3f-chain/core/core/rawdb"
-	"github.com/fff-chain/3f-chain/core/core/state"
-	"github.com/fff-chain/3f-chain/core/core/types"
-	"github.com/fff-chain/3f-chain/core/core/vm"
-	"github.com/fff-chain/3f-chain/core/eth/downloader"
-	"github.com/fff-chain/3f-chain/core/ethdb/memorydb"
-	"github.com/fff-chain/3f-chain/core/event"
-	"github.com/fff-chain/3f-chain/core/trie"
+	"github.com/liuguodong24-8/3fcoin/core/common"
+	"github.com/liuguodong24-8/3fcoin/core/consensus/clique"
+	"github.com/liuguodong24-8/3fcoin/core/core"
+	"github.com/liuguodong24-8/3fcoin/core/core/rawdb"
+	"github.com/liuguodong24-8/3fcoin/core/core/state"
+	"github.com/liuguodong24-8/3fcoin/core/core/types"
+	"github.com/liuguodong24-8/3fcoin/core/core/vm"
+	"github.com/liuguodong24-8/3fcoin/core/eth/downloader"
+	"github.com/liuguodong24-8/3fcoin/core/ethdb/memorydb"
+	"github.com/liuguodong24-8/3fcoin/core/event"
+	"github.com/liuguodong24-8/3fcoin/core/trie"
 )
 
 type mockBackend struct {

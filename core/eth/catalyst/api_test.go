@@ -20,15 +20,15 @@ import (
 	"math/big"
 	"testing"
 
-	"github.com/fff-chain/3f-chain/core/consensus/ethash"
-	"github.com/fff-chain/3f-chain/core/core"
-	"github.com/fff-chain/3f-chain/core/core/rawdb"
-	"github.com/fff-chain/3f-chain/core/core/types"
-	"github.com/fff-chain/3f-chain/core/crypto"
-	"github.com/fff-chain/3f-chain/core/eth"
-	"github.com/fff-chain/3f-chain/core/eth/ethconfig"
-	"github.com/fff-chain/3f-chain/core/node"
-	"github.com/fff-chain/3f-chain/core/params"
+	"github.com/liuguodong24-8/3fcoin/core/consensus/ethash"
+	"github.com/liuguodong24-8/3fcoin/core/core"
+	"github.com/liuguodong24-8/3fcoin/core/core/rawdb"
+	"github.com/liuguodong24-8/3fcoin/core/core/types"
+	"github.com/liuguodong24-8/3fcoin/core/crypto"
+	"github.com/liuguodong24-8/3fcoin/core/eth"
+	"github.com/liuguodong24-8/3fcoin/core/eth/ethconfig"
+	"github.com/liuguodong24-8/3fcoin/core/node"
+	"github.com/liuguodong24-8/3fcoin/core/params"
 )
 
 var (

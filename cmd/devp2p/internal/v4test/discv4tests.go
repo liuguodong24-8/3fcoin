@@ -24,9 +24,9 @@ import (
 	"reflect"
 	"time"
 
-	"github.com/fff-chain/3f-chain/core/crypto"
-	"github.com/fff-chain/3f-chain/core/lib/utesting"
-	"github.com/fff-chain/3f-chain/core/p2p/discover/v4wire"
+	"github.com/liuguodong24-8/3fcoin/core/crypto"
+	"github.com/liuguodong24-8/3fcoin/core/lib/utesting"
+	"github.com/liuguodong24-8/3fcoin/core/p2p/discover/v4wire"
 )
 
 const (

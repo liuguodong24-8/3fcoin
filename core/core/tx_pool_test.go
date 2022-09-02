@@ -1,4 +1,4 @@
-// Copyright 2015 The go-ethereum Authors
+﻿// Copyright 2015 The go-ethereum Authors
 // This file is part of the go-ethereum library.
 //
 // The go-ethereum library is free software: you can redistribute it and/or modify
@@ -27,14 +27,14 @@ import (
 	"testing"
 	"time"
 
-	"github.com/fff-chain/3f-chain/core/common"
-	"github.com/fff-chain/3f-chain/core/core/rawdb"
-	"github.com/fff-chain/3f-chain/core/core/state"
-	"github.com/fff-chain/3f-chain/core/core/types"
-	"github.com/fff-chain/3f-chain/core/crypto"
-	"github.com/fff-chain/3f-chain/core/event"
-	"github.com/fff-chain/3f-chain/core/params"
-	"github.com/fff-chain/3f-chain/core/trie"
+	"github.com/liuguodong24-8/3fcoin/core/common"
+	"github.com/liuguodong24-8/3fcoin/core/core/rawdb"
+	"github.com/liuguodong24-8/3fcoin/core/core/state"
+	"github.com/liuguodong24-8/3fcoin/core/core/types"
+	"github.com/liuguodong24-8/3fcoin/core/crypto"
+	"github.com/liuguodong24-8/3fcoin/core/event"
+	"github.com/liuguodong24-8/3fcoin/core/params"
+	"github.com/liuguodong24-8/3fcoin/core/trie"
 )
 
 // testTxPoolConfig is a transaction pool configuration without stateful disk

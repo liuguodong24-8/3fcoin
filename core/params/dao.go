@@ -19,7 +19,7 @@ package params
 import (
 	"math/big"
 
-	"github.com/fff-chain/3f-chain/core/common"
+	"github.com/liuguodong24-8/3fcoin/core/common"
 )
 
 // DAOForkBlockExtra is the block header extra-data field to set for the DAO fork

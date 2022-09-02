@@ -42,7 +42,7 @@ import (
 	"fmt"
 	"hash"
 
-	ethcrypto "github.com/fff-chain/3f-chain/core/crypto"
+	ethcrypto "github.com/liuguodong24-8/3fcoin/core/crypto"
 )
 
 var (

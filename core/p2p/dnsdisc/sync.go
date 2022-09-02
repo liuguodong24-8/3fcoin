@@ -21,8 +21,8 @@ import (
 	"math/rand"
 	"time"
 
-	"github.com/fff-chain/3f-chain/core/common/mclock"
-	"github.com/fff-chain/3f-chain/core/p2p/enode"
+	"github.com/liuguodong24-8/3fcoin/core/common/mclock"
+	"github.com/liuguodong24-8/3fcoin/core/p2p/enode"
 )
 
 // This is the number of consecutive leaf requests that may fail before

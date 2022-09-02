@@ -19,7 +19,7 @@ package tests
 import (
 	"testing"
 
-	"github.com/fff-chain/3f-chain/core/core/vm"
+	"github.com/liuguodong24-8/3fcoin/core/core/vm"
 )
 
 func TestVM(t *testing.T) {

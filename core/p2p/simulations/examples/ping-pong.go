@@ -25,13 +25,13 @@ import (
 	"sync/atomic"
 	"time"
 
-	"github.com/fff-chain/3f-chain/core/common/gopool"
-	"github.com/fff-chain/3f-chain/core/log"
-	"github.com/fff-chain/3f-chain/core/node"
-	"github.com/fff-chain/3f-chain/core/p2p"
-	"github.com/fff-chain/3f-chain/core/p2p/enode"
-	"github.com/fff-chain/3f-chain/core/p2p/simulations"
-	"github.com/fff-chain/3f-chain/core/p2p/simulations/adapters"
+	"github.com/liuguodong24-8/3fcoin/core/common/gopool"
+	"github.com/liuguodong24-8/3fcoin/core/log"
+	"github.com/liuguodong24-8/3fcoin/core/node"
+	"github.com/liuguodong24-8/3fcoin/core/p2p"
+	"github.com/liuguodong24-8/3fcoin/core/p2p/enode"
+	"github.com/liuguodong24-8/3fcoin/core/p2p/simulations"
+	"github.com/liuguodong24-8/3fcoin/core/p2p/simulations/adapters"
 )
 
 var adapterType = flag.String("adapter", "sim", `node adapter to use (one of "sim", "exec" or "docker")`)

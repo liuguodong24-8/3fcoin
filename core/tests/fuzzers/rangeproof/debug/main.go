@@ -21,7 +21,7 @@ import (
 	"io/ioutil"
 	"os"
 
-	"github.com/fff-chain/3f-chain/core/tests/fuzzers/rangeproof"
+	"github.com/liuguodong24-8/3fcoin/core/tests/fuzzers/rangeproof"
 )
 
 func main() {

@@ -22,14 +22,14 @@ import (
 	"sync/atomic"
 	"time"
 
-	"github.com/fff-chain/3f-chain/core/common"
-	"github.com/fff-chain/3f-chain/core/common/gopool"
-	"github.com/fff-chain/3f-chain/core/core/rawdb"
-	"github.com/fff-chain/3f-chain/core/core/types"
-	"github.com/fff-chain/3f-chain/core/eth/downloader"
-	"github.com/fff-chain/3f-chain/core/eth/protocols/eth"
-	"github.com/fff-chain/3f-chain/core/log"
-	"github.com/fff-chain/3f-chain/core/p2p/enode"
+	"github.com/liuguodong24-8/3fcoin/core/common"
+	"github.com/liuguodong24-8/3fcoin/core/common/gopool"
+	"github.com/liuguodong24-8/3fcoin/core/core/rawdb"
+	"github.com/liuguodong24-8/3fcoin/core/core/types"
+	"github.com/liuguodong24-8/3fcoin/core/eth/downloader"
+	"github.com/liuguodong24-8/3fcoin/core/eth/protocols/eth"
+	"github.com/liuguodong24-8/3fcoin/core/log"
+	"github.com/liuguodong24-8/3fcoin/core/p2p/enode"
 )
 
 const (

@@ -19,8 +19,8 @@ package ethash
 import (
 	"math/big"
 
-	"github.com/fff-chain/3f-chain/core/core/types"
 	"github.com/holiman/uint256"
+	"github.com/liuguodong24-8/3fcoin/core/core/types"
 )
 
 const (

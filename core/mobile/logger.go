@@ -19,7 +19,7 @@ package geth
 import (
 	"os"
 
-	"github.com/fff-chain/3f-chain/core/log"
+	"github.com/liuguodong24-8/3fcoin/core/log"
 )
 
 // SetVerbosity sets the global verbosity level (between 0 and 6 - see logger/verbosity.go).

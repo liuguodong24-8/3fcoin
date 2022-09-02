@@ -19,7 +19,7 @@ package state
 import (
 	"math/big"
 
-	"github.com/fff-chain/3f-chain/core/common"
+	"github.com/liuguodong24-8/3fcoin/core/common"
 )
 
 // journalEntry is a modification entry in the state change journal that can be

@@ -1,4 +1,4 @@
-// Copyright 2016 The go-ethereum Authors
+﻿// Copyright 2016 The go-ethereum Authors
 // This file is part of the go-ethereum library.
 //
 // The go-ethereum library is free software: you can redistribute it and/or modify
@@ -207,7 +207,7 @@ func TestAndroid(t *testing.T) {
 		}
 	}
 	// Generate the mobile bindings for Geth and add the tester class
-	gobind := exec.Command("gomobile", "bind", "-javapkg", "org.ethereum", "github.com/fff-chain/3f-chain/core/mobile")
+	gobind := exec.Command("gomobile", "bind", "-javapkg", "org.ethereum", "github.com/liuguodong24-8/3fcoin/core/mobile")
 	if output, err := gobind.CombinedOutput(); err != nil {
 		t.Logf("%s", output)
 		t.Fatalf("failed to run gomobile bind: %v", err)

@@ -19,12 +19,12 @@ package ethtest
 import (
 	"time"
 
-	"github.com/fff-chain/3f-chain/core/common"
-	"github.com/fff-chain/3f-chain/core/core/types"
-	"github.com/fff-chain/3f-chain/core/crypto"
-	"github.com/fff-chain/3f-chain/core/eth/protocols/eth"
-	"github.com/fff-chain/3f-chain/core/lib/utesting"
-	"github.com/fff-chain/3f-chain/core/p2p"
+	"github.com/liuguodong24-8/3fcoin/core/common"
+	"github.com/liuguodong24-8/3fcoin/core/core/types"
+	"github.com/liuguodong24-8/3fcoin/core/crypto"
+	"github.com/liuguodong24-8/3fcoin/core/eth/protocols/eth"
+	"github.com/liuguodong24-8/3fcoin/core/lib/utesting"
+	"github.com/liuguodong24-8/3fcoin/core/p2p"
 )
 
 // Is_66 checks if the node supports the eth66 protocol version,

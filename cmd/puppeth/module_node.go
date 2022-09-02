@@ -26,8 +26,8 @@ import (
 	"strings"
 	"text/template"
 
-	"github.com/fff-chain/3f-chain/core/common"
-	"github.com/fff-chain/3f-chain/core/log"
+	"github.com/liuguodong24-8/3fcoin/core/common"
+	"github.com/liuguodong24-8/3fcoin/core/log"
 )
 
 // nodeDockerfile is the Dockerfile required to run an Ethereum node.

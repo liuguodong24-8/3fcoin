@@ -40,7 +40,7 @@ import (
 	"io"
 	"sort"
 
-	"github.com/fff-chain/3f-chain/core/rlp"
+	"github.com/liuguodong24-8/3fcoin/core/rlp"
 )
 
 const SizeLimit = 300 // maximum encoded size of a node record in bytes

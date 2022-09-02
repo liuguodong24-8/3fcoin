@@ -16,7 +16,7 @@
 
 package downloader
 
-import "github.com/fff-chain/3f-chain/core/core/types"
+import "github.com/liuguodong24-8/3fcoin/core/core/types"
 
 type DoneEvent struct {
 	Latest *types.Header

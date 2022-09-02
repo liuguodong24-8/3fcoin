@@ -25,13 +25,13 @@ import (
 	"sync"
 	"time"
 
-	ethereum "github.com/fff-chain/3f-chain"
-	"github.com/fff-chain/3f-chain/core/accounts"
-	"github.com/fff-chain/3f-chain/core/common"
-	"github.com/fff-chain/3f-chain/core/core/types"
-	"github.com/fff-chain/3f-chain/core/crypto"
-	"github.com/fff-chain/3f-chain/core/log"
 	"github.com/karalabe/usb"
+	ethereum "github.com/liuguodong24-8/3fcoin"
+	"github.com/liuguodong24-8/3fcoin/core/accounts"
+	"github.com/liuguodong24-8/3fcoin/core/common"
+	"github.com/liuguodong24-8/3fcoin/core/core/types"
+	"github.com/liuguodong24-8/3fcoin/core/crypto"
+	"github.com/liuguodong24-8/3fcoin/core/log"
 )
 
 // Maximum time between wallet health checks to detect USB unplugs.

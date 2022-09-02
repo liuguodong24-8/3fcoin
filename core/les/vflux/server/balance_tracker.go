@@ -20,12 +20,12 @@ import (
 	"sync"
 	"time"
 
-	"github.com/fff-chain/3f-chain/core/common/mclock"
-	"github.com/fff-chain/3f-chain/core/ethdb"
-	"github.com/fff-chain/3f-chain/core/les/utils"
-	"github.com/fff-chain/3f-chain/core/p2p/enode"
-	"github.com/fff-chain/3f-chain/core/p2p/enr"
-	"github.com/fff-chain/3f-chain/core/p2p/nodestate"
+	"github.com/liuguodong24-8/3fcoin/core/common/mclock"
+	"github.com/liuguodong24-8/3fcoin/core/ethdb"
+	"github.com/liuguodong24-8/3fcoin/core/les/utils"
+	"github.com/liuguodong24-8/3fcoin/core/p2p/enode"
+	"github.com/liuguodong24-8/3fcoin/core/p2p/enr"
+	"github.com/liuguodong24-8/3fcoin/core/p2p/nodestate"
 )
 
 const (

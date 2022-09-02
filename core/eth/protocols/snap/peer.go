@@ -17,9 +17,9 @@
 package snap
 
 import (
-	"github.com/fff-chain/3f-chain/core/common"
-	"github.com/fff-chain/3f-chain/core/log"
-	"github.com/fff-chain/3f-chain/core/p2p"
+	"github.com/liuguodong24-8/3fcoin/core/common"
+	"github.com/liuguodong24-8/3fcoin/core/log"
+	"github.com/liuguodong24-8/3fcoin/core/p2p"
 )
 
 // Peer is a collection of relevant information we have about a `snap` peer.

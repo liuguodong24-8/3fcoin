@@ -41,11 +41,11 @@ import (
 	"sync"
 	"time"
 
-	"github.com/fff-chain/3f-chain/core/accounts"
-	"github.com/fff-chain/3f-chain/core/common"
-	"github.com/fff-chain/3f-chain/core/event"
-	"github.com/fff-chain/3f-chain/core/log"
 	pcsc "github.com/gballet/go-libpcsclite"
+	"github.com/liuguodong24-8/3fcoin/core/accounts"
+	"github.com/liuguodong24-8/3fcoin/core/common"
+	"github.com/liuguodong24-8/3fcoin/core/event"
+	"github.com/liuguodong24-8/3fcoin/core/log"
 )
 
 // Scheme is the URI prefix for smartcard wallets.

@@ -21,8 +21,8 @@ import (
 	"sync"
 	"time"
 
-	"github.com/fff-chain/3f-chain/core/common/mclock"
-	"github.com/fff-chain/3f-chain/core/les/utils"
+	"github.com/liuguodong24-8/3fcoin/core/common/mclock"
+	"github.com/liuguodong24-8/3fcoin/core/les/utils"
 )
 
 // requestDistributor implements a mechanism that distributes requests to

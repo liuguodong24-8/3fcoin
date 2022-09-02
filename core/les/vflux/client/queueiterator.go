@@ -19,8 +19,8 @@ package client
 import (
 	"sync"
 
-	"github.com/fff-chain/3f-chain/core/p2p/enode"
-	"github.com/fff-chain/3f-chain/core/p2p/nodestate"
+	"github.com/liuguodong24-8/3fcoin/core/p2p/enode"
+	"github.com/liuguodong24-8/3fcoin/core/p2p/nodestate"
 )
 
 // QueueIterator returns nodes from the specified selectable set in the same order as

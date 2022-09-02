@@ -20,7 +20,7 @@ import (
 	"math"
 	"math/rand"
 
-	"github.com/fff-chain/3f-chain/core/log"
+	"github.com/liuguodong24-8/3fcoin/core/log"
 )
 
 type (

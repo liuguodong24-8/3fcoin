@@ -1,4 +1,4 @@
-// Copyright 2015 The go-ethereum Authors
+﻿// Copyright 2015 The go-ethereum Authors
 // This file is part of the go-ethereum library.
 //
 // The go-ethereum library is free software: you can redistribute it and/or modify
@@ -26,15 +26,15 @@ import (
 	"testing"
 	"time"
 
-	"github.com/fff-chain/3f-chain/core/common"
-	"github.com/fff-chain/3f-chain/core/consensus/ethash"
-	"github.com/fff-chain/3f-chain/core/console/prompt"
-	"github.com/fff-chain/3f-chain/core/core"
-	"github.com/fff-chain/3f-chain/core/eth"
-	"github.com/fff-chain/3f-chain/core/eth/ethconfig"
-	"github.com/fff-chain/3f-chain/core/lib/jsre"
-	"github.com/fff-chain/3f-chain/core/miner"
-	"github.com/fff-chain/3f-chain/core/node"
+	"github.com/liuguodong24-8/3fcoin/core/common"
+	"github.com/liuguodong24-8/3fcoin/core/consensus/ethash"
+	"github.com/liuguodong24-8/3fcoin/core/console/prompt"
+	"github.com/liuguodong24-8/3fcoin/core/core"
+	"github.com/liuguodong24-8/3fcoin/core/eth"
+	"github.com/liuguodong24-8/3fcoin/core/eth/ethconfig"
+	"github.com/liuguodong24-8/3fcoin/core/lib/jsre"
+	"github.com/liuguodong24-8/3fcoin/core/miner"
+	"github.com/liuguodong24-8/3fcoin/core/node"
 )
 
 const (

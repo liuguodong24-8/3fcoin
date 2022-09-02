@@ -20,9 +20,9 @@ import (
 	"errors"
 	"fmt"
 
-	"github.com/fff-chain/3f-chain/core/common"
-	"github.com/fff-chain/3f-chain/core/core/state/snapshot"
-	"github.com/fff-chain/3f-chain/core/rlp"
+	"github.com/liuguodong24-8/3fcoin/core/common"
+	"github.com/liuguodong24-8/3fcoin/core/core/state/snapshot"
+	"github.com/liuguodong24-8/3fcoin/core/rlp"
 )
 
 // Constants to match up protocol versions and messages

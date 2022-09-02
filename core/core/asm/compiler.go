@@ -22,8 +22,8 @@ import (
 	"os"
 	"strings"
 
-	"github.com/fff-chain/3f-chain/core/common/math"
-	"github.com/fff-chain/3f-chain/core/core/vm"
+	"github.com/liuguodong24-8/3fcoin/core/common/math"
+	"github.com/liuguodong24-8/3fcoin/core/core/vm"
 )
 
 // Compiler contains information about the parsed source

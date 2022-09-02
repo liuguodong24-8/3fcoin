@@ -26,22 +26,22 @@ import (
 	"testing"
 	"unicode"
 
-	"github.com/fff-chain/3f-chain/core/common"
-	"github.com/fff-chain/3f-chain/core/common/hexutil"
-	"github.com/fff-chain/3f-chain/core/common/math"
-	"github.com/fff-chain/3f-chain/core/core"
-	"github.com/fff-chain/3f-chain/core/core/rawdb"
-	"github.com/fff-chain/3f-chain/core/core/types"
-	"github.com/fff-chain/3f-chain/core/core/vm"
-	"github.com/fff-chain/3f-chain/core/crypto"
-	"github.com/fff-chain/3f-chain/core/eth/tracers"
-	"github.com/fff-chain/3f-chain/core/params"
-	"github.com/fff-chain/3f-chain/core/rlp"
-	"github.com/fff-chain/3f-chain/core/tests"
+	"github.com/liuguodong24-8/3fcoin/core/common"
+	"github.com/liuguodong24-8/3fcoin/core/common/hexutil"
+	"github.com/liuguodong24-8/3fcoin/core/common/math"
+	"github.com/liuguodong24-8/3fcoin/core/core"
+	"github.com/liuguodong24-8/3fcoin/core/core/rawdb"
+	"github.com/liuguodong24-8/3fcoin/core/core/types"
+	"github.com/liuguodong24-8/3fcoin/core/core/vm"
+	"github.com/liuguodong24-8/3fcoin/core/crypto"
+	"github.com/liuguodong24-8/3fcoin/core/eth/tracers"
+	"github.com/liuguodong24-8/3fcoin/core/params"
+	"github.com/liuguodong24-8/3fcoin/core/rlp"
+	"github.com/liuguodong24-8/3fcoin/core/tests"
 
 	// Force-load native and js pacakges, to trigger registration
-	_ "github.com/fff-chain/3f-chain/core/eth/tracers/js"
-	_ "github.com/fff-chain/3f-chain/core/eth/tracers/native"
+	_ "github.com/liuguodong24-8/3fcoin/core/eth/tracers/js"
+	_ "github.com/liuguodong24-8/3fcoin/core/eth/tracers/native"
 )
 
 // To generate a new callTracer test, copy paste the makeTest method below into

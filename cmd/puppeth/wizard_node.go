@@ -21,9 +21,9 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/fff-chain/3f-chain/core/accounts/keystore"
-	"github.com/fff-chain/3f-chain/core/common"
-	"github.com/fff-chain/3f-chain/core/log"
+	"github.com/liuguodong24-8/3fcoin/core/accounts/keystore"
+	"github.com/liuguodong24-8/3fcoin/core/common"
+	"github.com/liuguodong24-8/3fcoin/core/log"
 )
 
 // deployNode creates a new node configuration based on some user input.

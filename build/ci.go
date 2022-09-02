@@ -58,9 +58,9 @@ import (
 	"time"
 
 	"github.com/cespare/cp"
-	"github.com/fff-chain/3f-chain/core/crypto/signify"
-	"github.com/fff-chain/3f-chain/core/lib/build"
-	"github.com/fff-chain/3f-chain/core/params"
+	"github.com/liuguodong24-8/3fcoin/core/crypto/signify"
+	"github.com/liuguodong24-8/3fcoin/core/lib/build"
+	"github.com/liuguodong24-8/3fcoin/core/params"
 )
 
 var (

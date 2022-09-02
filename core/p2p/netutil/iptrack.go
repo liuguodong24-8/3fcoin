@@ -19,7 +19,7 @@ package netutil
 import (
 	"time"
 
-	"github.com/fff-chain/3f-chain/core/common/mclock"
+	"github.com/liuguodong24-8/3fcoin/core/common/mclock"
 )
 
 // IPTracker predicts the external endpoint, i.e. IP address and port, of the local host

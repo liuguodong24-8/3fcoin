@@ -20,7 +20,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/fff-chain/3f-chain/core/lib/flags"
+	"github.com/liuguodong24-8/3fcoin/core/lib/flags"
 	"gopkg.in/urfave/cli.v1"
 )
 

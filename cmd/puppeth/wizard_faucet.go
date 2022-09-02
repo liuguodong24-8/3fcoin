@@ -20,8 +20,8 @@ import (
 	"encoding/json"
 	"fmt"
 
-	"github.com/fff-chain/3f-chain/core/accounts/keystore"
-	"github.com/fff-chain/3f-chain/core/log"
+	"github.com/liuguodong24-8/3fcoin/core/accounts/keystore"
+	"github.com/liuguodong24-8/3fcoin/core/log"
 )
 
 // deployFaucet queries the user for various input on deploying a faucet, after

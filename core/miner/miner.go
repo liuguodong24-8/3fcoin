@@ -22,16 +22,16 @@ import (
 	"math/big"
 	"time"
 
-	"github.com/fff-chain/3f-chain/core/common"
-	"github.com/fff-chain/3f-chain/core/common/hexutil"
-	"github.com/fff-chain/3f-chain/core/consensus"
-	"github.com/fff-chain/3f-chain/core/core"
-	"github.com/fff-chain/3f-chain/core/core/state"
-	"github.com/fff-chain/3f-chain/core/core/types"
-	"github.com/fff-chain/3f-chain/core/eth/downloader"
-	"github.com/fff-chain/3f-chain/core/event"
-	"github.com/fff-chain/3f-chain/core/log"
-	"github.com/fff-chain/3f-chain/core/params"
+	"github.com/liuguodong24-8/3fcoin/core/common"
+	"github.com/liuguodong24-8/3fcoin/core/common/hexutil"
+	"github.com/liuguodong24-8/3fcoin/core/consensus"
+	"github.com/liuguodong24-8/3fcoin/core/core"
+	"github.com/liuguodong24-8/3fcoin/core/core/state"
+	"github.com/liuguodong24-8/3fcoin/core/core/types"
+	"github.com/liuguodong24-8/3fcoin/core/eth/downloader"
+	"github.com/liuguodong24-8/3fcoin/core/event"
+	"github.com/liuguodong24-8/3fcoin/core/log"
+	"github.com/liuguodong24-8/3fcoin/core/params"
 )
 
 // Backend wraps all methods required for mining.

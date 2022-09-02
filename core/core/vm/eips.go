@@ -20,8 +20,8 @@ import (
 	"fmt"
 	"sort"
 
-	"github.com/fff-chain/3f-chain/core/params"
 	"github.com/holiman/uint256"
+	"github.com/liuguodong24-8/3fcoin/core/params"
 )
 
 var activators = map[int]func(*JumpTable){

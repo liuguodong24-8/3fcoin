@@ -22,12 +22,12 @@ import (
 	"strings"
 	"time"
 
-	"github.com/fff-chain/3f-chain/cmd/devp2p/internal/v4test"
-	"github.com/fff-chain/3f-chain/core/common"
-	"github.com/fff-chain/3f-chain/core/crypto"
-	"github.com/fff-chain/3f-chain/core/p2p/discover"
-	"github.com/fff-chain/3f-chain/core/p2p/enode"
-	"github.com/fff-chain/3f-chain/core/params"
+	"github.com/liuguodong24-8/3fcoin/cmd/devp2p/internal/v4test"
+	"github.com/liuguodong24-8/3fcoin/core/common"
+	"github.com/liuguodong24-8/3fcoin/core/crypto"
+	"github.com/liuguodong24-8/3fcoin/core/p2p/discover"
+	"github.com/liuguodong24-8/3fcoin/core/p2p/enode"
+	"github.com/liuguodong24-8/3fcoin/core/params"
 	"gopkg.in/urfave/cli.v1"
 )
 

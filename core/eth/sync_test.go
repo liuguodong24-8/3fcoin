@@ -21,10 +21,10 @@ import (
 	"testing"
 	"time"
 
-	"github.com/fff-chain/3f-chain/core/eth/downloader"
-	"github.com/fff-chain/3f-chain/core/eth/protocols/eth"
-	"github.com/fff-chain/3f-chain/core/p2p"
-	"github.com/fff-chain/3f-chain/core/p2p/enode"
+	"github.com/liuguodong24-8/3fcoin/core/eth/downloader"
+	"github.com/liuguodong24-8/3fcoin/core/eth/protocols/eth"
+	"github.com/liuguodong24-8/3fcoin/core/p2p"
+	"github.com/liuguodong24-8/3fcoin/core/p2p/enode"
 )
 
 // Tests that fast sync is disabled after a successful sync cycle.

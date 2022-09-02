@@ -20,7 +20,7 @@ import (
 	"fmt"
 	"sync"
 
-	"github.com/fff-chain/3f-chain/core/event"
+	"github.com/liuguodong24-8/3fcoin/core/event"
 )
 
 // This example demonstrates how SubscriptionScope can be used to control the lifetime of

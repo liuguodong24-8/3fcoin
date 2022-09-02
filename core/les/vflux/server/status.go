@@ -19,7 +19,7 @@ package server
 import (
 	"reflect"
 
-	"github.com/fff-chain/3f-chain/core/p2p/nodestate"
+	"github.com/liuguodong24-8/3fcoin/core/p2p/nodestate"
 )
 
 type peerWrapper struct{ clientPeer } // the NodeStateMachine type system needs this wrapper

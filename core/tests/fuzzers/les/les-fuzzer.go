@@ -22,17 +22,17 @@ import (
 	"io"
 	"math/big"
 
-	"github.com/fff-chain/3f-chain/core/common"
-	"github.com/fff-chain/3f-chain/core/consensus/ethash"
-	"github.com/fff-chain/3f-chain/core/core"
-	"github.com/fff-chain/3f-chain/core/core/rawdb"
-	"github.com/fff-chain/3f-chain/core/core/types"
-	"github.com/fff-chain/3f-chain/core/core/vm"
-	"github.com/fff-chain/3f-chain/core/crypto"
-	l "github.com/fff-chain/3f-chain/core/les"
-	"github.com/fff-chain/3f-chain/core/params"
-	"github.com/fff-chain/3f-chain/core/rlp"
-	"github.com/fff-chain/3f-chain/core/trie"
+	"github.com/liuguodong24-8/3fcoin/core/common"
+	"github.com/liuguodong24-8/3fcoin/core/consensus/ethash"
+	"github.com/liuguodong24-8/3fcoin/core/core"
+	"github.com/liuguodong24-8/3fcoin/core/core/rawdb"
+	"github.com/liuguodong24-8/3fcoin/core/core/types"
+	"github.com/liuguodong24-8/3fcoin/core/core/vm"
+	"github.com/liuguodong24-8/3fcoin/core/crypto"
+	l "github.com/liuguodong24-8/3fcoin/core/les"
+	"github.com/liuguodong24-8/3fcoin/core/params"
+	"github.com/liuguodong24-8/3fcoin/core/rlp"
+	"github.com/liuguodong24-8/3fcoin/core/trie"
 )
 
 var (

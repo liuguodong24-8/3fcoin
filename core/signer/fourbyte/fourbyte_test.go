@@ -22,8 +22,8 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/fff-chain/3f-chain/core/accounts/abi"
-	"github.com/fff-chain/3f-chain/core/common"
+	"github.com/liuguodong24-8/3fcoin/core/accounts/abi"
+	"github.com/liuguodong24-8/3fcoin/core/common"
 )
 
 // Tests that all the selectors contained in the 4byte database are valid.

@@ -17,9 +17,9 @@
 package vm
 
 import (
-	"github.com/fff-chain/3f-chain/core/common"
-	"github.com/fff-chain/3f-chain/core/common/math"
 	"github.com/holiman/uint256"
+	"github.com/liuguodong24-8/3fcoin/core/common"
+	"github.com/liuguodong24-8/3fcoin/core/common/math"
 )
 
 // calcMemSize64 calculates the required memory size, and returns

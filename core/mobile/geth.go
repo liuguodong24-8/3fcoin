@@ -24,19 +24,19 @@ import (
 	"fmt"
 	"path/filepath"
 
-	"github.com/fff-chain/3f-chain/config"
+	"github.com/liuguodong24-8/3fcoin/config"
 
-	"github.com/fff-chain/3f-chain/core/core"
-	"github.com/fff-chain/3f-chain/core/eth/downloader"
-	"github.com/fff-chain/3f-chain/core/eth/ethconfig"
-	"github.com/fff-chain/3f-chain/core/ethclient"
-	"github.com/fff-chain/3f-chain/core/ethstats"
-	"github.com/fff-chain/3f-chain/core/les"
-	"github.com/fff-chain/3f-chain/core/lib/debug"
-	"github.com/fff-chain/3f-chain/core/node"
-	"github.com/fff-chain/3f-chain/core/p2p"
-	"github.com/fff-chain/3f-chain/core/p2p/nat"
-	"github.com/fff-chain/3f-chain/core/params"
+	"github.com/liuguodong24-8/3fcoin/core/core"
+	"github.com/liuguodong24-8/3fcoin/core/eth/downloader"
+	"github.com/liuguodong24-8/3fcoin/core/eth/ethconfig"
+	"github.com/liuguodong24-8/3fcoin/core/ethclient"
+	"github.com/liuguodong24-8/3fcoin/core/ethstats"
+	"github.com/liuguodong24-8/3fcoin/core/les"
+	"github.com/liuguodong24-8/3fcoin/core/lib/debug"
+	"github.com/liuguodong24-8/3fcoin/core/node"
+	"github.com/liuguodong24-8/3fcoin/core/p2p"
+	"github.com/liuguodong24-8/3fcoin/core/p2p/nat"
+	"github.com/liuguodong24-8/3fcoin/core/params"
 )
 
 // NodeConfig represents the collection of configuration values to fine tune the Geth

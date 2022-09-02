@@ -24,10 +24,10 @@ import (
 	"strings"
 	"sync"
 
-	"github.com/fff-chain/3f-chain/core/common/hexutil"
-	"github.com/fff-chain/3f-chain/core/console/prompt"
-	"github.com/fff-chain/3f-chain/core/lib/ethapi"
-	"github.com/fff-chain/3f-chain/core/log"
+	"github.com/liuguodong24-8/3fcoin/core/common/hexutil"
+	"github.com/liuguodong24-8/3fcoin/core/console/prompt"
+	"github.com/liuguodong24-8/3fcoin/core/lib/ethapi"
+	"github.com/liuguodong24-8/3fcoin/core/log"
 )
 
 type CommandlineUI struct {

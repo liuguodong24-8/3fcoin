@@ -21,10 +21,10 @@ import (
 	"sort"
 	"time"
 
-	"github.com/fff-chain/3f-chain/core/common/mclock"
-	"github.com/fff-chain/3f-chain/core/core"
-	"github.com/fff-chain/3f-chain/core/ethdb"
-	"github.com/fff-chain/3f-chain/core/light"
+	"github.com/liuguodong24-8/3fcoin/core/common/mclock"
+	"github.com/liuguodong24-8/3fcoin/core/core"
+	"github.com/liuguodong24-8/3fcoin/core/ethdb"
+	"github.com/liuguodong24-8/3fcoin/core/light"
 )
 
 // LesOdr implements light.OdrBackend

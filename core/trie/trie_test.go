@@ -1,4 +1,4 @@
-// Copyright 2014 The go-ethereum Authors
+﻿// Copyright 2014 The go-ethereum Authors
 // This file is part of the go-ethereum library.
 //
 // The go-ethereum library is free software: you can redistribute it and/or modify
@@ -31,12 +31,12 @@ import (
 	"testing/quick"
 
 	"github.com/davecgh/go-spew/spew"
-	"github.com/fff-chain/3f-chain/core/common"
-	"github.com/fff-chain/3f-chain/core/crypto"
-	"github.com/fff-chain/3f-chain/core/ethdb"
-	"github.com/fff-chain/3f-chain/core/ethdb/leveldb"
-	"github.com/fff-chain/3f-chain/core/ethdb/memorydb"
-	"github.com/fff-chain/3f-chain/core/rlp"
+	"github.com/liuguodong24-8/3fcoin/core/common"
+	"github.com/liuguodong24-8/3fcoin/core/crypto"
+	"github.com/liuguodong24-8/3fcoin/core/ethdb"
+	"github.com/liuguodong24-8/3fcoin/core/ethdb/leveldb"
+	"github.com/liuguodong24-8/3fcoin/core/ethdb/memorydb"
+	"github.com/liuguodong24-8/3fcoin/core/rlp"
 	"golang.org/x/crypto/sha3"
 )
 

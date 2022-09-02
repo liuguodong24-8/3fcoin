@@ -20,8 +20,8 @@ import (
 	"bytes"
 	"testing"
 
-	"github.com/fff-chain/3f-chain/core/common"
-	"github.com/fff-chain/3f-chain/core/ethdb"
+	"github.com/liuguodong24-8/3fcoin/core/common"
+	"github.com/liuguodong24-8/3fcoin/core/ethdb"
 )
 
 // Tests that the node iterator indeed walks over the entire database contents.

@@ -19,8 +19,8 @@ package memorydb
 import (
 	"testing"
 
-	"github.com/fff-chain/3f-chain/core/ethdb"
-	"github.com/fff-chain/3f-chain/core/ethdb/dbtest"
+	"github.com/liuguodong24-8/3fcoin/core/ethdb"
+	"github.com/liuguodong24-8/3fcoin/core/ethdb/dbtest"
 )
 
 func TestMemoryDB(t *testing.T) {

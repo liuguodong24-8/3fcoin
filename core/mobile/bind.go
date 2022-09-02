@@ -22,11 +22,11 @@ import (
 	"math/big"
 	"strings"
 
-	"github.com/fff-chain/3f-chain/core/accounts/abi"
-	"github.com/fff-chain/3f-chain/core/accounts/abi/bind"
-	"github.com/fff-chain/3f-chain/core/accounts/keystore"
-	"github.com/fff-chain/3f-chain/core/common"
-	"github.com/fff-chain/3f-chain/core/core/types"
+	"github.com/liuguodong24-8/3fcoin/core/accounts/abi"
+	"github.com/liuguodong24-8/3fcoin/core/accounts/abi/bind"
+	"github.com/liuguodong24-8/3fcoin/core/accounts/keystore"
+	"github.com/liuguodong24-8/3fcoin/core/common"
+	"github.com/liuguodong24-8/3fcoin/core/core/types"
 )
 
 // Signer is an interface defining the callback when a contract requires a

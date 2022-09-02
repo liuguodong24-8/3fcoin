@@ -21,10 +21,10 @@ import (
 	"fmt"
 	"io"
 
-	"github.com/fff-chain/3f-chain/core/common/math"
-	"github.com/fff-chain/3f-chain/core/crypto"
-	"github.com/fff-chain/3f-chain/core/p2p/enr"
-	"github.com/fff-chain/3f-chain/core/rlp"
+	"github.com/liuguodong24-8/3fcoin/core/common/math"
+	"github.com/liuguodong24-8/3fcoin/core/crypto"
+	"github.com/liuguodong24-8/3fcoin/core/p2p/enr"
+	"github.com/liuguodong24-8/3fcoin/core/rlp"
 	"golang.org/x/crypto/sha3"
 )
 

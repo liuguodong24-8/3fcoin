@@ -1,4 +1,4 @@
-// Copyright 2019 The go-ethereum Authors
+﻿// Copyright 2019 The go-ethereum Authors
 // This file is part of the go-ethereum library.
 //
 // The go-ethereum library is free software: you can redistribute it and/or modify
@@ -23,8 +23,8 @@ import (
 	"testing"
 	"time"
 
-	"github.com/fff-chain/3f-chain/core/core"
-	"github.com/fff-chain/3f-chain/core/light"
+	"github.com/liuguodong24-8/3fcoin/core/core"
+	"github.com/liuguodong24-8/3fcoin/core/light"
 )
 
 func TestLightPruner(t *testing.T) {

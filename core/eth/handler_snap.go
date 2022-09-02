@@ -17,9 +17,9 @@
 package eth
 
 import (
-	"github.com/fff-chain/3f-chain/core/core"
-	"github.com/fff-chain/3f-chain/core/eth/protocols/snap"
-	"github.com/fff-chain/3f-chain/core/p2p/enode"
+	"github.com/liuguodong24-8/3fcoin/core/core"
+	"github.com/liuguodong24-8/3fcoin/core/eth/protocols/snap"
+	"github.com/liuguodong24-8/3fcoin/core/p2p/enode"
 )
 
 // snapHandler implements the snap.Backend interface to handle the various network

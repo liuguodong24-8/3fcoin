@@ -19,8 +19,8 @@ package core
 import (
 	"sync"
 
-	"github.com/fff-chain/3f-chain/core/common"
-	"github.com/fff-chain/3f-chain/core/core/state"
+	"github.com/liuguodong24-8/3fcoin/core/common"
+	"github.com/liuguodong24-8/3fcoin/core/core/state"
 )
 
 // txNoncer is a tiny virtual state database to manage the executable nonces of

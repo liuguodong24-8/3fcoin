@@ -22,12 +22,12 @@ import (
 	"sync"
 	"time"
 
-	"github.com/fff-chain/3f-chain/core/common"
-	"github.com/fff-chain/3f-chain/core/eth/downloader"
-	"github.com/fff-chain/3f-chain/core/eth/protocols/diff"
-	"github.com/fff-chain/3f-chain/core/eth/protocols/eth"
-	"github.com/fff-chain/3f-chain/core/eth/protocols/snap"
-	"github.com/fff-chain/3f-chain/core/p2p"
+	"github.com/liuguodong24-8/3fcoin/core/common"
+	"github.com/liuguodong24-8/3fcoin/core/eth/downloader"
+	"github.com/liuguodong24-8/3fcoin/core/eth/protocols/diff"
+	"github.com/liuguodong24-8/3fcoin/core/eth/protocols/eth"
+	"github.com/liuguodong24-8/3fcoin/core/eth/protocols/snap"
+	"github.com/liuguodong24-8/3fcoin/core/p2p"
 )
 
 var (

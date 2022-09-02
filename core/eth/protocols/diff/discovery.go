@@ -17,7 +17,7 @@
 package diff
 
 import (
-	"github.com/fff-chain/3f-chain/core/rlp"
+	"github.com/liuguodong24-8/3fcoin/core/rlp"
 )
 
 // enrEntry is the ENR entry which advertises `diff` protocol on the discovery.

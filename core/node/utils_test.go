@@ -20,8 +20,8 @@
 package node
 
 import (
-	"github.com/fff-chain/3f-chain/core/p2p"
-	"github.com/fff-chain/3f-chain/core/rpc"
+	"github.com/liuguodong24-8/3fcoin/core/p2p"
+	"github.com/liuguodong24-8/3fcoin/core/rpc"
 )
 
 // NoopLifecycle is a trivial implementation of the Service interface.

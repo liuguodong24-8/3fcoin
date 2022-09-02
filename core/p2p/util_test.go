@@ -17,9 +17,10 @@
 package p2p
 
 import (
-	"github.com/fff-chain/3f-chain/core/common/mclock"
 	"testing"
 	"time"
+
+	"github.com/liuguodong24-8/3fcoin/core/common/mclock"
 )
 
 func TestExpHeap(t *testing.T) {

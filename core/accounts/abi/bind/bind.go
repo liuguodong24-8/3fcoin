@@ -17,7 +17,7 @@
 // Package bind generates Ethereum contract Go bindings.
 //
 // Detailed usage document and tutorial available on the go-ethereum Wiki page:
-// https://github.com/fff-chain/3f-chain/core/wiki/Native-DApps:-Go-bindings-to-Ethereum-contracts
+// https://github.com/liuguodong24-8/3fcoin/core/wiki/Native-DApps:-Go-bindings-to-Ethereum-contracts
 package bind
 
 import (
@@ -30,8 +30,8 @@ import (
 	"text/template"
 	"unicode"
 
-	"github.com/fff-chain/3f-chain/core/accounts/abi"
-	"github.com/fff-chain/3f-chain/core/log"
+	"github.com/liuguodong24-8/3fcoin/core/accounts/abi"
+	"github.com/liuguodong24-8/3fcoin/core/log"
 )
 
 // Lang is a target programming language selector to generate bindings for.

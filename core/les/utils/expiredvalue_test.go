@@ -1,4 +1,4 @@
-// Copyright 2020 The go-ethereum Authors
+﻿// Copyright 2020 The go-ethereum Authors
 // This file is part of the go-ethereum library.
 //
 // The go-ethereum library is free software: you can redistribute it and/or modify
@@ -19,7 +19,7 @@ package utils
 import (
 	"testing"
 
-	"github.com/fff-chain/3f-chain/core/common/mclock"
+	"github.com/liuguodong24-8/3fcoin/core/common/mclock"
 )
 
 func TestValueExpiration(t *testing.T) {

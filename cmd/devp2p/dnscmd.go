@@ -25,11 +25,11 @@ import (
 	"path/filepath"
 	"time"
 
-	"github.com/fff-chain/3f-chain/core/accounts/keystore"
-	"github.com/fff-chain/3f-chain/core/common"
-	"github.com/fff-chain/3f-chain/core/console/prompt"
-	"github.com/fff-chain/3f-chain/core/p2p/dnsdisc"
-	"github.com/fff-chain/3f-chain/core/p2p/enode"
+	"github.com/liuguodong24-8/3fcoin/core/accounts/keystore"
+	"github.com/liuguodong24-8/3fcoin/core/common"
+	"github.com/liuguodong24-8/3fcoin/core/console/prompt"
+	"github.com/liuguodong24-8/3fcoin/core/p2p/dnsdisc"
+	"github.com/liuguodong24-8/3fcoin/core/p2p/enode"
 	"gopkg.in/urfave/cli.v1"
 )
 

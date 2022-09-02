@@ -21,7 +21,7 @@ import (
 	"sync"
 	"testing"
 
-	"github.com/fff-chain/3f-chain/core/log"
+	"github.com/liuguodong24-8/3fcoin/core/log"
 )
 
 // Handler returns a log handler which logs to the unit test log of t.

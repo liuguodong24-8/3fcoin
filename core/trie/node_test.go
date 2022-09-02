@@ -20,7 +20,7 @@ import (
 	"bytes"
 	"testing"
 
-	"github.com/fff-chain/3f-chain/core/rlp"
+	"github.com/liuguodong24-8/3fcoin/core/rlp"
 )
 
 func newTestFullNode(v []byte) []interface{} {

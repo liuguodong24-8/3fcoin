@@ -19,8 +19,8 @@ package client
 import (
 	"io"
 
-	"github.com/fff-chain/3f-chain/core/les/utils"
-	"github.com/fff-chain/3f-chain/core/rlp"
+	"github.com/liuguodong24-8/3fcoin/core/les/utils"
+	"github.com/liuguodong24-8/3fcoin/core/rlp"
 )
 
 const basketFactor = 1000000 // reference basket amount and value scale factor

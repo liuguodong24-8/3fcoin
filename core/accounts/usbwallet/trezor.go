@@ -27,13 +27,13 @@ import (
 	"io"
 	"math/big"
 
-	"github.com/fff-chain/3f-chain/core/accounts"
-	"github.com/fff-chain/3f-chain/core/accounts/usbwallet/trezor"
-	"github.com/fff-chain/3f-chain/core/common"
-	"github.com/fff-chain/3f-chain/core/common/hexutil"
-	"github.com/fff-chain/3f-chain/core/core/types"
-	"github.com/fff-chain/3f-chain/core/log"
 	"github.com/golang/protobuf/proto"
+	"github.com/liuguodong24-8/3fcoin/core/accounts"
+	"github.com/liuguodong24-8/3fcoin/core/accounts/usbwallet/trezor"
+	"github.com/liuguodong24-8/3fcoin/core/common"
+	"github.com/liuguodong24-8/3fcoin/core/common/hexutil"
+	"github.com/liuguodong24-8/3fcoin/core/core/types"
+	"github.com/liuguodong24-8/3fcoin/core/log"
 )
 
 // ErrTrezorPINNeeded is returned if opening the trezor requires a PIN code. In

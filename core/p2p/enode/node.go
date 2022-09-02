@@ -26,8 +26,8 @@ import (
 	"net"
 	"strings"
 
-	"github.com/fff-chain/3f-chain/core/p2p/enr"
-	"github.com/fff-chain/3f-chain/core/rlp"
+	"github.com/liuguodong24-8/3fcoin/core/p2p/enr"
+	"github.com/liuguodong24-8/3fcoin/core/rlp"
 )
 
 var errMissingPrefix = errors.New("missing 'enr:' prefix for base64-encoded record")

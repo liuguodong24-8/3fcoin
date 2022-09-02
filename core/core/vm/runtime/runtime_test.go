@@ -24,20 +24,20 @@ import (
 	"testing"
 	"time"
 
-	"github.com/fff-chain/3f-chain/core/accounts/abi"
-	"github.com/fff-chain/3f-chain/core/common"
-	"github.com/fff-chain/3f-chain/core/consensus"
-	"github.com/fff-chain/3f-chain/core/core"
-	"github.com/fff-chain/3f-chain/core/core/asm"
-	"github.com/fff-chain/3f-chain/core/core/rawdb"
-	"github.com/fff-chain/3f-chain/core/core/state"
-	"github.com/fff-chain/3f-chain/core/core/types"
-	"github.com/fff-chain/3f-chain/core/core/vm"
-	"github.com/fff-chain/3f-chain/core/eth/tracers"
-	"github.com/fff-chain/3f-chain/core/params"
+	"github.com/liuguodong24-8/3fcoin/core/accounts/abi"
+	"github.com/liuguodong24-8/3fcoin/core/common"
+	"github.com/liuguodong24-8/3fcoin/core/consensus"
+	"github.com/liuguodong24-8/3fcoin/core/core"
+	"github.com/liuguodong24-8/3fcoin/core/core/asm"
+	"github.com/liuguodong24-8/3fcoin/core/core/rawdb"
+	"github.com/liuguodong24-8/3fcoin/core/core/state"
+	"github.com/liuguodong24-8/3fcoin/core/core/types"
+	"github.com/liuguodong24-8/3fcoin/core/core/vm"
+	"github.com/liuguodong24-8/3fcoin/core/eth/tracers"
+	"github.com/liuguodong24-8/3fcoin/core/params"
 
 	// force-load js tracers to trigger registration
-	_ "github.com/fff-chain/3f-chain/core/eth/tracers/js"
+	_ "github.com/liuguodong24-8/3fcoin/core/eth/tracers/js"
 )
 
 func TestDefaults(t *testing.T) {
@@ -625,7 +625,7 @@ func TestEip2929Cases(t *testing.T) {
 
 // TestColdAccountAccessCost test that the cold account access cost is reported
 // correctly
-// see: https://github.com/fff-chain/3f-chain/core/issues/22649
+// see: https://github.com/liuguodong24-8/3fcoin/core/issues/22649
 func TestColdAccountAccessCost(t *testing.T) {
 	for i, tc := range []struct {
 		code []byte

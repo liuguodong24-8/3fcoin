@@ -6,7 +6,7 @@ import (
 	"math/big"
 	. "strings"
 
-	"github.com/fff-chain/3f-chain/core/common/hexutil"
+	"github.com/liuguodong24-8/3fcoin/core/common/hexutil"
 )
 
 // FFFAddress represents the 20 byte address of an Ethereum account.

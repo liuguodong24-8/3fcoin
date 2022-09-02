@@ -20,7 +20,7 @@ import (
 	"fmt"
 	"log"
 
-	"github.com/fff-chain/3f-chain/core/node"
+	"github.com/liuguodong24-8/3fcoin/core/node"
 )
 
 // SampleLifecycle is a trivial network service that can be attached to a node for

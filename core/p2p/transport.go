@@ -25,11 +25,11 @@ import (
 	"sync"
 	"time"
 
-	"github.com/fff-chain/3f-chain/core/common/bitutil"
-	"github.com/fff-chain/3f-chain/core/common/gopool"
-	"github.com/fff-chain/3f-chain/core/metrics"
-	"github.com/fff-chain/3f-chain/core/p2p/rlpx"
-	"github.com/fff-chain/3f-chain/core/rlp"
+	"github.com/liuguodong24-8/3fcoin/core/common/bitutil"
+	"github.com/liuguodong24-8/3fcoin/core/common/gopool"
+	"github.com/liuguodong24-8/3fcoin/core/metrics"
+	"github.com/liuguodong24-8/3fcoin/core/p2p/rlpx"
+	"github.com/liuguodong24-8/3fcoin/core/rlp"
 )
 
 const (

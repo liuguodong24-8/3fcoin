@@ -17,8 +17,8 @@
 package runtime
 
 import (
-	"github.com/fff-chain/3f-chain/core/core"
-	"github.com/fff-chain/3f-chain/core/core/vm"
+	"github.com/liuguodong24-8/3fcoin/core/core"
+	"github.com/liuguodong24-8/3fcoin/core/core/vm"
 )
 
 func NewEnv(cfg *Config) *vm.EVM {

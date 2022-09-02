@@ -29,13 +29,13 @@ import (
 	"strings"
 	"sync"
 
-	"github.com/fff-chain/3f-chain/core/event"
-	"github.com/fff-chain/3f-chain/core/p2p"
-	"github.com/fff-chain/3f-chain/core/p2p/enode"
-	"github.com/fff-chain/3f-chain/core/p2p/simulations/adapters"
-	"github.com/fff-chain/3f-chain/core/rpc"
 	"github.com/gorilla/websocket"
 	"github.com/julienschmidt/httprouter"
+	"github.com/liuguodong24-8/3fcoin/core/event"
+	"github.com/liuguodong24-8/3fcoin/core/p2p"
+	"github.com/liuguodong24-8/3fcoin/core/p2p/enode"
+	"github.com/liuguodong24-8/3fcoin/core/p2p/simulations/adapters"
+	"github.com/liuguodong24-8/3fcoin/core/rpc"
 )
 
 // DefaultClient is the default simulation API client which expects the API

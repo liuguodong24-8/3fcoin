@@ -23,7 +23,7 @@ import (
 	"sync"
 	"testing"
 
-	"github.com/fff-chain/3f-chain/core/p2p/simulations/pipes"
+	"github.com/liuguodong24-8/3fcoin/core/p2p/simulations/pipes"
 )
 
 func TestTCPPipe(t *testing.T) {

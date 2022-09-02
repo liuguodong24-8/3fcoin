@@ -19,7 +19,7 @@ package snapshot
 import (
 	"bytes"
 
-	"github.com/fff-chain/3f-chain/core/common"
+	"github.com/liuguodong24-8/3fcoin/core/common"
 )
 
 // binaryIterator is a simplistic iterator to step over the accounts or storage

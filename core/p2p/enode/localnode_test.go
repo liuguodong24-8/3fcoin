@@ -21,8 +21,8 @@ import (
 	"net"
 	"testing"
 
-	"github.com/fff-chain/3f-chain/core/crypto"
-	"github.com/fff-chain/3f-chain/core/p2p/enr"
+	"github.com/liuguodong24-8/3fcoin/core/crypto"
+	"github.com/liuguodong24-8/3fcoin/core/p2p/enr"
 	"github.com/stretchr/testify/assert"
 )
 

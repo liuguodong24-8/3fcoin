@@ -20,7 +20,7 @@ import (
 	"context"
 	"time"
 
-	"github.com/fff-chain/3f-chain/core/p2p/enode"
+	"github.com/liuguodong24-8/3fcoin/core/p2p/enode"
 )
 
 // Simulation provides a framework for running actions in a simulated network

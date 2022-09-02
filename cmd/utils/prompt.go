@@ -20,7 +20,7 @@ package utils
 import (
 	"fmt"
 
-	"github.com/fff-chain/3f-chain/core/console/prompt"
+	"github.com/liuguodong24-8/3fcoin/core/console/prompt"
 )
 
 // GetPassPhrase displays the given text(prompt) to the user and requests some textual

@@ -22,7 +22,7 @@ import (
 	"io/ioutil"
 	"strings"
 
-	"github.com/fff-chain/3f-chain/core/core/asm"
+	"github.com/liuguodong24-8/3fcoin/core/core/asm"
 	"gopkg.in/urfave/cli.v1"
 )
 

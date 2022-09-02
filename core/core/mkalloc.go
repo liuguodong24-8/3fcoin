@@ -33,8 +33,8 @@ import (
 	"sort"
 	"strconv"
 
-	"github.com/fff-chain/3f-chain/core/core"
-	"github.com/fff-chain/3f-chain/core/rlp"
+	"github.com/liuguodong24-8/3fcoin/core/core"
+	"github.com/liuguodong24-8/3fcoin/core/rlp"
 )
 
 type allocItem struct{ Addr, Balance *big.Int }

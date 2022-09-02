@@ -25,10 +25,10 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/fff-chain/3f-chain/core/lib/testlog"
-	"github.com/fff-chain/3f-chain/core/log"
-	"github.com/fff-chain/3f-chain/core/rpc"
 	"github.com/gorilla/websocket"
+	"github.com/liuguodong24-8/3fcoin/core/lib/testlog"
+	"github.com/liuguodong24-8/3fcoin/core/log"
+	"github.com/liuguodong24-8/3fcoin/core/rpc"
 	"github.com/stretchr/testify/assert"
 )
 

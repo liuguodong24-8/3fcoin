@@ -21,8 +21,8 @@ package geth
 import (
 	"errors"
 
-	ethereum "github.com/fff-chain/3f-chain"
-	"github.com/fff-chain/3f-chain/core/common"
+	ethereum "github.com/liuguodong24-8/3fcoin"
+	"github.com/liuguodong24-8/3fcoin/core/common"
 )
 
 // Subscription represents an event subscription where events are

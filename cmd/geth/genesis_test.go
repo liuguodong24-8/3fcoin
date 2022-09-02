@@ -22,9 +22,9 @@ import (
 	"os"
 	"testing"
 
-	"github.com/fff-chain/3f-chain/cmd/utils"
-	gconfig "github.com/fff-chain/3f-chain/config"
-	"github.com/fff-chain/3f-chain/core/core"
+	"github.com/liuguodong24-8/3fcoin/cmd/utils"
+	gconfig "github.com/liuguodong24-8/3fcoin/config"
+	"github.com/liuguodong24-8/3fcoin/core/core"
 )
 
 var customGenesisTests = []struct {

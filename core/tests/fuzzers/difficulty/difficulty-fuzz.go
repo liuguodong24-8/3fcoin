@@ -23,8 +23,8 @@ import (
 	"io"
 	"math/big"
 
-	"github.com/fff-chain/3f-chain/core/consensus/ethash"
-	"github.com/fff-chain/3f-chain/core/core/types"
+	"github.com/liuguodong24-8/3fcoin/core/consensus/ethash"
+	"github.com/liuguodong24-8/3fcoin/core/core/types"
 )
 
 type fuzzer struct {

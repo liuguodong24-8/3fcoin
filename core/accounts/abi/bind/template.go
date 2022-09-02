@@ -16,7 +16,7 @@
 
 package bind
 
-import "github.com/fff-chain/3f-chain/core/accounts/abi"
+import "github.com/liuguodong24-8/3fcoin/core/accounts/abi"
 
 // tmplData is the data structure required to fill the binding template.
 type tmplData struct {
@@ -91,12 +91,12 @@ import (
 	"math/big"
 	"strings"
 
-	ethereum "github.com/fff-chain/3f-chain"
-	"github.com/fff-chain/3f-chain/core/accounts/abi"
-	"github.com/fff-chain/3f-chain/core/accounts/abi/bind"
-	"github.com/fff-chain/3f-chain/core/common"
-	"github.com/fff-chain/3f-chain/core/core/types"
-	"github.com/fff-chain/3f-chain/core/event"
+	ethereum "github.com/liuguodong24-8/3fcoin"
+	"github.com/liuguodong24-8/3fcoin/core/accounts/abi"
+	"github.com/liuguodong24-8/3fcoin/core/accounts/abi/bind"
+	"github.com/liuguodong24-8/3fcoin/core/common"
+	"github.com/liuguodong24-8/3fcoin/core/core/types"
+	"github.com/liuguodong24-8/3fcoin/core/event"
 )
 
 // Reference imports to suppress errors if they are not otherwise used.

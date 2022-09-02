@@ -19,7 +19,7 @@ package bitutil
 import (
 	"bytes"
 
-	"github.com/fff-chain/3f-chain/core/common/bitutil"
+	"github.com/liuguodong24-8/3fcoin/core/common/bitutil"
 )
 
 // Fuzz implements a go-fuzz fuzzer method to test various encoding method

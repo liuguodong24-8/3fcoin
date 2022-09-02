@@ -23,12 +23,12 @@ import (
 	"testing"
 	"time"
 
-	"github.com/fff-chain/3f-chain/core/accounts/abi/bind"
-	"github.com/fff-chain/3f-chain/core/accounts/abi/bind/backends"
-	"github.com/fff-chain/3f-chain/core/common"
-	"github.com/fff-chain/3f-chain/core/core"
-	"github.com/fff-chain/3f-chain/core/core/types"
-	"github.com/fff-chain/3f-chain/core/crypto"
+	"github.com/liuguodong24-8/3fcoin/core/accounts/abi/bind"
+	"github.com/liuguodong24-8/3fcoin/core/accounts/abi/bind/backends"
+	"github.com/liuguodong24-8/3fcoin/core/common"
+	"github.com/liuguodong24-8/3fcoin/core/core"
+	"github.com/liuguodong24-8/3fcoin/core/core/types"
+	"github.com/liuguodong24-8/3fcoin/core/crypto"
 )
 
 var testKey, _ = crypto.HexToECDSA("b71c71a67e1177ad4e901695e1b4b9ee17ae16c6668d313eac2f96dbcda3f291")

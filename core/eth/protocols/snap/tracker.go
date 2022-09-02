@@ -19,7 +19,7 @@ package snap
 import (
 	"time"
 
-	"github.com/fff-chain/3f-chain/core/p2p/tracker"
+	"github.com/liuguodong24-8/3fcoin/core/p2p/tracker"
 )
 
 // requestTracker is a singleton tracker for request times.

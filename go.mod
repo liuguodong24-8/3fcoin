@@ -1,4 +1,4 @@
-module github.com/fff-chain/3f-chain
+module github.com/liuguodong24-8/3fcoin
 
 go 1.19
 

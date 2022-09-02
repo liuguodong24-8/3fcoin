@@ -17,7 +17,7 @@
 package runtime
 
 import (
-	"github.com/fff-chain/3f-chain/core/core/vm/runtime"
+	"github.com/liuguodong24-8/3fcoin/core/core/vm/runtime"
 )
 
 // Fuzz is the basic entry point for the go-fuzz tool

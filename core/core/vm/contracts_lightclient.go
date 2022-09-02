@@ -4,8 +4,8 @@ import (
 	"encoding/binary"
 	"fmt"
 
-	"github.com/fff-chain/3f-chain/core/core/vm/lightclient"
-	"github.com/fff-chain/3f-chain/core/params"
+	"github.com/liuguodong24-8/3fcoin/core/core/vm/lightclient"
+	"github.com/liuguodong24-8/3fcoin/core/params"
 )
 
 const (

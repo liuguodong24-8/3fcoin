@@ -25,10 +25,10 @@ import (
 	"strings"
 	"time"
 
-	"github.com/fff-chain/3f-chain/core/core/forkid"
-	"github.com/fff-chain/3f-chain/core/p2p/enr"
-	"github.com/fff-chain/3f-chain/core/params"
-	"github.com/fff-chain/3f-chain/core/rlp"
+	"github.com/liuguodong24-8/3fcoin/core/core/forkid"
+	"github.com/liuguodong24-8/3fcoin/core/p2p/enr"
+	"github.com/liuguodong24-8/3fcoin/core/params"
+	"github.com/liuguodong24-8/3fcoin/core/rlp"
 	"gopkg.in/urfave/cli.v1"
 )
 

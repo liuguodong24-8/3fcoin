@@ -5909,7 +5909,7 @@ require = (function e(t, n, r) {
              * @author Alex Beregszaszi <alex@rtfs.hu>
              * @date 2016
              *
-             * Reference: https://github.com/fff-chain/3f-chain/core/blob/swarm/lib/web3ext/web3ext.go#L33
+             * Reference: https://github.com/liuguodong24-8/3fcoin/core/blob/swarm/lib/web3ext/web3ext.go#L33
              */
 
             "use strict";

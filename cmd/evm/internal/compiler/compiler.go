@@ -20,7 +20,7 @@ import (
 	"errors"
 	"fmt"
 
-	"github.com/fff-chain/3f-chain/core/core/asm"
+	"github.com/liuguodong24-8/3fcoin/core/core/asm"
 )
 
 func Compile(fn string, src []byte, debug bool) (string, error) {

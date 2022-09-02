@@ -20,8 +20,8 @@ import (
 	"context"
 	"net"
 
-	"github.com/fff-chain/3f-chain/core/log"
-	"github.com/fff-chain/3f-chain/core/p2p/netutil"
+	"github.com/liuguodong24-8/3fcoin/core/log"
+	"github.com/liuguodong24-8/3fcoin/core/p2p/netutil"
 )
 
 // ServeListener accepts connections on l, serving JSON-RPC on them.

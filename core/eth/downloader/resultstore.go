@@ -21,7 +21,7 @@ import (
 	"sync"
 	"sync/atomic"
 
-	"github.com/fff-chain/3f-chain/core/core/types"
+	"github.com/liuguodong24-8/3fcoin/core/core/types"
 )
 
 // resultStore implements a structure for maintaining fetchResults, tracking their

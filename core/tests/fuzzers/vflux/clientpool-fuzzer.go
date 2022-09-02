@@ -24,14 +24,14 @@ import (
 	"math/big"
 	"time"
 
-	"github.com/fff-chain/3f-chain/core/common/mclock"
-	"github.com/fff-chain/3f-chain/core/ethdb/memorydb"
-	"github.com/fff-chain/3f-chain/core/les/vflux"
-	vfs "github.com/fff-chain/3f-chain/core/les/vflux/server"
-	"github.com/fff-chain/3f-chain/core/log"
-	"github.com/fff-chain/3f-chain/core/p2p/enode"
-	"github.com/fff-chain/3f-chain/core/p2p/enr"
-	"github.com/fff-chain/3f-chain/core/rlp"
+	"github.com/liuguodong24-8/3fcoin/core/common/mclock"
+	"github.com/liuguodong24-8/3fcoin/core/ethdb/memorydb"
+	"github.com/liuguodong24-8/3fcoin/core/les/vflux"
+	vfs "github.com/liuguodong24-8/3fcoin/core/les/vflux/server"
+	"github.com/liuguodong24-8/3fcoin/core/log"
+	"github.com/liuguodong24-8/3fcoin/core/p2p/enode"
+	"github.com/liuguodong24-8/3fcoin/core/p2p/enr"
+	"github.com/liuguodong24-8/3fcoin/core/rlp"
 )
 
 var (

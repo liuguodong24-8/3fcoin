@@ -22,10 +22,10 @@ import (
 	"sync"
 	"time"
 
-	"github.com/fff-chain/3f-chain/core/lib/utesting"
-	"github.com/fff-chain/3f-chain/core/p2p/discover/v5wire"
-	"github.com/fff-chain/3f-chain/core/p2p/enode"
-	"github.com/fff-chain/3f-chain/core/p2p/netutil"
+	"github.com/liuguodong24-8/3fcoin/core/lib/utesting"
+	"github.com/liuguodong24-8/3fcoin/core/p2p/discover/v5wire"
+	"github.com/liuguodong24-8/3fcoin/core/p2p/enode"
+	"github.com/liuguodong24-8/3fcoin/core/p2p/netutil"
 )
 
 // Suite is the discv5 test suite.

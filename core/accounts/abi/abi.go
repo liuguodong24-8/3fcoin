@@ -23,8 +23,8 @@ import (
 	"fmt"
 	"io"
 
-	"github.com/fff-chain/3f-chain/core/common"
-	"github.com/fff-chain/3f-chain/core/crypto"
+	"github.com/liuguodong24-8/3fcoin/core/common"
+	"github.com/liuguodong24-8/3fcoin/core/crypto"
 )
 
 // The ABI holds information about a contract's context and available

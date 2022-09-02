@@ -22,11 +22,11 @@ import (
 	"path/filepath"
 	"runtime"
 
-	"github.com/fff-chain/3f-chain/config"
+	"github.com/liuguodong24-8/3fcoin/config"
 
-	"github.com/fff-chain/3f-chain/core/p2p"
-	"github.com/fff-chain/3f-chain/core/p2p/nat"
-	"github.com/fff-chain/3f-chain/core/rpc"
+	"github.com/liuguodong24-8/3fcoin/core/p2p"
+	"github.com/liuguodong24-8/3fcoin/core/p2p/nat"
+	"github.com/liuguodong24-8/3fcoin/core/rpc"
 )
 
 const (

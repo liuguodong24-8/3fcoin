@@ -26,16 +26,16 @@ import (
 	"reflect"
 	"unicode"
 
-	"github.com/fff-chain/3f-chain/cmd/utils"
-	global_config "github.com/fff-chain/3f-chain/config"
-	"github.com/fff-chain/3f-chain/core/common"
-	"github.com/fff-chain/3f-chain/core/core"
-	"github.com/fff-chain/3f-chain/core/eth/catalyst"
-	"github.com/fff-chain/3f-chain/core/eth/ethconfig"
-	"github.com/fff-chain/3f-chain/core/lib/ethapi"
-	"github.com/fff-chain/3f-chain/core/metrics"
-	"github.com/fff-chain/3f-chain/core/node"
-	"github.com/fff-chain/3f-chain/core/params"
+	"github.com/liuguodong24-8/3fcoin/cmd/utils"
+	global_config "github.com/liuguodong24-8/3fcoin/config"
+	"github.com/liuguodong24-8/3fcoin/core/common"
+	"github.com/liuguodong24-8/3fcoin/core/core"
+	"github.com/liuguodong24-8/3fcoin/core/eth/catalyst"
+	"github.com/liuguodong24-8/3fcoin/core/eth/ethconfig"
+	"github.com/liuguodong24-8/3fcoin/core/lib/ethapi"
+	"github.com/liuguodong24-8/3fcoin/core/metrics"
+	"github.com/liuguodong24-8/3fcoin/core/node"
+	"github.com/liuguodong24-8/3fcoin/core/params"
 
 	"gopkg.in/urfave/cli.v1"
 
@@ -118,7 +118,7 @@ func GetDefaultGenesis() *core.Genesis {
 		utils.Fatalf("111invalid genesis file: %v", err)
 		return nil
 	}
-	genesis.Alloc[common.HexToAddress(global_config.MintAddress)]=core.GenesisAccount{Balance:global_config.InitAllocReward}
+	genesis.Alloc[common.HexToAddress(global_config.MintAddress)] = core.GenesisAccount{Balance: global_config.InitAllocReward}
 	return genesis
 
 }

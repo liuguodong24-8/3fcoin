@@ -21,7 +21,7 @@ import (
 	"fmt"
 	"sort"
 
-	"github.com/fff-chain/3f-chain/core/common"
+	"github.com/liuguodong24-8/3fcoin/core/common"
 )
 
 // weightedIterator is a iterator with an assigned weight. It is used to prioritise

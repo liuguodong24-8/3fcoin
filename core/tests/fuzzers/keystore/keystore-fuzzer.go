@@ -19,7 +19,7 @@ package keystore
 import (
 	"os"
 
-	"github.com/fff-chain/3f-chain/core/accounts/keystore"
+	"github.com/liuguodong24-8/3fcoin/core/accounts/keystore"
 )
 
 func Fuzz(input []byte) int {

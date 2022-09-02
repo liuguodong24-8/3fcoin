@@ -21,8 +21,8 @@ import (
 	"strconv"
 	"testing"
 
-	"github.com/fff-chain/3f-chain/core/eth/protocols/eth"
-	"github.com/fff-chain/3f-chain/core/p2p"
+	"github.com/liuguodong24-8/3fcoin/core/eth/protocols/eth"
+	"github.com/liuguodong24-8/3fcoin/core/p2p"
 	"github.com/stretchr/testify/assert"
 )
 

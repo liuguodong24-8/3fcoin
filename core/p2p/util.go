@@ -19,7 +19,7 @@ package p2p
 import (
 	"container/heap"
 
-	"github.com/fff-chain/3f-chain/core/common/mclock"
+	"github.com/liuguodong24-8/3fcoin/core/common/mclock"
 )
 
 // expHeap tracks strings and their expiry time.

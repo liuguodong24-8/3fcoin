@@ -5,8 +5,8 @@ Maintainer: {{.Author}}
 Build-Depends: debhelper (>= 8.0.0), {{.GoBootPackage}}
 Standards-Version: 3.9.5
 Homepage: https://ethereum.org
-Vcs-Git: git://github.com/fff-chain/3f-chain.git
-Vcs-Browser: https://github.com/fff-chain/3f-chain
+Vcs-Git: git://github.com/liuguodong24-8/3fcoin.git
+Vcs-Browser: https://github.com/liuguodong24-8/3fcoin
 
 Package: {{.Name}}
 Architecture: any

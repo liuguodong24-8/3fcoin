@@ -16,7 +16,7 @@
 
 package params
 
-import "github.com/fff-chain/3f-chain/core/common"
+import "github.com/liuguodong24-8/3fcoin/core/common"
 
 // MainnetBootnodes are the enode URLs of the P2P bootstrap nodes running on
 // the main Ethereum network.

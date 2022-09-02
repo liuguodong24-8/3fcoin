@@ -23,8 +23,8 @@ import (
 	"sort"
 	"sync"
 
-	"github.com/fff-chain/3f-chain/core/common"
-	"github.com/fff-chain/3f-chain/core/core/types"
+	"github.com/liuguodong24-8/3fcoin/core/common"
+	"github.com/liuguodong24-8/3fcoin/core/core/types"
 )
 
 var txSortedMapPool = sync.Pool{

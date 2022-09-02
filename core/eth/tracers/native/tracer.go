@@ -39,7 +39,7 @@ package native
 import (
 	"errors"
 
-	"github.com/fff-chain/3f-chain/core/eth/tracers"
+	"github.com/liuguodong24-8/3fcoin/core/eth/tracers"
 )
 
 // init registers itself this packages as a lookup for tracers.

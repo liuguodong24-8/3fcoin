@@ -19,7 +19,7 @@ package snap
 import (
 	"testing"
 
-	"github.com/fff-chain/3f-chain/core/common"
+	"github.com/liuguodong24-8/3fcoin/core/common"
 )
 
 // Tests that given a starting hash and a density, the hash ranger can correctly
