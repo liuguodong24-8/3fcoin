@@ -324,9 +324,10 @@ func (a Address) MarshalText() ([]byte, error) {
 
 // UnmarshalText parses a hash in hex syntax.
 func (a *Address) UnmarshalText(input []byte) error {
-
+	if !IsHexAddress(string(input)) {
+		return hexutil.UnmarshalFixedText("Address", input, a[:])
+	}
 	input = []byte(FFFAddressDecode(string(input)))
-
 	return hexutil.UnmarshalFixedText("Address", input, a[:])
 }
 
